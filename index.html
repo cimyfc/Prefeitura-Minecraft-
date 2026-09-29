@@ -3,54 +3,408 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel da Prefeitura Minecraft</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Prefeitura Minecraft</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #252b24;
+      color: #fff;
+    }
+
+    header {
+      background:
+        linear-gradient(#0005, #0005),
+        #527d39;
+      text-align: center;
+      padding: 35px 15px;
+      border-bottom: 8px solid #674326;
+    }
+
+    header h1 {
+      font-size: 30px;
+      margin: 0 0 12px;
+      text-shadow: 3px 3px #26351c;
+    }
+
+    header p {
+      margin: 8px 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: auto;
+      padding: 20px 14px 35px;
+    }
+
+    .painel {
+      background: #737373;
+      border: 5px solid #494949;
+      box-shadow: 5px 5px #111;
+      padding: 20px;
+      margin: 22px 0;
+    }
+
+    .painel h2 {
+      margin-top: 0;
+      color: #fff1ae;
+      font-size: 23px;
+    }
+
+    .painel p {
+      line-height: 1.6;
+    }
+
+    .aviso {
+      background: #394b2c;
+      border: 3px solid #25371c;
+      padding: 15px;
+      margin: 15px 0;
+    }
+
+    label {
+      display: block;
+      margin: 17px 0 8px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      border: 4px solid #444;
+      border-radius: 2px;
+      background: #eee;
+      color: #222;
+      font: inherit;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 115px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 3px solid #f6d66b;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 18px;
+      padding: 15px;
+      border: 4px solid #344c26;
+      border-bottom: 7px solid #26391d;
+      border-radius: 2px;
+      background: #598b39;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6ca849;
+    }
+
+    .status {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      background: #303b2c;
+      border: 2px solid #a7c77b;
+      line-height: 1.5;
+    }
+
+    .status.visivel {
+      display: block;
+    }
+
+    .rodape {
+      background: #49321e;
+      border-top: 7px solid #78502b;
+      padding: 25px 12px;
+      text-align: center;
+    }
+
+    .rodape p {
+      line-height: 1.5;
+    }
+
+    .separador {
+      border: 0;
+      border-top: 2px solid #999;
+      margin: 20px 0;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .painel {
+        padding: 15px;
+      }
+
+      .painel h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <header class="topo">
-    <div class="logo">⛏️ PREFEITURA MINECRAFT</div>
-    <p>Portal de administração do mapa</p>
+  <header>
+    <h1>⛏️ Prefeitura Minecraft</h1>
+    <p>🏛️ Portal oficial do município</p>
+    <p>🌳 Construindo um mapa melhor para todos!</p>
   </header>
 
   <main class="container">
 
-    <section class="boas-vindas">
-      <h1>🏰 Bem-vindo ao painel!</h1>
+    <!-- AVISOS -->
+    <section class="painel">
+      <h2>📢 Avisos da Prefeitura</h2>
+
+      <div class="aviso">
+        <strong>🏗️ Novas construções</strong>
+        <p>
+          Em breve, confira aqui as novidades,
+          obras e construções do nosso município.
+        </p>
+      </div>
+
+      <div class="aviso">
+        <strong>📅 Próximas atualizações</strong>
+        <p>
+          Acompanhe os próximos avisos da prefeitura
+          e as novidades do mapa.
+        </p>
+      </div>
+    </section>
+
+    <!-- SOLICITAÇÕES -->
+    <section class="painel">
+      <h2>🏗️ Solicitar uma construção</h2>
+
       <p>
-        Aqui você poderá organizar as propostas,
-        acompanhar as construções e administrar
-        as solicitações do mapa.
+        Precisa de alguma construção ou melhoria
+        no mapa? Envie sua solicitação!
       </p>
+
+      <form class="formulario">
+        <label for="nome-pedido">
+          Seu nome no Minecraft:
+        </label>
+
+        <input
+          type="text"
+          id="nome-pedido"
+          name="nome"
+          maxlength="32"
+          placeholder="Digite seu nick"
+          required
+        >
+
+        <label for="tipo-pedido">
+          Tipo de solicitação:
+        </label>
+
+        <select id="tipo-pedido" name="tipo" required>
+          <option value="">Selecione uma opção</option>
+          <option>Construção de uma casa</option>
+          <option>Construção pública</option>
+          <option>Melhoria de uma área</option>
+          <option>Reparo de construção</option>
+          <option>Outra solicitação</option>
+        </select>
+
+        <label for="detalhes-pedido">
+          Descreva o que você precisa:
+        </label>
+
+        <textarea
+          id="detalhes-pedido"
+          name="detalhes"
+          maxlength="1500"
+          placeholder="Escreva sua solicitação..."
+          required
+        ></textarea>
+
+        <button type="submit">
+          📩 Enviar solicitação
+        </button>
+
+        <div class="status" role="status"></div>
+      </form>
     </section>
 
+    <!-- SUGESTÕES -->
     <section class="painel">
-      <h2>📜 Propostas</h2>
-      <p>Área para cadastrar e organizar suas propostas a cada eleição.</p>
+      <h2>💡 Caixa de sugestões</h2>
+
+      <p>
+        Tem uma ideia para melhorar o município?
+        Compartilhe com a prefeitura!
+      </p>
+
+      <form class="formulario">
+        <label for="nome-sugestao">
+          Seu nome no Minecraft:
+        </label>
+
+        <input
+          type="text"
+          id="nome-sugestao"
+          name="nome"
+          maxlength="32"
+          placeholder="Digite seu nick"
+          required
+        >
+
+        <label for="sugestao">
+          Sua sugestão:
+        </label>
+
+        <textarea
+          id="sugestao"
+          name="sugestao"
+          maxlength="1500"
+          placeholder="Conte sua ideia..."
+          required
+        ></textarea>
+
+        <button type="submit">
+          💡 Enviar sugestão
+        </button>
+
+        <div class="status" role="status"></div>
+      </form>
     </section>
 
+    <!-- DENÚNCIAS -->
     <section class="painel">
-      <h2>🏗️ Novas construções</h2>
-      <p>Espaço para publicar avisos sobre as próximas construções do mapa.</p>
+      <h2>🚨 Fazer uma denúncia</h2>
+
+      <p>
+        Quer relatar algum problema ou comportamento
+        inadequado no mapa? Use este formulário.
+      </p>
+
+      <form class="formulario">
+        <label for="nome-denuncia">
+          Seu nome no Minecraft:
+        </label>
+
+        <input
+          type="text"
+          id="nome-denuncia"
+          name="nome"
+          maxlength="32"
+          placeholder="Digite seu nick"
+          required
+        >
+
+        <label for="assunto-denuncia">
+          Tipo de ocorrência:
+        </label>
+
+        <select
+          id="assunto-denuncia"
+          name="assunto"
+          required
+        >
+          <option value="">Selecione uma opção</option>
+          <option>Construção danificada</option>
+          <option>Problema entre jogadores</option>
+          <option>Roubo de itens no jogo</option>
+          <option>Outro problema</option>
+        </select>
+
+        <label for="denuncia">
+          O que aconteceu?
+        </label>
+
+        <textarea
+          id="denuncia"
+          name="descricao"
+          maxlength="1500"
+          placeholder="Descreva o ocorrido..."
+          required
+        ></textarea>
+
+        <button type="submit">
+          🚨 Enviar denúncia
+        </button>
+
+        <div class="status" role="status"></div>
+      </form>
     </section>
 
+    <!-- PROPOSTAS -->
     <section class="painel">
-      <h2>📬 Solicitações</h2>
-      <p>Área destinada às solicitações dos moradores do mapa.</p>
-    </section>
+      <h2>📜 Propostas da Prefeitura</h2>
 
-    <section class="painel">
-      <h2>🚨 Denúncias</h2>
-      <p>Espaço para registrar e acompanhar denúncias.</p>
+      <p>
+        Acompanhe as propostas e os projetos
+        apresentados para o município.
+      </p>
+
+      <div class="aviso">
+        <strong>📝 Propostas da próxima eleição</strong>
+        <p>
+          As propostas serão publicadas aqui
+          quando forem cadastradas.
+        </p>
+      </div>
     </section>
 
   </main>
 
-  <footer>
-    <p>⛏️ Prefeitura Minecraft | Painel administrativo</p>
+  <footer class="rodape">
+    <h2>🏛️ Prefeitura Minecraft</h2>
+    <p>
+      🌳 Juntos, podemos construir um município
+      melhor!
+    </p>
+    <hr class="separador">
+    <p>⛏️ Portal do município Minecraft</p>
   </footer>
 
+  <script>
+    document.querySelectorAll(".formulario")
+      .forEach(function(formulario) {
+        formulario.addEventListener("submit", function(evento) {
+          evento.preventDefault();
+
+          const status =
+            formulario.querySelector(".status");
+
+          status.textContent =
+            "⚠️ O formulário ainda não está conectado " +
+            "ao sistema de recebimento. Sua mensagem " +
+            "não foi enviada nem salva. A conexão " +
+            "será configurada na próxima etapa.";
+
+          status.classList.add("visivel");
+        });
+      });
+  </script>
+
 </body>
-</html>
+        </html>
+        
