@@ -1,16 +1,77 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prefeitura Minecraft</title>
-</head>
 
+  <!-- Conecta o CSS à página -->
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-  <h1>🏛️ Prefeitura Minecraft</h1>
+  <header class="topo">
+    <div class="logo">⛏️ PREFEITURA MINECRAFT</div>
+    <p>Painel de administração da cidade</p>
+  </header>
 
-  <p>Bem-vindo ao portal da prefeitura!</p>
+  <main class="container">
+    <section class="boas-vindas">
+      <h1>🏰 Bem-vindo, prefeito!</h1>
+      <p>Gerencie as propostas e acompanhe as necessidades da cidade.</p>
+    </section>
+
+    <section class="painel">
+      <h2>📋 Painel principal</h2>
+      <p>Escolha uma área para administrar:</p>
+
+      <div class="botoes">
+        <a href="#propostas" class="botao">
+          📜 Minhas propostas
+        </a>
+
+        <a href="#construcoes" class="botao">
+          🏗️ Novas construções
+        </a>
+
+        <a href="#solicitacoes" class="botao">
+          📦 Solicitações
+        </a>
+
+        <a href="#denuncias" class="botao">
+          🚨 Denúncias
+        </a>
+      </div>
+    </section>
+
+    <section class="painel" id="propostas">
+      <h2>📜 Minhas propostas</h2>
+      <p>Cadastre e acompanhe as propostas de cada eleição.</p>
+      <button class="botao" type="button">
+        + Adicionar proposta
+      </button>
+    </section>
+
+    <section class="painel" id="construcoes">
+      <h2>🏗️ Novas construções</h2>
+      <p>Espaço para registrar os próximos projetos da cidade.</p>
+    </section>
+
+    <section class="painel" id="solicitacoes">
+      <h2>📦 Solicitações dos moradores</h2>
+      <p>Consulte os pedidos enviados pelos moradores.</p>
+    </section>
+
+    <section class="painel" id="denuncias">
+      <h2>🚨 Denúncias</h2>
+      <p>Área para acompanhar as denúncias recebidas.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>⛏️ Prefeitura Minecraft • Painel do prefeito</p>
+  </footer>
 
 </body>
 </html>
