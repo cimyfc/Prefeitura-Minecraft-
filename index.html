@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -19,7 +20,9 @@
 
     body {
       margin: 0;
+
       font-family: Arial, sans-serif;
+
       background:
         linear-gradient(
           rgba(0, 0, 0, 0.35),
@@ -38,12 +41,12 @@
         );
 
       color: white;
+
       text-align: center;
 
       padding: 30px 20px;
 
-      border-bottom:
-        6px solid #292929;
+      border-bottom: 6px solid #292929;
 
       box-shadow:
         0 5px 0 #111;
@@ -60,11 +63,13 @@
 
     header p {
       margin: 6px 0;
+
       font-size: 17px;
     }
 
     main {
       width: 92%;
+
       max-width: 900px;
 
       margin: 30px auto;
@@ -92,8 +97,7 @@
 
       padding: 12px;
 
-      border:
-        4px solid #3b2413;
+      border: 4px solid #3b2413;
 
       text-shadow:
         2px 2px 0 #222;
@@ -107,6 +111,7 @@
       display: block;
 
       margin-top: 15px;
+
       margin-bottom: 6px;
 
       font-weight: bold;
@@ -115,13 +120,11 @@
     input,
     textarea,
     select {
-
       width: 100%;
 
       padding: 12px;
 
-      border:
-        3px solid #555;
+      border: 3px solid #555;
 
       background: #f5f5f5;
 
@@ -137,15 +140,13 @@
     }
 
     button {
-
       margin-top: 18px;
 
       width: 100%;
 
       padding: 14px;
 
-      border:
-        4px solid #333;
+      border: 4px solid #333;
 
       background: #4f8a10;
 
@@ -167,11 +168,11 @@
 
     button:disabled {
       background: #777;
+
       cursor: wait;
     }
 
     .status {
-
       display: none;
 
       margin-top: 15px;
@@ -182,8 +183,7 @@
 
       background: #b7e08a;
 
-      border:
-        3px solid #3d6b16;
+      border: 3px solid #3d6b16;
 
       font-weight: bold;
     }
@@ -193,7 +193,6 @@
     }
 
     .status.erro {
-
       background: #f2a0a0;
 
       border-color: #8b2222;
@@ -202,11 +201,9 @@
     }
 
     .aviso {
-
       background: #eeeeee;
 
-      border:
-        3px solid #555;
+      border: 3px solid #555;
 
       padding: 15px;
 
@@ -214,7 +211,6 @@
     }
 
     footer {
-
       text-align: center;
 
       background: #292929;
@@ -250,11 +246,17 @@
 <body>
 
 
+  <!-- CABEÇALHO -->
+
   <header>
 
-    <h1>⛏️ Prefeitura Minecraft</h1>
+    <h1>
+      ⛏️ Prefeitura Minecraft
+    </h1>
 
-    <p>🏛️ Portal oficial do município</p>
+    <p>
+      🏛️ Portal oficial do município
+    </p>
 
     <p>
       🌳 Construindo um mapa melhor para todos!
@@ -287,6 +289,7 @@
 
       </div>
 
+
       <div class="aviso">
 
         <strong>
@@ -302,6 +305,7 @@
       </div>
 
     </section>
+
 
 
     <!-- SOLICITAÇÕES -->
@@ -398,6 +402,7 @@
     </section>
 
 
+
     <!-- SUGESTÕES -->
 
     <section>
@@ -450,6 +455,7 @@
       </form>
 
     </section>
+
 
 
     <!-- DENÚNCIAS -->
@@ -539,380 +545,10 @@
     </section>
 
 
+
     <!-- PROPOSTAS -->
 
     <section>
 
       <h2>
-        📜 Propostas da Prefeitura
-      </h2>
-
-      <div class="aviso">
-
-        <strong>
-          🏗️ Melhorias no município
-        </strong>
-
-        <p>
-          Novas construções, melhorias nas áreas
-          públicas e organização do município.
-        </p>
-
-      </div>
-
-
-      <div class="aviso">
-
-        <strong>
-          🌳 Áreas públicas
-        </strong>
-
-        <p>
-          Criação e melhoria de praças, caminhos
-          e espaços de convivência.
-        </p>
-
-      </div>
-
-
-      <div class="aviso">
-
-        <strong>
-          💡 Infraestrutura
-        </strong>
-
-        <p>
-          Melhorias na iluminação, estradas e
-          demais estruturas do município.
-        </p>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-
-  <footer>
-
-    <p>
-      ⛏️ Prefeitura Minecraft
-    </p>
-
-    <p>
-      Portal municipal
-    </p>
-
-  </footer>
-
-
-  <!-- SUPABASE -->
-
-  <script>
-
-    const SUPABASE_URL =
-      "https://oamvfvyuaqolsswklljp.supabase.co";
-
-
-    const SUPABASE_KEY =
-      "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
-
-
-    document
-      .querySelectorAll(".formulario")
-      .forEach(function(formulario) {
-
-
-        formulario.addEventListener(
-          "submit",
-          async function(evento) {
-
-            evento.preventDefault();
-
-
-            const botao =
-              formulario.querySelector("button");
-
-
-            const status =
-              formulario.querySelector(".status");
-
-
-            const tabela =
-              formulario.dataset.tabela;
-
-
-            const dados =
-              Object.fromEntries(
-                new FormData(formulario)
-              );
-
-
-            botao.disabled = true;
-
-            botao.textContent =
-              "⏳ Enviando...";
-
-
-            status.classList.remove(
-              "visivel"
-            );
-
-            status.classList.remove(
-              "erro"
-            );
-
-
-            let mensagem = "";
-
-
-            /*
-             * SOLICITAÇÕES
-             */
-
-            if (
-              tabela === "solicitacoes"
-            ) {
-
-              mensagem =
-                "Tipo de solicitação: " +
-                dados.tipo +
-                "\n\n" +
-                "Detalhes: " +
-                dados.detalhes;
-
-            }
-
-
-            /*
-             * SUGESTÕES
-             */
-
-            else if (
-              tabela === "ideias"
-            ) {
-
-              mensagem =
-                "Sugestão: " +
-                dados.sugestao;
-
-            }
-
-
-            /*
-             * DENÚNCIAS
-             */
-
-            else if (
-              tabela === "denuncias"
-            ) {
-
-              mensagem =
-                "Tipo de ocorrência: " +
-                dados.assunto +
-                "\n\n" +
-                "Descrição: " +
-                dados.descricao;
-
-            }
-
-
-            try {
-
-
-              const resposta =
-                await fetch(
-
-                  SUPABASE_URL +
-                  "/rest/v1/" +
-                  tabela,
-
-                  {
-
-                    method: "POST",
-
-
-                    headers: {
-
-                      "Content-Type":
-                        "application/json",
-
-                      "apikey":
-                        SUPABASE_KEY,
-
-                      "Authorization":
-                        "Bearer " +
-                        SUPABASE_KEY,
-
-                      "Prefer":
-                        "return=minimal"
-
-                    },
-
-
-                    body:
-                      JSON.stringify({
-
-                        nome:
-                          dados.nome,
-
-                        mensagens:
-                          mensagem,
-
-                        data:
-                          new Date()
-                            .toISOString()
-                            .slice(0, 10)
-
-                      })
-
-                  }
-
-                );
-
-
-              /*
-               * SE O SUPABASE DER ERRO
-               */
-
-              if (!resposta.ok) {
-
-
-                const erroTexto =
-                  await resposta.text();
-
-
-                console.error(
-                  "ERRO COMPLETO DO SUPABASE:",
-                  erroTexto
-                );
-
-
-                status.textContent =
-
-                  "❌ O Supabase recusou o envio.\n\n" +
-
-                  "Código: " +
-                  resposta.status +
-
-                  "\n\n" +
-
-                  erroTexto;
-
-
-                status.classList.add(
-                  "visivel"
-                );
-
-
-                status.classList.add(
-                  "erro"
-                );
-
-
-                return;
-
-              }
-
-
-              /*
-               * SUCESSO
-               */
-
-              status.textContent =
-
-                "✅ Enviado com sucesso!\n\n" +
-
-                "Sua mensagem foi recebida " +
-                "pela prefeitura.";
-
-
-              status.classList.add(
-                "visivel"
-              );
-
-
-              formulario.reset();
-
-
-            }
-
-
-            catch (erro) {
-
-
-              console.error(
-                "ERRO DE CONEXÃO:",
-                erro
-              );
-
-
-              status.textContent =
-
-                "❌ Erro de conexão.\n\n" +
-
-                erro.message;
-
-
-              status.classList.add(
-                "visivel"
-              );
-
-
-              status.classList.add(
-                "erro"
-              );
-
-            }
-
-
-            finally {
-
-
-              botao.disabled = false;
-
-
-              if (
-                tabela === "solicitacoes"
-              ) {
-
-                botao.textContent =
-                  "📩 Enviar solicitação";
-
-              }
-
-
-              else if (
-                tabela === "ideias"
-              ) {
-
-                botao.textContent =
-                  "💡 Enviar sugestão";
-
-              }
-
-
-              else if (
-                tabela === "denuncias"
-              ) {
-
-                botao.textContent =
-                  "🚨 Enviar denúncia";
-
-              }
-
-            }
-
-          }
-
-        );
-
-      });
-
-  </script>
-
-
-</body>
-
-          </html>
+        📜
