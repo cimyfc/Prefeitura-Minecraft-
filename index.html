@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Prefeitura Minecraft</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -14,205 +20,283 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #252b24;
-      color: white;
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.35),
+          rgba(0, 0, 0, 0.35)
+        ),
+        #7a7a7a;
+
+      color: #222;
     }
 
     header {
-      background: #527d39;
+      background:
+        linear-gradient(
+          #6b4226,
+          #4b2d18
+        );
+
+      color: white;
       text-align: center;
-      padding: 35px 15px;
-      border-bottom: 8px solid #674326;
+
+      padding: 30px 20px;
+
+      border-bottom:
+        6px solid #292929;
+
+      box-shadow:
+        0 5px 0 #111;
     }
 
     header h1 {
-      margin: 0 0 12px;
-      font-size: 30px;
-      text-shadow: 3px 3px #26351c;
+      margin: 0 0 10px;
+
+      font-size: 32px;
+
+      text-shadow:
+        3px 3px 0 #222;
     }
 
     header p {
-      margin: 8px 0;
+      margin: 6px 0;
+      font-size: 17px;
     }
 
-    .container {
-      width: 100%;
-      max-width: 760px;
-      margin: auto;
-      padding: 20px 14px 35px;
+    main {
+      width: 92%;
+      max-width: 900px;
+
+      margin: 30px auto;
     }
 
-    .painel {
-      background: #737373;
-      border: 5px solid #494949;
-      box-shadow: 5px 5px #111;
+    section {
+      background: #d8d8d8;
+
+      border: 5px solid #3d3d3d;
+
+      margin-bottom: 25px;
+
       padding: 20px;
-      margin: 22px 0;
+
+      box-shadow:
+        6px 6px 0 #222;
     }
 
-    .painel h2 {
+    section h2 {
       margin-top: 0;
-      color: #fff1ae;
-      font-size: 23px;
+
+      background: #6b4226;
+
+      color: white;
+
+      padding: 12px;
+
+      border:
+        4px solid #3b2413;
+
+      text-shadow:
+        2px 2px 0 #222;
     }
 
-    .painel p {
-      line-height: 1.6;
-    }
-
-    .aviso {
-      background: #394b2c;
-      border: 3px solid #25371c;
-      padding: 15px;
-      margin: 15px 0;
+    section p {
+      line-height: 1.5;
     }
 
     label {
       display: block;
-      margin: 17px 0 8px;
+
+      margin-top: 15px;
+      margin-bottom: 6px;
+
       font-weight: bold;
     }
 
     input,
-    select,
-    textarea {
-      display: block;
+    textarea,
+    select {
+
       width: 100%;
-      padding: 13px;
-      border: 4px solid #444;
-      border-radius: 2px;
-      background: #eee;
-      color: #222;
-      font: inherit;
-      font-size: 16px;
+
+      padding: 12px;
+
+      border:
+        3px solid #555;
+
+      background: #f5f5f5;
+
+      font-size: 15px;
+
+      font-family: Arial, sans-serif;
     }
 
     textarea {
-      min-height: 115px;
+      min-height: 120px;
+
       resize: vertical;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 3px solid #f6d66b;
-    }
-
     button {
-      width: 100%;
+
       margin-top: 18px;
-      padding: 15px;
-      border: 4px solid #344c26;
-      border-bottom: 7px solid #26391d;
-      border-radius: 2px;
-      background: #598b39;
+
+      width: 100%;
+
+      padding: 14px;
+
+      border:
+        4px solid #333;
+
+      background: #4f8a10;
+
       color: white;
+
       font-size: 17px;
+
       font-weight: bold;
+
       cursor: pointer;
+
+      box-shadow:
+        4px 4px 0 #222;
     }
 
     button:hover {
-      background: #6ca849;
+      background: #65a615;
     }
 
     button:disabled {
-      opacity: 0.6;
+      background: #777;
       cursor: wait;
     }
 
     .status {
+
       display: none;
+
       margin-top: 15px;
+
       padding: 12px;
-      background: #303b2c;
-      border: 2px solid #a7c77b;
-      line-height: 1.5;
-      white-space: pre-line;
+
+      white-space: pre-wrap;
+
+      background: #b7e08a;
+
+      border:
+        3px solid #3d6b16;
+
+      font-weight: bold;
     }
 
     .status.visivel {
       display: block;
     }
 
-    .erro {
-      background: #542b2b;
-      border-color: #d47777;
+    .status.erro {
+
+      background: #f2a0a0;
+
+      border-color: #8b2222;
+
+      color: #5b0000;
     }
 
-    .rodape {
-      background: #49321e;
-      border-top: 7px solid #78502b;
-      padding: 25px 12px;
+    .aviso {
+
+      background: #eeeeee;
+
+      border:
+        3px solid #555;
+
+      padding: 15px;
+
+      margin-top: 15px;
+    }
+
+    footer {
+
       text-align: center;
+
+      background: #292929;
+
+      color: white;
+
+      padding: 25px;
+
+      margin-top: 40px;
     }
 
-    .rodape p {
-      line-height: 1.5;
-    }
+    @media (max-width: 600px) {
 
-    .separador {
-      border: 0;
-      border-top: 2px solid #999;
-      margin: 20px 0;
-    }
-
-    @media (max-width: 480px) {
       header h1 {
-        font-size: 24px;
+        font-size: 25px;
       }
 
-      .painel {
+      main {
+        width: 95%;
+      }
+
+      section {
         padding: 15px;
       }
 
-      .painel h2 {
-        font-size: 20px;
-      }
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- CABEÇALHO -->
 
   <header>
+
     <h1>⛏️ Prefeitura Minecraft</h1>
 
     <p>🏛️ Portal oficial do município</p>
 
-    <p>🌳 Construindo um mapa melhor para todos!</p>
+    <p>
+      🌳 Construindo um mapa melhor para todos!
+    </p>
+
   </header>
 
 
-  <main class="container">
+  <main>
 
 
     <!-- AVISOS -->
 
-    <section class="painel">
+    <section>
 
-      <h2>📢 Avisos da Prefeitura</h2>
+      <h2>
+        📢 Avisos da Prefeitura
+      </h2>
 
       <div class="aviso">
 
-        <strong>🏗️ Novas construções</strong>
+        <strong>
+          🏗️ Novas construções
+        </strong>
 
         <p>
-          Confira aqui as novidades,
-          obras e construções do nosso município.
+          A prefeitura está trabalhando em novas
+          construções e melhorias para o município.
         </p>
 
       </div>
 
       <div class="aviso">
 
-        <strong>📅 Próximas atualizações</strong>
+        <strong>
+          📜 Participação dos moradores
+        </strong>
 
         <p>
-          Acompanhe os próximos avisos
-          e novidades do mapa.
+          Use os formulários abaixo para enviar
+          solicitações, sugestões, propostas ou
+          denúncias.
         </p>
 
       </div>
@@ -220,16 +304,17 @@
     </section>
 
 
-
     <!-- SOLICITAÇÕES -->
 
-    <section class="painel">
+    <section>
 
-      <h2>🏗️ Solicitar uma construção</h2>
+      <h2>
+        🏗️ Solicitar uma construção
+      </h2>
 
       <p>
         Precisa de alguma construção ou melhoria
-        no mapa? Envie sua solicitação!
+        no município? Envie sua solicitação.
       </p>
 
 
@@ -238,26 +323,23 @@
         data-tabela="solicitacoes"
       >
 
-        <label for="nome-pedido">
-          Seu nome no Minecraft:
+        <label>
+          Seu nome:
         </label>
 
         <input
-          id="nome-pedido"
-          name="nome"
           type="text"
-          maxlength="32"
-          placeholder="Digite seu nick"
+          name="nome"
+          placeholder="Digite seu nome"
           required
         >
 
 
-        <label for="tipo-pedido">
+        <label>
           Tipo de solicitação:
         </label>
 
         <select
-          id="tipo-pedido"
           name="tipo"
           required
         >
@@ -266,38 +348,40 @@
             Selecione uma opção
           </option>
 
-          <option value="Construção de uma casa">
-            Construção de uma casa
+          <option value="Casa">
+            🏠 Casa
           </option>
 
-          <option value="Construção pública">
-            Construção pública
+          <option value="Estrada">
+            🛣️ Estrada
           </option>
 
-          <option value="Melhoria de uma área">
-            Melhoria de uma área
+          <option value="Praça">
+            🌳 Praça
           </option>
 
-          <option value="Reparo de construção">
-            Reparo de construção
+          <option value="Iluminação">
+            💡 Iluminação
           </option>
 
-          <option value="Outra solicitação">
-            Outra solicitação
+          <option value="Comércio">
+            🏪 Comércio
+          </option>
+
+          <option value="Outra">
+            🏗️ Outra construção
           </option>
 
         </select>
 
 
-        <label for="detalhes-pedido">
-          Descreva o que você precisa:
+        <label>
+          Detalhes:
         </label>
 
         <textarea
-          id="detalhes-pedido"
           name="detalhes"
-          maxlength="1500"
-          placeholder="Escreva sua solicitação..."
+          placeholder="Explique o que você precisa..."
           required
         ></textarea>
 
@@ -314,16 +398,17 @@
     </section>
 
 
-
     <!-- SUGESTÕES -->
 
-    <section class="painel">
+    <section>
 
-      <h2>💡 Caixa de sugestões</h2>
+      <h2>
+        💡 Caixa de sugestões
+      </h2>
 
       <p>
-        Tem uma ideia para melhorar o município?
-        Compartilhe com a prefeitura!
+        Tem alguma ideia para melhorar o município?
+        Envie sua sugestão.
       </p>
 
 
@@ -332,29 +417,25 @@
         data-tabela="ideias"
       >
 
-        <label for="nome-sugestao">
-          Seu nome no Minecraft:
+        <label>
+          Seu nome:
         </label>
 
         <input
-          id="nome-sugestao"
-          name="nome"
           type="text"
-          maxlength="32"
-          placeholder="Digite seu nick"
+          name="nome"
+          placeholder="Digite seu nome"
           required
         >
 
 
-        <label for="sugestao">
+        <label>
           Sua sugestão:
         </label>
 
         <textarea
-          id="sugestao"
           name="sugestao"
-          maxlength="1500"
-          placeholder="Conte sua ideia..."
+          placeholder="Digite sua sugestão..."
           required
         ></textarea>
 
@@ -371,16 +452,18 @@
     </section>
 
 
-
     <!-- DENÚNCIAS -->
 
-    <section class="painel">
+    <section>
 
-      <h2>🚨 Fazer uma denúncia</h2>
+      <h2>
+        🚨 Fazer uma denúncia
+      </h2>
 
       <p>
-        Quer relatar algum problema ou comportamento
-        inadequado no mapa? Use este formulário.
+        Caso tenha alguma ocorrência que precise
+        ser comunicada à prefeitura, utilize este
+        formulário.
       </p>
 
 
@@ -389,26 +472,23 @@
         data-tabela="denuncias"
       >
 
-        <label for="nome-denuncia">
-          Seu nome no Minecraft:
+        <label>
+          Seu nome:
         </label>
 
         <input
-          id="nome-denuncia"
-          name="nome"
           type="text"
-          maxlength="32"
-          placeholder="Digite seu nick"
+          name="nome"
+          placeholder="Digite seu nome"
           required
         >
 
 
-        <label for="assunto-denuncia">
+        <label>
           Tipo de ocorrência:
         </label>
 
         <select
-          id="assunto-denuncia"
           name="assunto"
           required
         >
@@ -417,34 +497,32 @@
             Selecione uma opção
           </option>
 
-          <option value="Construção danificada">
-            Construção danificada
+          <option value="Construção irregular">
+            🏗️ Construção irregular
           </option>
 
-          <option value="Problema entre jogadores">
-            Problema entre jogadores
+          <option value="Grief">
+            ⛏️ Grief
           </option>
 
-          <option value="Roubo de itens no jogo">
-            Roubo de itens no jogo
+          <option value="Abuso">
+            ⚠️ Abuso
           </option>
 
-          <option value="Outro problema">
-            Outro problema
+          <option value="Outro">
+            📋 Outro
           </option>
 
         </select>
 
 
-        <label for="denuncia">
-          O que aconteceu?
+        <label>
+          Descrição:
         </label>
 
         <textarea
-          id="denuncia"
           name="descricao"
-          maxlength="1500"
-          placeholder="Descreva o ocorrido..."
+          placeholder="Explique o ocorrido..."
           required
         ></textarea>
 
@@ -461,27 +539,51 @@
     </section>
 
 
-
     <!-- PROPOSTAS -->
 
-    <section class="painel">
+    <section>
 
-      <h2>📜 Propostas da Prefeitura</h2>
-
-      <p>
-        Acompanhe as propostas e projetos
-        apresentados para o município.
-      </p>
+      <h2>
+        📜 Propostas da Prefeitura
+      </h2>
 
       <div class="aviso">
 
         <strong>
-          📝 Propostas da próxima eleição
+          🏗️ Melhorias no município
         </strong>
 
         <p>
-          As propostas serão publicadas aqui
-          quando forem cadastradas.
+          Novas construções, melhorias nas áreas
+          públicas e organização do município.
+        </p>
+
+      </div>
+
+
+      <div class="aviso">
+
+        <strong>
+          🌳 Áreas públicas
+        </strong>
+
+        <p>
+          Criação e melhoria de praças, caminhos
+          e espaços de convivência.
+        </p>
+
+      </div>
+
+
+      <div class="aviso">
+
+        <strong>
+          💡 Infraestrutura
+        </strong>
+
+        <p>
+          Melhorias na iluminação, estradas e
+          demais estruturas do município.
         </p>
 
       </div>
@@ -492,60 +594,29 @@
   </main>
 
 
-
-  <!-- RODAPÉ -->
-
-  <footer class="rodape">
-
-    <h2>
-      🏛️ Prefeitura Minecraft
-    </h2>
+  <footer>
 
     <p>
-      🌳 Juntos, podemos construir um
-      município melhor!
+      ⛏️ Prefeitura Minecraft
     </p>
 
-    <hr class="separador">
-
     <p>
-      ⛏️ Portal do município Minecraft
+      Portal municipal
     </p>
 
   </footer>
 
 
-
-  <!-- SISTEMA DE ENVIO -->
+  <!-- SUPABASE -->
 
   <script>
-
-    /*
-      ================================
-      CONFIGURAÇÃO DO SUPABASE
-      ================================
-    */
-
 
     const SUPABASE_URL =
       "https://oamvfvyuaqolsswklljp.supabase.co";
 
 
-    /*
-      COLE AQUI A SUA PUBLISHABLE KEY
-      DO SEGUNDO PROJETO SUPABASE.
-    */
-
     const SUPABASE_KEY =
       "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
-
-
-
-    /*
-      ================================
-      ENVIO DOS FORMULÁRIOS
-      ================================
-    */
 
 
     document
@@ -556,7 +627,6 @@
         formulario.addEventListener(
           "submit",
           async function(evento) {
-
 
             evento.preventDefault();
 
@@ -579,12 +649,6 @@
               );
 
 
-            /*
-              DESATIVA O BOTÃO
-              ENQUANTO ENVIA
-            */
-
-
             botao.disabled = true;
 
             botao.textContent =
@@ -600,16 +664,12 @@
             );
 
 
-
-            /*
-              MONTA A MENSAGEM
-              DE ACORDO COM O FORMULÁRIO
-            */
-
-
             let mensagem = "";
 
 
+            /*
+             * SOLICITAÇÕES
+             */
 
             if (
               tabela === "solicitacoes"
@@ -625,6 +685,9 @@
             }
 
 
+            /*
+             * SUGESTÕES
+             */
 
             else if (
               tabela === "ideias"
@@ -637,6 +700,9 @@
             }
 
 
+            /*
+             * DENÚNCIAS
+             */
 
             else if (
               tabela === "denuncias"
@@ -650,12 +716,6 @@
                 dados.descricao;
 
             }
-
-
-
-            /*
-              ENVIA PARA O SUPABASE
-            */
 
 
             try {
@@ -698,7 +758,12 @@
                           dados.nome,
 
                         mensagens:
-                          mensagem
+                          mensagem,
+
+                        data:
+                          new Date()
+                            .toISOString()
+                            .slice(0, 10)
 
                       })
 
@@ -707,42 +772,58 @@
                 );
 
 
-
               /*
-                SE O SUPABASE
-                DEVOLVER ERRO
-              */
+               * SE O SUPABASE DER ERRO
+               */
+
+              if (!resposta.ok) {
 
 
-              if (
-                !resposta.ok
-              ) {
-
-                const erro =
+                const erroTexto =
                   await resposta.text();
 
 
                 console.error(
-                  "Erro Supabase:",
-                  erro
+                  "ERRO COMPLETO DO SUPABASE:",
+                  erroTexto
                 );
 
 
-                throw new Error(
-                  erro
+                status.textContent =
+
+                  "❌ O Supabase recusou o envio.\n\n" +
+
+                  "Código: " +
+                  resposta.status +
+
+                  "\n\n" +
+
+                  erroTexto;
+
+
+                status.classList.add(
+                  "visivel"
                 );
+
+
+                status.classList.add(
+                  "erro"
+                );
+
+
+                return;
 
               }
 
 
-
               /*
-                SUCESSO
-              */
-
+               * SUCESSO
+               */
 
               status.textContent =
-                "✅ Enviado com sucesso!\n" +
+
+                "✅ Enviado com sucesso!\n\n" +
+
                 "Sua mensagem foi recebida " +
                 "pela prefeitura.";
 
@@ -758,24 +839,20 @@
             }
 
 
-
             catch (erro) {
 
 
-              /*
-                ERRO
-              */
-
-
               console.error(
-                "Erro:",
+                "ERRO DE CONEXÃO:",
                 erro
               );
 
 
               status.textContent =
-                "❌ Não foi possível enviar.\n" +
-                "Verifique a conexão e tente novamente.";
+
+                "❌ Erro de conexão.\n\n" +
+
+                erro.message;
 
 
               status.classList.add(
@@ -790,42 +867,40 @@
             }
 
 
-
-            /*
-              REATIVA O BOTÃO
-            */
+            finally {
 
 
-            botao.disabled = false;
+              botao.disabled = false;
 
 
+              if (
+                tabela === "solicitacoes"
+              ) {
 
-            if (
-              tabela === "solicitacoes"
-            ) {
+                botao.textContent =
+                  "📩 Enviar solicitação";
 
-              botao.textContent =
-                "📩 Enviar solicitação";
-
-            }
-
-
-            else if (
-              tabela === "ideias"
-            ) {
-
-              botao.textContent =
-                "💡 Enviar sugestão";
-
-            }
+              }
 
 
-            else if (
-              tabela === "denuncias"
-            ) {
+              else if (
+                tabela === "ideias"
+              ) {
 
-              botao.textContent =
-                "🚨 Enviar denúncia";
+                botao.textContent =
+                  "💡 Enviar sugestão";
+
+              }
+
+
+              else if (
+                tabela === "denuncias"
+              ) {
+
+                botao.textContent =
+                  "🚨 Enviar denúncia";
+
+              }
 
             }
 
@@ -837,5 +912,7 @@
 
   </script>
 
+
 </body>
-</html>
+
+          </html>
