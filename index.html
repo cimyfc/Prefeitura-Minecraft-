@@ -20,172 +20,172 @@
 
     body {
       margin: 0;
-
-      font-family: Arial, sans-serif;
-
-      background:
-        linear-gradient(
-          rgba(0, 0, 0, 0.35),
-          rgba(0, 0, 0, 0.35)
-        ),
-        #7a7a7a;
-
+      font-family: Arial, Helvetica, sans-serif;
+      background: #444;
       color: #222;
     }
 
     header {
-      background:
-        linear-gradient(
-          #6b4226,
-          #4b2d18
-        );
+      background: linear-gradient(
+        #754523,
+        #4d2c19
+      );
 
       color: white;
-
       text-align: center;
+      padding: 35px 15px;
 
-      padding: 30px 20px;
-
-      border-bottom: 6px solid #292929;
-
-      box-shadow:
-        0 5px 0 #111;
+      border-bottom: 8px solid #222;
     }
 
     header h1 {
       margin: 0 0 10px;
-
       font-size: 32px;
-
-      text-shadow:
-        3px 3px 0 #222;
+      text-shadow: 3px 3px #222;
     }
 
     header p {
-      margin: 6px 0;
-
-      font-size: 17px;
+      margin: 8px 0;
+      font-size: 21px;
     }
 
     main {
-      width: 92%;
-
       max-width: 900px;
-
-      margin: 30px auto;
+      margin: 25px auto;
+      padding: 0 15px;
     }
 
     section {
-      background: #d8d8d8;
+      background: #ddd;
+      padding: 22px;
+      margin-bottom: 30px;
 
-      border: 5px solid #3d3d3d;
+      border: 5px solid #555;
+      box-shadow: 8px 8px #222;
+    }
 
-      margin-bottom: 25px;
+    h2 {
+      background: #754523;
+      color: white;
+
+      padding: 18px;
+
+      margin-top: 0;
+
+      border: 5px solid #4b2b19;
+
+      text-shadow: 3px 3px #222;
+
+      font-size: 28px;
+    }
+
+    .aviso {
+      background: #f2f2f2;
+
+      border: 4px solid #666;
 
       padding: 20px;
 
-      box-shadow:
-        6px 6px 0 #222;
+      margin: 20px 0;
     }
 
-    section h2 {
+    .aviso h3 {
       margin-top: 0;
-
-      background: #6b4226;
-
-      color: white;
-
-      padding: 12px;
-
-      border: 4px solid #3b2413;
-
-      text-shadow:
-        2px 2px 0 #222;
+      font-size: 22px;
     }
 
-    section p {
+    p {
+      font-size: 19px;
       line-height: 1.5;
     }
 
     label {
       display: block;
 
-      margin-top: 15px;
-
-      margin-bottom: 6px;
-
       font-weight: bold;
+
+      font-size: 19px;
+
+      margin-top: 20px;
+      margin-bottom: 8px;
     }
 
     input,
     textarea,
     select {
+
       width: 100%;
 
-      padding: 12px;
+      padding: 15px;
 
-      border: 3px solid #555;
+      font-size: 18px;
 
-      background: #f5f5f5;
+      border: 4px solid #666;
 
-      font-size: 15px;
+      background: #fff;
 
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     textarea {
-      min-height: 120px;
+      min-height: 150px;
 
       resize: vertical;
     }
 
     button {
-      margin-top: 18px;
 
       width: 100%;
 
-      padding: 14px;
+      margin-top: 25px;
 
-      border: 4px solid #333;
+      padding: 18px;
 
-      background: #4f8a10;
-
-      color: white;
-
-      font-size: 17px;
+      font-size: 21px;
 
       font-weight: bold;
 
-      cursor: pointer;
+      color: white;
 
-      box-shadow:
-        4px 4px 0 #222;
+      background: #4f9708;
+
+      border: 5px solid #326000;
+
+      box-shadow: 6px 6px #222;
+
+      cursor: pointer;
     }
 
-    button:hover {
-      background: #65a615;
+    button:active {
+      box-shadow: 2px 2px #222;
+      transform: translate(4px, 4px);
     }
 
     button:disabled {
-      background: #777;
-
+      opacity: 0.6;
       cursor: wait;
     }
 
     .status {
+
       display: none;
 
-      margin-top: 15px;
+      margin-top: 20px;
 
-      padding: 12px;
+      padding: 18px;
 
-      white-space: pre-wrap;
+      border: 4px solid #267326;
 
-      background: #b7e08a;
+      background: #c9f7c9;
 
-      border: 3px solid #3d6b16;
+      color: #145214;
+
+      font-size: 18px;
 
       font-weight: bold;
+
+      white-space: pre-wrap;
+      word-break: break-word;
     }
 
     .status.visivel {
@@ -193,31 +193,23 @@
     }
 
     .status.erro {
-      background: #f2a0a0;
 
-      border-color: #8b2222;
+      border-color: #9b2222;
 
-      color: #5b0000;
-    }
+      background: #ffaaaa;
 
-    .aviso {
-      background: #eeeeee;
-
-      border: 3px solid #555;
-
-      padding: 15px;
-
-      margin-top: 15px;
+      color: #641111;
     }
 
     footer {
-      text-align: center;
 
-      background: #292929;
+      background: #222;
 
       color: white;
 
-      padding: 25px;
+      text-align: center;
+
+      padding: 30px 15px;
 
       margin-top: 40px;
     }
@@ -225,15 +217,23 @@
     @media (max-width: 600px) {
 
       header h1 {
-        font-size: 25px;
+        font-size: 28px;
       }
 
-      main {
-        width: 95%;
+      header p {
+        font-size: 18px;
+      }
+
+      h2 {
+        font-size: 24px;
       }
 
       section {
         padding: 15px;
+      }
+
+      main {
+        padding: 0 10px;
       }
 
     }
@@ -246,309 +246,688 @@
 <body>
 
 
-  <!-- CABEÇALHO -->
+<header>
 
-  <header>
+  <h1>⛏️ Prefeitura Minecraft</h1>
 
-    <h1>
-      ⛏️ Prefeitura Minecraft
-    </h1>
+  <p>🏛️ Portal oficial do município</p>
+
+  <p>🌳 Construindo um mapa melhor para todos!</p>
+
+</header>
+
+
+<main>
+
+
+  <!-- AVISOS -->
+
+  <section>
+
+    <h2>📢 Avisos da Prefeitura</h2>
+
+
+    <div class="aviso">
+
+      <h3>🏗️ Novas construções</h3>
+
+      <p>
+        A prefeitura está trabalhando em novas
+        construções e melhorias para o município.
+      </p>
+
+    </div>
+
+
+    <div class="aviso">
+
+      <h3>📜 Participação dos moradores</h3>
+
+      <p>
+        Use os formulários abaixo para enviar
+        solicitações, sugestões, propostas ou
+        denúncias.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- SOLICITAÇÃO -->
+
+  <section>
+
+    <h2>🏗️ Solicitar uma construção</h2>
 
     <p>
-      🏛️ Portal oficial do município
+      Precisa de alguma construção ou melhoria
+      no município? Envie sua solicitação.
     </p>
+
+
+    <form
+      class="formulario"
+      data-tabela="solicitacoes"
+    >
+
+      <label>
+        Seu nome:
+      </label>
+
+      <input
+        type="text"
+        name="nome"
+        placeholder="Digite seu nome"
+        required
+      >
+
+
+      <label>
+        Tipo de solicitação:
+      </label>
+
+      <select
+        name="tipo"
+        required
+      >
+
+        <option value="">
+          Selecione uma opção
+        </option>
+
+        <option value="🏠 Casa">
+          🏠 Casa
+        </option>
+
+        <option value="🛣️ Estrada">
+          🛣️ Estrada
+        </option>
+
+        <option value="💡 Iluminação">
+          💡 Iluminação
+        </option>
+
+        <option value="🏛️ Prédio público">
+          🏛️ Prédio público
+        </option>
+
+        <option value="🌳 Área pública">
+          🌳 Área pública
+        </option>
+
+        <option value="🔨 Outra construção">
+          🔨 Outra construção
+        </option>
+
+      </select>
+
+
+      <label>
+        Detalhes:
+      </label>
+
+      <textarea
+        name="detalhes"
+        placeholder="Explique o que você precisa..."
+        required
+      ></textarea>
+
+
+      <button type="submit">
+        📩 Enviar solicitação
+      </button>
+
+
+      <div class="status"></div>
+
+    </form>
+
+  </section>
+
+
+
+  <!-- SUGESTÕES -->
+
+  <section>
+
+    <h2>💡 Caixa de sugestões</h2>
 
     <p>
-      🌳 Construindo um mapa melhor para todos!
+      Tem alguma ideia para melhorar o município?
+      Envie sua sugestão.
     </p>
 
-  </header>
 
+    <form
+      class="formulario"
+      data-tabela="ideias"
+    >
 
-  <main>
+      <label>
+        Seu nome:
+      </label>
 
-
-    <!-- AVISOS -->
-
-    <section>
-
-      <h2>
-        📢 Avisos da Prefeitura
-      </h2>
-
-      <div class="aviso">
-
-        <strong>
-          🏗️ Novas construções
-        </strong>
-
-        <p>
-          A prefeitura está trabalhando em novas
-          construções e melhorias para o município.
-        </p>
-
-      </div>
-
-
-      <div class="aviso">
-
-        <strong>
-          📜 Participação dos moradores
-        </strong>
-
-        <p>
-          Use os formulários abaixo para enviar
-          solicitações, sugestões, propostas ou
-          denúncias.
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- SOLICITAÇÕES -->
-
-    <section>
-
-      <h2>
-        🏗️ Solicitar uma construção
-      </h2>
-
-      <p>
-        Precisa de alguma construção ou melhoria
-        no município? Envie sua solicitação.
-      </p>
-
-
-      <form
-        class="formulario"
-        data-tabela="solicitacoes"
+      <input
+        type="text"
+        name="nome"
+        placeholder="Digite seu nome"
+        required
       >
 
-        <label>
-          Seu nome:
-        </label>
 
-        <input
-          type="text"
-          name="nome"
-          placeholder="Digite seu nome"
-          required
-        >
+      <label>
+        Sua sugestão:
+      </label>
 
-
-        <label>
-          Tipo de solicitação:
-        </label>
-
-        <select
-          name="tipo"
-          required
-        >
-
-          <option value="">
-            Selecione uma opção
-          </option>
-
-          <option value="Casa">
-            🏠 Casa
-          </option>
-
-          <option value="Estrada">
-            🛣️ Estrada
-          </option>
-
-          <option value="Praça">
-            🌳 Praça
-          </option>
-
-          <option value="Iluminação">
-            💡 Iluminação
-          </option>
-
-          <option value="Comércio">
-            🏪 Comércio
-          </option>
-
-          <option value="Outra">
-            🏗️ Outra construção
-          </option>
-
-        </select>
+      <textarea
+        name="sugestao"
+        placeholder="Digite sua sugestão..."
+        required
+      ></textarea>
 
 
-        <label>
-          Detalhes:
-        </label>
-
-        <textarea
-          name="detalhes"
-          placeholder="Explique o que você precisa..."
-          required
-        ></textarea>
+      <button type="submit">
+        💡 Enviar sugestão
+      </button>
 
 
-        <button type="submit">
-          📩 Enviar solicitação
-        </button>
+      <div class="status"></div>
 
+    </form>
 
-        <div class="status"></div>
-
-      </form>
-
-    </section>
+  </section>
 
 
 
-    <!-- SUGESTÕES -->
+  <!-- DENÚNCIA -->
 
-    <section>
+  <section>
 
-      <h2>
-        💡 Caixa de sugestões
-      </h2>
+    <h2>🚨 Fazer uma denúncia</h2>
 
-      <p>
-        Tem alguma ideia para melhorar o município?
-        Envie sua sugestão.
-      </p>
+    <p>
+      Caso tenha alguma ocorrência que precise
+      ser comunicada à prefeitura, utilize este
+      formulário.
+    </p>
 
 
-      <form
-        class="formulario"
-        data-tabela="ideias"
+    <form
+      class="formulario"
+      data-tabela="denuncias"
+    >
+
+      <label>
+        Seu nome:
+      </label>
+
+      <input
+        type="text"
+        name="nome"
+        placeholder="Digite seu nome"
+        required
       >
 
-        <label>
-          Seu nome:
-        </label>
 
-        <input
-          type="text"
-          name="nome"
-          placeholder="Digite seu nome"
-          required
-        >
+      <label>
+        Tipo de ocorrência:
+      </label>
 
-
-        <label>
-          Sua sugestão:
-        </label>
-
-        <textarea
-          name="sugestao"
-          placeholder="Digite sua sugestão..."
-          required
-        ></textarea>
-
-
-        <button type="submit">
-          💡 Enviar sugestão
-        </button>
-
-
-        <div class="status"></div>
-
-      </form>
-
-    </section>
-
-
-
-    <!-- DENÚNCIAS -->
-
-    <section>
-
-      <h2>
-        🚨 Fazer uma denúncia
-      </h2>
-
-      <p>
-        Caso tenha alguma ocorrência que precise
-        ser comunicada à prefeitura, utilize este
-        formulário.
-      </p>
-
-
-      <form
-        class="formulario"
-        data-tabela="denuncias"
+      <select
+        name="assunto"
+        required
       >
 
-        <label>
-          Seu nome:
-        </label>
+        <option value="">
+          Selecione uma opção
+        </option>
 
-        <input
-          type="text"
-          name="nome"
-          placeholder="Digite seu nome"
-          required
-        >
+        <option value="⚠️ Abuso">
+          ⚠️ Abuso
+        </option>
 
+        <option value="🚫 Construção irregular">
+          🚫 Construção irregular
+        </option>
 
-        <label>
-          Tipo de ocorrência:
-        </label>
+        <option value="💥 Griefing">
+          💥 Griefing
+        </option>
 
-        <select
-          name="assunto"
-          required
-        >
+        <option value="🚨 Outra ocorrência">
+          🚨 Outra ocorrência
+        </option>
 
-          <option value="">
-            Selecione uma opção
-          </option>
-
-          <option value="Construção irregular">
-            🏗️ Construção irregular
-          </option>
-
-          <option value="Grief">
-            ⛏️ Grief
-          </option>
-
-          <option value="Abuso">
-            ⚠️ Abuso
-          </option>
-
-          <option value="Outro">
-            📋 Outro
-          </option>
-
-        </select>
+      </select>
 
 
-        <label>
-          Descrição:
-        </label>
+      <label>
+        Descrição:
+      </label>
 
-        <textarea
-          name="descricao"
-          placeholder="Explique o ocorrido..."
-          required
-        ></textarea>
-
-
-        <button type="submit">
-          🚨 Enviar denúncia
-        </button>
+      <textarea
+        name="descricao"
+        placeholder="Explique o que aconteceu..."
+        required
+      ></textarea>
 
 
-        <div class="status"></div>
+      <button type="submit">
+        🚨 Enviar denúncia
+      </button>
 
-      </form>
 
-    </section>
+      <div class="status"></div>
+
+    </form>
+
+  </section>
 
 
 
-    <!-- PROPOSTAS -->
+  <!-- PROPOSTAS -->
 
-    <section>
+  <section>
 
-      <h2>
-        📜
+    <h2>📜 Propostas da Prefeitura</h2>
+
+
+    <div class="aviso">
+
+      <h3>🏗️ Melhorias no município</h3>
+
+      <p>
+        Novas construções e melhorias poderão
+        ser planejadas de acordo com as
+        necessidades apresentadas pelos moradores.
+      </p>
+
+    </div>
+
+
+    <div class="aviso">
+
+      <h3>🌳 Organização do município</h3>
+
+      <p>
+        O objetivo é manter o município organizado,
+        funcional e agradável para os jogadores.
+      </p>
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+
+<footer>
+
+  <p>
+    ⛏️ Prefeitura Minecraft
+  </p>
+
+  <p>
+    Portal municipal
+  </p>
+
+</footer>
+
+
+
+<script>
+
+
+const SUPABASE_URL =
+  "https://oamvfvyuaqolsswklljp.supabase.co";
+
+
+const SUPABASE_KEY =
+  "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
+
+
+
+document
+  .querySelectorAll(".formulario")
+  .forEach(function(formulario) {
+
+
+    formulario.addEventListener(
+      "submit",
+      async function(evento) {
+
+
+        evento.preventDefault();
+
+
+        const botao =
+          formulario.querySelector("button");
+
+
+        const status =
+          formulario.querySelector(".status");
+
+
+        const tabela =
+          formulario.dataset.tabela;
+
+
+        const dados =
+          Object.fromEntries(
+            new FormData(formulario)
+          );
+
+
+        botao.disabled = true;
+
+        botao.textContent =
+          "⏳ Enviando...";
+
+
+        status.classList.remove(
+          "visivel"
+        );
+
+        status.classList.remove(
+          "erro"
+        );
+
+
+
+        try {
+
+
+          /*
+            SOLICITAÇÕES
+            Colunas:
+            id
+            nome
+            mensagem
+            data
+          */
+
+          if (tabela === "solicitacoes") {
+
+
+            const mensagem =
+
+              "Tipo de solicitação: " +
+              dados.tipo +
+
+              "\n\n" +
+
+              "Detalhes: " +
+              dados.detalhes;
+
+
+            await enviarParaSupabase(
+              tabela,
+              {
+                nome:
+                  dados.nome,
+
+                mensagem:
+                  mensagem,
+
+                data:
+                  new Date().toISOString()
+              },
+              status
+            );
+
+          }
+
+
+
+          /*
+            IDEIAS
+            Colunas:
+            id
+            created_at
+            texto
+          */
+
+          else if (tabela === "ideias") {
+
+
+            const texto =
+
+              "Nome: " +
+              dados.nome +
+
+              "\n\n" +
+
+              "Sugestão: " +
+              dados.sugestao;
+
+
+            await enviarParaSupabase(
+              tabela,
+              {
+                texto:
+                  texto
+              },
+              status
+            );
+
+          }
+
+
+
+          /*
+            DENÚNCIAS
+            Colunas:
+            id
+            nome
+            mensagem
+            data
+          */
+
+          else if (tabela === "denuncias") {
+
+
+            const mensagem =
+
+              "Tipo de ocorrência: " +
+              dados.assunto +
+
+              "\n\n" +
+
+              "Descrição: " +
+              dados.descricao;
+
+
+            await enviarParaSupabase(
+              tabela,
+              {
+                nome:
+                  dados.nome,
+
+                mensagem:
+                  mensagem,
+
+                data:
+                  new Date().toISOString()
+              },
+              status
+            );
+
+          }
+
+
+          status.textContent =
+
+            "✅ Enviado com sucesso!\n\n" +
+
+            "Sua mensagem foi recebida pela prefeitura.";
+
+
+          status.classList.add(
+            "visivel"
+          );
+
+
+          formulario.reset();
+
+
+        }
+
+
+        catch (erro) {
+
+
+          console.error(
+            "Erro:",
+            erro
+          );
+
+
+          status.textContent =
+
+            "❌ Não foi possível enviar.\n\n" +
+
+            erro.message;
+
+
+          status.classList.add(
+            "visivel"
+          );
+
+
+          status.classList.add(
+            "erro"
+          );
+
+        }
+
+
+        finally {
+
+
+          botao.disabled = false;
+
+
+          if (
+            tabela === "solicitacoes"
+          ) {
+
+            botao.textContent =
+              "📩 Enviar solicitação";
+
+          }
+
+
+          else if (
+            tabela === "ideias"
+          ) {
+
+            botao.textContent =
+              "💡 Enviar sugestão";
+
+          }
+
+
+          else if (
+            tabela === "denuncias"
+          ) {
+
+            botao.textContent =
+              "🚨 Enviar denúncia";
+
+          }
+
+        }
+
+      }
+
+    );
+
+  });
+
+
+
+async function enviarParaSupabase(
+  tabela,
+  dados,
+  status
+) {
+
+
+  const resposta =
+
+    await fetch(
+
+      SUPABASE_URL +
+      "/rest/v1/" +
+      tabela,
+
+      {
+
+        method: "POST",
+
+
+        headers: {
+
+          "Content-Type":
+            "application/json",
+
+          "apikey":
+            SUPABASE_KEY,
+
+          "Authorization":
+            "Bearer " +
+            SUPABASE_KEY,
+
+          "Prefer":
+            "return=minimal"
+
+        },
+
+
+        body:
+          JSON.stringify(dados)
+
+      }
+
+    );
+
+
+
+  if (!resposta.ok) {
+
+
+    const erroTexto =
+      await resposta.text();
+
+
+    console.error(
+      "ERRO DO SUPABASE:",
+      erroTexto
+    );
+
+
+    throw new Error(
+
+      "Código " +
+      resposta.status +
+      "\n\n" +
+      erroTexto
+
+    );
+
+  }
+
+}
+
+
+</script>
+
+
+</body>
+
+  </html>
