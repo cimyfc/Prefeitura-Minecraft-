@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR" translate="no">
-
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="google" content="notranslate">
-
 <title>Painel da Prefeitura</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -63,10 +59,7 @@ header p{
     flex:1 1 30%;
 }
 
-.aba:hover{
-    background:#555;
-}
-
+.aba:hover,
 .aba.ativa{
     background:#6b451f;
 }
@@ -161,13 +154,13 @@ button:active{
     display:none;
 }
 
-.mensagem.sucesso{
+.sucesso{
     display:block;
     background:#174d25;
     border:1px solid #2e8b45;
 }
 
-.mensagem.erro{
+.erro{
     display:block;
     background:#5c1f1f;
     border:1px solid #a33;
@@ -199,15 +192,7 @@ button:active{
 }
 
 .status-planejada{
-    background:#555;
-}
-
-.status-analise{
-    background:#8a6d1d;
-}
-
-.status-aprovada{
-    background:#245a91;
+    background:#6d5a20;
 }
 
 .status-andamento{
@@ -216,10 +201,6 @@ button:active{
 
 .status-concluida{
     background:#27753b;
-}
-
-.status-recusada{
-    background:#8c2929;
 }
 
 .vazio{
@@ -232,22 +213,21 @@ button:active{
     padding:15px 0;
 }
 
+.erroLista{
+    background:#5c1f1f;
+    border:1px solid #a33;
+    padding:12px;
+    border-radius:6px;
+    margin-top:10px;
+    word-break:break-word;
+}
+
 .codigo{
     background:#111;
     border:1px solid #555;
     padding:8px 12px;
     display:inline-block;
     border-radius:5px;
-    font-weight:bold;
-}
-
-.erro-javascript{
-    background:#7b1e1e;
-    color:#fff;
-    padding:15px;
-    margin:15px;
-    border-radius:8px;
-    text-align:center;
     font-weight:bold;
 }
 
@@ -264,9 +244,7 @@ button:active{
     .container{
         width:94%;
     }
-
 }
-
 </style>
 </head>
 
@@ -283,34 +261,46 @@ button:active{
 
     <div class="abas">
 
-        <button type="button" class="aba ativa" data-aba="avisos">
+        <button type="button"
+                class="aba ativa"
+                onclick="abrirAba('avisos',this)">
             📢 Avisos
         </button>
 
-        <button type="button" class="aba" data-aba="propostas">
+        <button type="button"
+                class="aba"
+                onclick="abrirAba('propostas',this)">
             📜 Propostas
         </button>
 
-        <button type="button" class="aba" data-aba="construcoes">
+        <button type="button"
+                class="aba"
+                onclick="abrirAba('construcoes',this)">
             🏗️ Construções
         </button>
 
-        <button type="button" class="aba" data-aba="solicitacoes">
+        <button type="button"
+                class="aba"
+                onclick="abrirAba('solicitacoes',this)">
             📬 Solicitações
         </button>
 
-        <button type="button" class="aba" data-aba="ideias">
+        <button type="button"
+                class="aba"
+                onclick="abrirAba('ideias',this)">
             💡 Sugestões
         </button>
 
-        <button type="button" class="aba" data-aba="denuncias">
+        <button type="button"
+                class="aba"
+                onclick="abrirAba('denuncias',this)">
             🚨 Denúncias
         </button>
 
     </div>
 
 
-    <!-- AVISOS -->
+    <!-- ================= AVISOS ================= -->
 
     <section id="avisos" class="secao ativa">
 
@@ -321,27 +311,23 @@ button:active{
             <input
                 id="avisoTitulo"
                 type="text"
-                placeholder="Título do aviso"
-            >
+                placeholder="Título do aviso">
 
             <textarea
                 id="avisoTexto"
-                placeholder="Escreva o aviso..."
-            ></textarea>
+                placeholder="Escreva o aviso..."></textarea>
 
             <button
                 type="button"
-                id="btnSalvarAviso"
                 class="btn-principal"
-            >
+                onclick="salvarAviso()">
                 Publicar aviso
             </button>
 
             <button
                 type="button"
-                id="btnLimparAviso"
                 class="btn-cancelar"
-            >
+                onclick="limparFormularioAviso()">
                 Limpar
             </button>
 
@@ -358,7 +344,7 @@ button:active{
     </section>
 
 
-    <!-- PROPOSTAS -->
+    <!-- ================= PROPOSTAS ================= -->
 
     <section id="propostas" class="secao">
 
@@ -369,27 +355,23 @@ button:active{
             <input
                 id="propostaTitulo"
                 type="text"
-                placeholder="Título da proposta"
-            >
+                placeholder="Título da proposta">
 
             <textarea
                 id="propostaTexto"
-                placeholder="Descrição da proposta..."
-            ></textarea>
+                placeholder="Descrição da proposta..."></textarea>
 
             <button
                 type="button"
-                id="btnSalvarProposta"
                 class="btn-principal"
-            >
+                onclick="salvarProposta()">
                 Publicar proposta
             </button>
 
             <button
                 type="button"
-                id="btnLimparProposta"
                 class="btn-cancelar"
-            >
+                onclick="limparFormularioProposta()">
                 Limpar
             </button>
 
@@ -406,7 +388,7 @@ button:active{
     </section>
 
 
-    <!-- CONSTRUÇÕES -->
+    <!-- ================= CONSTRUÇÕES ================= -->
 
     <section id="construcoes" class="secao">
 
@@ -417,13 +399,11 @@ button:active{
             <input
                 id="construcaoTitulo"
                 type="text"
-                placeholder="Nome da construção"
-            >
+                placeholder="Nome da construção">
 
             <textarea
                 id="construcaoDescricao"
-                placeholder="Descrição do projeto..."
-            ></textarea>
+                placeholder="Descrição do projeto..."></textarea>
 
             <select id="construcaoStatus">
 
@@ -443,17 +423,15 @@ button:active{
 
             <button
                 type="button"
-                id="btnSalvarConstrucao"
                 class="btn-principal"
-            >
+                onclick="salvarConstrucao()">
                 Salvar construção
             </button>
 
             <button
                 type="button"
-                id="btnLimparConstrucao"
                 class="btn-cancelar"
-            >
+                onclick="limparFormularioConstrucao()">
                 Limpar
             </button>
 
@@ -470,7 +448,7 @@ button:active{
     </section>
 
 
-    <!-- SOLICITAÇÕES -->
+    <!-- ================= SOLICITAÇÕES ================= -->
 
     <section id="solicitacoes" class="secao">
 
@@ -480,9 +458,8 @@ button:active{
 
             <button
                 type="button"
-                id="btnAtualizarSolicitacoes"
                 class="btn-atualizar"
-            >
+                onclick="carregarSolicitacoes()">
                 🔄 Atualizar
             </button>
 
@@ -493,7 +470,7 @@ button:active{
     </section>
 
 
-    <!-- SUGESTÕES -->
+    <!-- ================= SUGESTÕES ================= -->
 
     <section id="ideias" class="secao">
 
@@ -503,9 +480,8 @@ button:active{
 
             <button
                 type="button"
-                id="btnAtualizarIdeias"
                 class="btn-atualizar"
-            >
+                onclick="carregarIdeias()">
                 🔄 Atualizar
             </button>
 
@@ -516,7 +492,7 @@ button:active{
     </section>
 
 
-    <!-- DENÚNCIAS -->
+    <!-- ================= DENÚNCIAS ================= -->
 
     <section id="denuncias" class="secao">
 
@@ -526,9 +502,8 @@ button:active{
 
             <button
                 type="button"
-                id="btnAtualizarDenuncias"
                 class="btn-atualizar"
-            >
+                onclick="carregarDenuncias()">
                 🔄 Atualizar
             </button>
 
@@ -543,11 +518,9 @@ button:active{
 
 <script>
 
-/*
-    ==========================================
-    CONFIGURAÇÃO DO SUPABASE
-    ==========================================
-*/
+/* =========================================================
+   CONFIGURAÇÃO DO SUPABASE
+   ========================================================= */
 
 const SUPABASE_URL =
     "https://oamvfvyuaqolsswklljp.supabase.co";
@@ -556,54 +529,40 @@ const SUPABASE_KEY =
     "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
 
 
-/*
-    ==========================================
-    VARIÁVEIS
-    ==========================================
-*/
+/* =========================================================
+   VARIÁVEIS
+   ========================================================= */
 
 let avisoEditando = null;
 let propostaEditando = null;
 let construcaoEditando = null;
 
 
-/*
-    ==========================================
-    MENSAGENS
-    ==========================================
-*/
+/* =========================================================
+   MENSAGEM
+   ========================================================= */
 
-function mostrarMensagem(texto, tipo) {
+function mostrarMensagem(texto, tipo = "sucesso") {
 
-    const elemento =
-        document.getElementById("mensagemGlobal");
+    const el = document.getElementById("mensagemGlobal");
 
-    elemento.textContent = texto;
+    el.textContent = texto;
 
-    elemento.className =
-        "mensagem " + (tipo || "sucesso");
+    el.className = "mensagem " + tipo;
 
     setTimeout(function() {
-
-        elemento.className = "mensagem";
-
+        el.className = "mensagem";
     }, 4000);
 }
 
 
-/*
-    ==========================================
-    ESCAPAR TEXTO
-    ==========================================
-*/
+/* =========================================================
+   ESCAPAR HTML
+   ========================================================= */
 
 function escapar(valor) {
 
-    if (valor === null || valor === undefined) {
-        return "";
-    }
-
-    return String(valor)
+    return String(valor ?? "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
@@ -612,17 +571,15 @@ function escapar(valor) {
 }
 
 
-/*
-    ==========================================
-    REQUISIÇÃO AO SUPABASE
-    ==========================================
-*/
+/* =========================================================
+   REQUISIÇÃO AO SUPABASE
+   ========================================================= */
 
 async function requisicao(
     tabela,
-    metodo,
-    dados,
-    query
+    metodo = "GET",
+    dados = null,
+    query = ""
 ) {
 
     let url =
@@ -636,7 +593,7 @@ async function requisicao(
 
     const opcoes = {
 
-        method: metodo || "GET",
+        method: metodo,
 
         headers: {
 
@@ -651,16 +608,12 @@ async function requisicao(
 
             "Prefer":
                 "return=representation"
-
         }
-
     };
 
-    if (dados !== null && dados !== undefined) {
-
+    if (dados !== null) {
         opcoes.body =
             JSON.stringify(dados);
-
     }
 
     const resposta =
@@ -677,7 +630,6 @@ async function requisicao(
             ": " +
             texto
         );
-
     }
 
     if (!texto) {
@@ -688,66 +640,43 @@ async function requisicao(
 
         return JSON.parse(texto);
 
-    } catch (erro) {
+    } catch {
 
         return texto;
-
     }
-
 }
 
 
-/*
-    ==========================================
-    ABRIR ABAS
-    ==========================================
-*/
+/* =========================================================
+   ABAS
+   ========================================================= */
 
-function abrirAba(nome) {
+function abrirAba(nome, botao) {
 
-    const secoes =
-        document.querySelectorAll(".secao");
+    document
+        .querySelectorAll(".secao")
+        .forEach(function(secao) {
+            secao.classList.remove("ativa");
+        });
 
-    secoes.forEach(function(secao) {
-
-        secao.classList.remove("ativa");
-
-    });
-
-
-    const botoes =
-        document.querySelectorAll(".aba");
-
-    botoes.forEach(function(botao) {
-
-        botao.classList.remove("ativa");
-
-    });
-
+    document
+        .querySelectorAll(".aba")
+        .forEach(function(item) {
+            item.classList.remove("ativa");
+        });
 
     const secao =
         document.getElementById(nome);
-
-    const botao =
-        document.querySelector(
-            '.aba[data-aba="' +
-            nome +
-            '"]'
-        );
-
 
     if (!secao) {
         return;
     }
 
-
     secao.classList.add("ativa");
-
 
     if (botao) {
         botao.classList.add("ativa");
     }
-
 
     if (nome === "avisos") {
         carregarAvisos();
@@ -772,15 +701,12 @@ function abrirAba(nome) {
     if (nome === "denuncias") {
         carregarDenuncias();
     }
-
 }
 
 
-/*
-    ==========================================
-    AVISOS
-    ==========================================
-*/
+/* =========================================================
+   AVISOS
+   ========================================================= */
 
 async function carregarAvisos() {
 
@@ -800,52 +726,46 @@ async function carregarAvisos() {
                 "select=*&order=id.desc"
             );
 
-
-        if (!dados || dados.length === 0) {
+        if (!dados || !dados.length) {
 
             lista.innerHTML =
-                '<div class="vazio">' +
-                'Nenhum aviso publicado.' +
-                '</div>';
+                '<div class="vazio">Nenhum aviso publicado.</div>';
 
             return;
         }
 
-
         lista.innerHTML =
-            dados.map(function(aviso) {
+            dados.map(function(a) {
 
                 return `
                     <div class="item">
 
                         <h3>
-                            ${escapar(aviso.titulo)}
+                            ${escapar(a.titulo)}
                         </h3>
 
                         <p>
-                            ${escapar(aviso.texto)
+                            ${escapar(a.texto)
                                 .replace(/\n/g, "<br>")}
                         </p>
 
                         <small>
-                            ID: ${escapar(aviso.id)}
+                            ID: ${escapar(a.id)}
                         </small>
 
                         <br><br>
 
                         <button
                             type="button"
-                            class="btn-editar btn-editar-aviso"
-                            data-id="${Number(aviso.id)}"
-                        >
+                            class="btn-editar"
+                            onclick="editarAviso(${Number(a.id)})">
                             ✏️ Editar
                         </button>
 
                         <button
                             type="button"
-                            class="btn-excluir btn-excluir-aviso"
-                            data-id="${Number(aviso.id)}"
-                        >
+                            class="btn-excluir"
+                            onclick="excluirAviso(${Number(a.id)})">
                             🗑️ Excluir
                         </button>
 
@@ -854,53 +774,13 @@ async function carregarAvisos() {
 
             }).join("");
 
-
-        document
-            .querySelectorAll(".btn-editar-aviso")
-            .forEach(function(botao) {
-
-                botao.addEventListener(
-                    "click",
-                    function() {
-
-                        editarAviso(
-                            Number(botao.dataset.id)
-                        );
-
-                    }
-                );
-
-            });
-
-
-        document
-            .querySelectorAll(".btn-excluir-aviso")
-            .forEach(function(botao) {
-
-                botao.addEventListener(
-                    "click",
-                    function() {
-
-                        excluirAviso(
-                            Number(botao.dataset.id)
-                        );
-
-                    }
-                );
-
-            });
-
-
-    } catch (erro) {
+    } catch (e) {
 
         lista.innerHTML =
-            '<div class="vazio">' +
-            'Erro: ' +
-            escapar(erro.message) +
+            '<div class="erroLista">Erro: ' +
+            escapar(e.message) +
             '</div>';
-
     }
-
 }
 
 
@@ -918,7 +798,6 @@ async function salvarAviso() {
             .value
             .trim();
 
-
     if (!titulo || !texto) {
 
         mostrarMensagem(
@@ -928,7 +807,6 @@ async function salvarAviso() {
 
         return;
     }
-
 
     try {
 
@@ -963,24 +841,19 @@ async function salvarAviso() {
             mostrarMensagem(
                 "Aviso publicado!"
             );
-
         }
-
 
         limparFormularioAviso();
 
         await carregarAvisos();
 
-
-    } catch (erro) {
+    } catch (e) {
 
         mostrarMensagem(
-            erro.message,
+            e.message,
             "erro"
         );
-
     }
-
 }
 
 
@@ -997,42 +870,34 @@ async function editarAviso(id) {
                 encodeURIComponent(id)
             );
 
-
-        if (!dados || dados.length === 0) {
+        if (!dados || !dados.length) {
             return;
         }
-
 
         document
             .getElementById("avisoTitulo")
             .value =
             dados[0].titulo || "";
 
-
         document
             .getElementById("avisoTexto")
             .value =
             dados[0].texto || "";
 
-
         avisoEditando = id;
-
 
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
 
-
-    } catch (erro) {
+    } catch (e) {
 
         mostrarMensagem(
-            erro.message,
+            e.message,
             "erro"
         );
-
     }
-
 }
 
 
@@ -1041,7 +906,6 @@ async function excluirAviso(id) {
     if (!confirm("Excluir este aviso?")) {
         return;
     }
-
 
     try {
 
@@ -1053,24 +917,19 @@ async function excluirAviso(id) {
             encodeURIComponent(id)
         );
 
-
         mostrarMensagem(
             "Aviso excluído."
         );
 
-
         await carregarAvisos();
 
-
-    } catch (erro) {
+    } catch (e) {
 
         mostrarMensagem(
-            erro.message,
+            e.message,
             "erro"
         );
-
     }
-
 }
 
 
@@ -1085,15 +944,12 @@ function limparFormularioAviso() {
         .value = "";
 
     avisoEditando = null;
-
 }
 
 
-/*
-    ==========================================
-    PROPOSTAS
-    ==========================================
-*/
+/* =========================================================
+   PROPOSTAS
+   ========================================================= */
 
 async function carregarPropostas() {
 
@@ -1102,7 +958,6 @@ async function carregarPropostas() {
 
     lista.innerHTML =
         '<div class="carregando">Carregando...</div>';
-
 
     try {
 
@@ -1114,45 +969,93 @@ async function carregarPropostas() {
                 "select=*&order=id.desc"
             );
 
-
-        if (!dados || dados.length === 0) {
+        if (!dados || !dados.length) {
 
             lista.innerHTML =
-                '<div class="vazio">' +
-                'Nenhuma proposta publicada.' +
-                '</div>';
+                '<div class="vazio">Nenhuma proposta publicada.</div>';
 
             return;
         }
 
-
         lista.innerHTML =
-            dados.map(function(proposta) {
+            dados.map(function(p) {
 
                 return `
                     <div class="item">
 
                         <h3>
-                            ${escapar(proposta.titulo)}
+                            ${escapar(p.titulo)}
                         </h3>
 
                         <p>
-                            ${escapar(proposta.texto)
+                            ${escapar(p.texto)
                                 .replace(/\n/g, "<br>")}
                         </p>
 
                         <small>
-                            ID: ${escapar(proposta.id)}
+                            ID: ${escapar(p.id)}
                         </small>
 
                         <br><br>
 
                         <button
                             type="button"
-                            class="btn-editar btn-editar-proposta"
-                            data-id="${Number(proposta.id)}"
-                        >
+                            class="btn-editar"
+                            onclick="editarProposta(${Number(p.id)})">
                             ✏️ Editar
                         </button>
 
-          
+                        <button
+                            type="button"
+                            class="btn-excluir"
+                            onclick="excluirProposta(${Number(p.id)})">
+                            🗑️ Excluir
+                        </button>
+
+                    </div>
+                `;
+
+            }).join("");
+
+    } catch (e) {
+
+        lista.innerHTML =
+            '<div class="erroLista">Erro: ' +
+            escapar(e.message) +
+            '</div>';
+    }
+}
+
+
+async function salvarProposta() {
+
+    const titulo =
+        document
+            .getElementById("propostaTitulo")
+            .value
+            .trim();
+
+    const texto =
+        document
+            .getElementById("propostaTexto")
+            .value
+            .trim();
+
+    if (!titulo || !texto) {
+
+        mostrarMensagem(
+            "Preencha o título e o texto da proposta.",
+            "erro"
+        );
+
+        return;
+    }
+
+    try {
+
+        if (propostaEditando !== null) {
+
+            await requisicao(
+                "propostas",
+                "PATCH",
+        
