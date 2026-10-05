@@ -6,410 +6,493 @@
 <title>Painel da Prefeitura</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#1b1b1b;
+    color:#f5f5f5
+}
+
+header{
+    background:#4b2e18;
+    border-bottom:4px solid #2d1b0f;
+    padding:20px;
+    text-align:center
+}
+
+header h1{
+    margin:0 0 8px;
+    font-size:26px
+}
+
+header p{
+    margin:0;
+    color:#ddd
+}
+
+.container{
+    width:95%;
+    max-width:1100px;
+    margin:20px auto
+}
+
+.abas{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px
+}
+
+.aba{
+    border:none;
+    background:#333;
+    color:#fff;
+    padding:12px 15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    flex:1 1 30%
+}
+
+.aba:hover,
+.aba.ativa{
+    background:#6b451f
+}
+
+.secao{
+    display:none
+}
+
+.secao.ativa{
+    display:block
+}
+
+.card,
+.formulario{
+    background:#292929;
+    border:2px solid #444;
+    border-radius:8px;
+    padding:18px;
+    margin-bottom:15px
+}
+
+.formulario{
+    background:#252525
+}
+
+.card h2,
+.formulario h2{
+    margin-top:0;
+    color:#ffd27a
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    margin:7px 0 14px;
+    border:2px solid #555;
+    border-radius:6px;
+    background:#151515;
+    color:#fff;
+    font-size:15px
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical
+}
+
+button{
+    border:none;
+    border-radius:6px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:3px
+}
+
+.btn-principal{
+    background:#4caf50;
+    color:#fff
+}
+
+.btn-editar{
+    background:#d69e2e;
+    color:#fff
+}
+
+.btn-excluir{
+    background:#c0392b;
+    color:#fff
+}
+
+.btn-atualizar{
+    background:#357edd;
+    color:#fff
+}
+
+.btn-cancelar{
+    background:#666;
+    color:#fff
+}
+
+.mensagem{
+    padding:12px;
+    border-radius:6px;
+    margin:10px 0;
+    display:none
+}
+
+.sucesso{
+    display:block;
+    background:#174d25;
+    border:1px solid #2e8b45
+}
+
+.erro{
+    display:block;
+    background:#5c1f1f;
+    border:1px solid #a33
+}
+
+.item{
+    background:#202020;
+    border:1px solid #444;
+    border-radius:7px;
+    padding:15px;
+    margin-top:12px
+}
+
+.item h3{
+    margin-top:0;
+    color:#ffd27a
+}
+
+.item small{
+    color:#aaa
+}
+
+.status{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:20px;
+    font-weight:bold;
+    margin:8px 0
+}
+
+.status-analise{
+    background:#8a6d1d
+}
+
+.status-aprovada{
+    background:#245a91
+}
+
+.status-andamento{
+    background:#a05a18
+}
+
+.status-concluida{
+    background:#27753b
+}
+
+.status-recusada{
+    background:#8c2929
+}
+
+.vazio{
+    color:#aaa;
+    padding:15px 0
+}
+
+.codigo{
+    background:#111;
+    border:1px solid #555;
+    padding:8px 12px;
+    display:inline-block;
+    border-radius:5px;
+    font-weight:bold
+}
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:22px
     }
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #1b1b1b;
-        color: #f5f5f5;
+    .aba{
+        flex:1 1 45%
     }
 
-    header {
-        background: #4b2e18;
-        border-bottom: 4px solid #2d1b0f;
-        padding: 20px;
-        text-align: center;
+    .container{
+        width:94%
     }
-
-    header h1 {
-        margin: 0 0 8px;
-        font-size: 26px;
-    }
-
-    header p {
-        margin: 0;
-        color: #ddd;
-    }
-
-    .container {
-        width: 95%;
-        max-width: 1100px;
-        margin: 20px auto;
-    }
-
-    .abas {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-
-    .aba {
-        border: none;
-        background: #333;
-        color: white;
-        padding: 12px 15px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .aba:hover,
-    .aba.ativa {
-        background: #6b451f;
-    }
-
-    .secao {
-        display: none;
-    }
-
-    .secao.ativa {
-        display: block;
-    }
-
-    .card {
-        background: #292929;
-        border: 2px solid #444;
-        border-radius: 8px;
-        padding: 18px;
-        margin-bottom: 15px;
-    }
-
-    .card h2 {
-        margin-top: 0;
-        color: #ffd27a;
-    }
-
-    .formulario {
-        background: #252525;
-        border: 2px solid #444;
-        border-radius: 8px;
-        padding: 18px;
-        margin-bottom: 20px;
-    }
-
-    input,
-    textarea,
-    select {
-        width: 100%;
-        padding: 12px;
-        margin: 7px 0 14px;
-        border: 2px solid #555;
-        border-radius: 6px;
-        background: #151515;
-        color: white;
-        font-size: 15px;
-    }
-
-    textarea {
-        min-height: 120px;
-        resize: vertical;
-    }
-
-    button {
-        border: none;
-        border-radius: 6px;
-        padding: 10px 14px;
-        cursor: pointer;
-        font-weight: bold;
-        margin: 3px;
-    }
-
-    .btn-principal {
-        background: #4caf50;
-        color: white;
-    }
-
-    .btn-editar {
-        background: #d69e2e;
-        color: white;
-    }
-
-    .btn-excluir {
-        background: #c0392b;
-        color: white;
-    }
-
-    .btn-atualizar {
-        background: #357edd;
-        color: white;
-    }
-
-    .btn-cancelar {
-        background: #666;
-        color: white;
-    }
-
-    .mensagem {
-        padding: 12px;
-        border-radius: 6px;
-        margin: 10px 0;
-        display: none;
-    }
-
-    .sucesso {
-        display: block;
-        background: #174d25;
-        border: 1px solid #2e8b45;
-    }
-
-    .erro {
-        display: block;
-        background: #5c1f1f;
-        border: 1px solid #a33;
-    }
-
-    .item {
-        background: #202020;
-        border: 1px solid #444;
-        border-radius: 7px;
-        padding: 15px;
-        margin-top: 12px;
-    }
-
-    .item h3 {
-        margin-top: 0;
-        color: #ffd27a;
-    }
-
-    .item small {
-        color: #aaa;
-    }
-
-    .status {
-        display: inline-block;
-        padding: 6px 10px;
-        border-radius: 20px;
-        font-weight: bold;
-        margin: 8px 0;
-    }
-
-    .status-analise {
-        background: #8a6d1d;
-    }
-
-    .status-aprovada {
-        background: #245a91;
-    }
-
-    .status-andamento {
-        background: #a05a18;
-    }
-
-    .status-concluida {
-        background: #27753b;
-    }
-
-    .status-recusada {
-        background: #8c2929;
-    }
-
-    .vazio {
-        color: #aaa;
-        padding: 15px 0;
-    }
-
-    .codigo {
-        background: #111;
-        border: 1px solid #555;
-        padding: 8px 12px;
-        display: inline-block;
-        border-radius: 5px;
-        font-weight: bold;
-    }
-
-    @media (max-width: 600px) {
-        header h1 {
-            font-size: 22px;
-        }
-
-        .aba {
-            flex: 1 1 45%;
-        }
-
-        .container {
-            width: 94%;
-        }
-    }
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🏛️ Painel da Prefeitura</h1>
-    <p>Administração do site da prefeitura</p>
+<h1>🏛️ Painel da Prefeitura</h1>
+<p>Administração do site da prefeitura</p>
 </header>
 
 <div class="container">
 
-    <div id="mensagemGlobal" class="mensagem"></div>
+<div id="mensagemGlobal" class="mensagem"></div>
 
-    <div class="abas">
-        <button class="aba ativa" onclick="abrirAba('avisos')">📢 Avisos</button>
-        <button class="aba" onclick="abrirAba('propostas')">📜 Propostas</button>
-        <button class="aba" onclick="abrirAba('construcoes')">🏗️ Construções</button>
-        <button class="aba" onclick="abrirAba('solicitacoes')">📬 Solicitações</button>
-        <button class="aba" onclick="abrirAba('ideias')">💡 Sugestões</button>
-        <button class="aba" onclick="abrirAba('denuncias')">🚨 Denúncias</button>
-    </div>
+<div class="abas">
 
+<button class="aba ativa" onclick="abrirAba('avisos',this)">
+📢 Avisos
+</button>
 
-    <!-- ================= AVISOS ================= -->
+<button class="aba" onclick="abrirAba('propostas',this)">
+📜 Propostas
+</button>
 
-    <section id="avisos" class="secao ativa">
+<button class="aba" onclick="abrirAba('construcoes',this)">
+🏗️ Construções
+</button>
 
-        <div class="formulario">
-            <h2>📢 Novo aviso</h2>
+<button class="aba" onclick="abrirAba('solicitacoes',this)">
+📬 Solicitações
+</button>
 
-            <input id="avisoTitulo" placeholder="Título do aviso">
+<button class="aba" onclick="abrirAba('ideias',this)">
+💡 Sugestões
+</button>
 
-            <textarea id="avisoTexto"
-                placeholder="Escreva o aviso..."></textarea>
+<button class="aba" onclick="abrirAba('denuncias',this)">
+🚨 Denúncias
+</button>
 
-            <button class="btn-principal" onclick="salvarAviso()">
-                Publicar aviso
-            </button>
-
-            <button class="btn-cancelar"
-                onclick="limparFormularioAviso()">
-                Limpar
-            </button>
-        </div>
-
-        <div class="card">
-            <h2>Avisos publicados</h2>
-            <div id="listaAvisos"></div>
-        </div>
-
-    </section>
+</div>
 
 
-    <!-- ================= PROPOSTAS ================= -->
+<!-- AVISOS -->
 
-    <section id="propostas" class="secao">
+<section id="avisos" class="secao ativa">
 
-        <div class="formulario">
-            <h2>📜 Nova proposta</h2>
+<div class="formulario">
 
-            <input id="propostaTitulo"
-                placeholder="Título da proposta">
+<h2>📢 Novo aviso</h2>
 
-            <textarea id="propostaTexto"
-                placeholder="Descrição da proposta..."></textarea>
+<input
+id="avisoTitulo"
+placeholder="Título do aviso">
 
-            <button class="btn-principal"
-                onclick="salvarProposta()">
-                Publicar proposta
-            </button>
+<textarea
+id="avisoTexto"
+placeholder="Escreva o aviso..."></textarea>
 
-            <button class="btn-cancelar"
-                onclick="limparFormularioProposta()">
-                Limpar
-            </button>
-        </div>
+<button
+class="btn-principal"
+onclick="salvarAviso()">
 
-        <div class="card">
-            <h2>Propostas publicadas</h2>
-            <div id="listaPropostas"></div>
-        </div>
+Publicar aviso
 
-    </section>
+</button>
 
+<button
+class="btn-cancelar"
+onclick="limparFormularioAviso()">
 
-    <!-- ================= CONSTRUÇÕES ================= -->
+Limpar
 
-    <section id="construcoes" class="secao">
+</button>
 
-        <div class="formulario">
-            <h2>🏗️ Nova construção / projeto</h2>
+</div>
 
-            <input id="construcaoTitulo"
-                placeholder="Nome da construção">
+<div class="card">
 
-            <textarea id="construcaoDescricao"
-                placeholder="Descrição do projeto..."></textarea>
+<h2>Avisos publicados</h2>
 
-            <select id="construcaoStatus">
-                <option value="Planejada">Planejada</option>
-                <option value="Em andamento">Em andamento</option>
-                <option value="Concluída">Concluída</option>
-            </select>
+<div id="listaAvisos"></div>
 
-            <button class="btn-principal"
-                onclick="salvarConstrucao()">
-                Salvar construção
-            </button>
+</div>
 
-            <button class="btn-cancelar"
-                onclick="limparFormularioConstrucao()">
-                Limpar
-            </button>
-        </div>
-
-        <div class="card">
-            <h2>Construções / projetos</h2>
-            <div id="listaConstrucoes"></div>
-        </div>
-
-    </section>
+</section>
 
 
-    <!-- ================= SOLICITAÇÕES ================= -->
+<!-- PROPOSTAS -->
 
-    <section id="solicitacoes" class="secao">
+<section id="propostas" class="secao">
 
-        <div class="card">
-            <h2>📬 Solicitações dos moradores</h2>
+<div class="formulario">
 
-            <button class="btn-atualizar"
-                onclick="carregarSolicitacoes()">
-                🔄 Atualizar
-            </button>
+<h2>📜 Nova proposta</h2>
 
-            <div id="listaSolicitacoes"></div>
-        </div>
+<input
+id="propostaTitulo"
+placeholder="Título da proposta">
 
-    </section>
+<textarea
+id="propostaTexto"
+placeholder="Descrição da proposta..."></textarea>
+
+<button
+class="btn-principal"
+onclick="salvarProposta()">
+
+Publicar proposta
+
+</button>
+
+<button
+class="btn-cancelar"
+onclick="limparFormularioProposta()">
+
+Limpar
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Propostas publicadas</h2>
+
+<div id="listaPropostas"></div>
+
+</div>
+
+</section>
 
 
-    <!-- ================= SUGESTÕES ================= -->
+<!-- CONSTRUÇÕES -->
 
-    <section id="ideias" class="secao">
+<section id="construcoes" class="secao">
 
-        <div class="card">
-            <h2>💡 Sugestões dos moradores</h2>
+<div class="formulario">
 
-            <button class="btn-atualizar"
-                onclick="carregarIdeias()">
-                🔄 Atualizar
-            </button>
+<h2>🏗️ Nova construção / projeto</h2>
 
-            <div id="listaIdeias"></div>
-        </div>
+<input
+id="construcaoTitulo"
+placeholder="Nome da construção">
 
-    </section>
+<textarea
+id="construcaoDescricao"
+placeholder="Descrição do projeto..."></textarea>
+
+<select id="construcaoStatus">
+
+<option value="Planejada">
+Planejada
+</option>
+
+<option value="Em andamento">
+Em andamento
+</option>
+
+<option value="Concluída">
+Concluída
+</option>
+
+</select>
+
+<button
+class="btn-principal"
+onclick="salvarConstrucao()">
+
+Salvar construção
+
+</button>
+
+<button
+class="btn-cancelar"
+onclick="limparFormularioConstrucao()">
+
+Limpar
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>Construções / projetos</h2>
+
+<div id="listaConstrucoes"></div>
+
+</div>
+
+</section>
 
 
-    <!-- ================= DENÚNCIAS ================= -->
+<!-- SOLICITAÇÕES -->
 
-    <section id="denuncias" class="secao">
+<section id="solicitacoes" class="secao">
 
-        <div class="card">
-            <h2>🚨 Denúncias dos moradores</h2>
+<div class="card">
 
-            <button class="btn-atualizar"
-                onclick="carregarDenuncias()">
-                🔄 Atualizar
-            </button>
+<h2>📬 Solicitações dos moradores</h2>
 
-            <div id="listaDenuncias"></div>
-        </div>
+<button
+class="btn-atualizar"
+onclick="carregarSolicitacoes()">
 
-    </section>
+🔄 Atualizar
+
+</button>
+
+<div id="listaSolicitacoes"></div>
+
+</div>
+
+</section>
+
+
+<!-- SUGESTÕES -->
+
+<section id="ideias" class="secao">
+
+<div class="card">
+
+<h2>💡 Sugestões dos moradores</h2>
+
+<button
+class="btn-atualizar"
+onclick="carregarIdeias()">
+
+🔄 Atualizar
+
+</button>
+
+<div id="listaIdeias"></div>
+
+</div>
+
+</section>
+
+
+<!-- DENÚNCIAS -->
+
+<section id="denuncias" class="secao">
+
+<div class="card">
+
+<h2>🚨 Denúncias dos moradores</h2>
+
+<button
+class="btn-atualizar"
+onclick="carregarDenuncias()">
+
+🔄 Atualizar
+
+</button>
+
+<div id="listaDenuncias"></div>
+
+</div>
+
+</section>
 
 </div>
 
@@ -417,570 +500,1147 @@
 <script>
 
 const SUPABASE_URL =
-    "https://oamvfvyuaqolsswklljp.supabase.co";
+"https://oamvfvyuaqolsswklljp.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
+"sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
 
-
-/* ================= FUNÇÕES GERAIS ================= */
-
-function mostrarMensagem(texto, tipo = "sucesso") {
-
-    const elemento = document.getElementById("mensagemGlobal");
-
-    elemento.textContent = texto;
-
-    elemento.className = "mensagem " + tipo;
-
-    setTimeout(() => {
-        elemento.className = "mensagem";
-    }, 4000);
-}
-
-
-async function requisicao(tabela, metodo, dados = null, id = null) {
-
-    let url = `${SUPABASE_URL}/rest/v1/${tabela}`;
-
-    if (id !== null) {
-        url += `?id=eq.${id}`;
-    }
-
-    const opcoes = {
-        method: metodo,
-
-        headers: {
-            "Content-Type": "application/json",
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${SUPABASE_KEY}`
-        }
-    };
-
-    if (dados !== null) {
-        opcoes.body = JSON.stringify(dados);
-    }
-
-    const resposta = await fetch(url, opcoes);
-
-    if (!resposta.ok) {
-
-        const erro = await resposta.text();
-
-        throw new Error(
-            `Erro ${resposta.status}: ${erro}`
-        );
-    }
-
-    if (resposta.status === 204) {
-        return null;
-    }
-
-    const texto = await resposta.text();
-
-    return texto ? JSON.parse(texto) : null;
-}
-
-
-/* ================= ABAS ================= */
-
-function abrirAba(nome) {
-
-    document.querySelectorAll(".secao")
-        .forEach(secao => secao.classList.remove("ativa"));
-
-    document.querySelectorAll(".aba")
-        .forEach(botao => botao.classList.remove("ativa"));
-
-    document.getElementById(nome)
-        .classList.add("ativa");
-
-    event.target.classList.add("ativa");
-
-    if (nome === "avisos") carregarAvisos();
-    if (nome === "propostas") carregarPropostas();
-    if (nome === "construcoes") carregarConstrucoes();
-    if (nome === "solicitacoes") carregarSolicitacoes();
-    if (nome === "ideias") carregarIdeias();
-    if (nome === "denuncias") carregarDenuncias();
-}
-
-
-/* ================= AVISOS ================= */
 
 let avisoEditando = null;
-
-async function carregarAvisos() {
-
-    const lista = document.getElementById("listaAvisos");
-
-    lista.innerHTML = "Carregando...";
-
-    try {
-
-        const dados = await requisicao(
-            "avisos?select=*&order=id.desc",
-            "GET"
-        );
-
-        if (!dados || dados.length === 0) {
-
-            lista.innerHTML =
-                '<div class="vazio">Nenhum aviso publicado.</div>';
-
-            return;
-        }
-
-        lista.innerHTML = dados.map(aviso => `
-
-            <div class="item">
-
-                <h3>${escapar(aviso.titulo)}</h3>
-
-                <p>${escapar(aviso.texto).replace(/\n/g, "<br>")}</p>
-
-                <small>ID: ${aviso.id}</small>
-
-                <br><br>
-
-                <button class="btn-editar"
-                    onclick="editarAviso(${aviso.id})">
-                    ✏️ Editar
-                </button>
-
-                <button class="btn-excluir"
-                    onclick="excluirAviso(${aviso.id})">
-                    🗑️ Excluir
-                </button>
-
-            </div>
-
-        `).join("");
-
-    } catch (erro) {
-
-        lista.innerHTML =
-            `<div class="vazio">Erro: ${escapar(erro.message)}</div>`;
-    }
-}
-
-
-async function salvarAviso() {
-
-    const titulo =
-        document.getElementById("avisoTitulo").value.trim();
-
-    const texto =
-        document.getElementById("avisoTexto").value.trim();
-
-    if (!titulo || !texto) {
-
-        mostrarMensagem(
-            "Preencha o título e o texto do aviso.",
-            "erro"
-        );
-
-        return;
-    }
-
-    try {
-
-        const dados = {
-            titulo,
-            texto
-        };
-
-        if (avisoEditando !== null) {
-
-            await requisicao(
-                "avisos",
-                "PATCH",
-                dados,
-                avisoEditando
-            );
-
-            mostrarMensagem("Aviso atualizado!");
-
-        } else {
-
-            await requisicao(
-                "avisos",
-                "POST",
-                dados
-            );
-
-            mostrarMensagem("Aviso publicado!");
-        }
-
-        limparFormularioAviso();
-
-        carregarAvisos();
-
-    } catch (erro) {
-
-        mostrarMensagem(erro.message, "erro");
-    }
-}
-
-
-async function editarAviso(id) {
-
-    try {
-
-        const dados = await requisicao(
-            `avisos?select=*&id=eq.${id}`,
-            "GET"
-        );
-
-        if (!dados.length) return;
-
-        document.getElementById("avisoTitulo").value =
-            dados[0].titulo;
-
-        document.getElementById("avisoTexto").value =
-            dados[0].texto;
-
-        avisoEditando = id;
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    } catch (erro) {
-
-        mostrarMensagem(erro.message, "erro");
-    }
-}
-
-
-async function excluirAviso(id) {
-
-    if (!confirm("Excluir este aviso?")) return;
-
-    try {
-
-        await requisicao(
-            "avisos",
-            "DELETE",
-            null,
-            id
-        );
-
-        mostrarMensagem("Aviso excluído.");
-
-        carregarAvisos();
-
-    } catch (erro) {
-
-        mostrarMensagem(erro.message, "erro");
-    }
-}
-
-
-function limparFormularioAviso() {
-
-    document.getElementById("avisoTitulo").value = "";
-    document.getElementById("avisoTexto").value = "";
-
-    avisoEditando = null;
-}
-
-
-/* ================= PROPOSTAS ================= */
-
 let propostaEditando = null;
-
-async function carregarPropostas() {
-
-    const lista =
-        document.getElementById("listaPropostas");
-
-    lista.innerHTML = "Carregando...";
-
-    try {
-
-        const dados = await requisicao(
-            "propostas?select=*&order=id.desc",
-            "GET"
-        );
-
-        if (!dados || dados.length === 0) {
-
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma proposta publicada.</div>';
-
-            return;
-        }
-
-        lista.innerHTML = dados.map(proposta => `
-
-            <div class="item">
-
-                <h3>${escapar(proposta.titulo)}</h3>
-
-                <p>${escapar(proposta.texto).replace(/\n/g, "<br>")}</p>
-
-                <small>ID: ${proposta.id}</small>
-
-                <br><br>
-
-                <button class="btn-editar"
-                    onclick="editarProposta(${proposta.id})">
-                    ✏️ Editar
-                </button>
-
-                <button class="btn-excluir"
-                    onclick="excluirProposta(${proposta.id})">
-                    🗑️ Excluir
-                </button>
-
-            </div>
-
-        `).join("");
-
-    } catch (erro) {
-
-        lista.innerHTML =
-            `<div class="vazio">Erro: ${escapar(erro.message)}</div>`;
-    }
-}
-
-
-async function salvarProposta() {
-
-    const titulo =
-        document.getElementById("propostaTitulo").value.trim();
-
-    const texto =
-        document.getElementById("propostaTexto").value.trim();
-
-    if (!titulo || !texto) {
-
-        mostrarMensagem(
-            "Preencha o título e o texto da proposta.",
-            "erro"
-        );
-
-        return;
-    }
-
-    try {
-
-        const dados = {
-            titulo,
-            texto
-        };
-
-        if (propostaEditando !== null) {
-
-            await requisicao(
-                "propostas",
-                "PATCH",
-                dados,
-                propostaEditando
-            );
-
-            mostrarMensagem("Proposta atualizada!");
-
-        } else {
-
-            await requisicao(
-                "propostas",
-                "POST",
-                dados
-            );
-
-            mostrarMensagem("Proposta publicada!");
-        }
-
-        limparFormularioProposta();
-
-        carregarPropostas();
-
-    } catch (erro) {
-
-        mostrarMensagem(erro.message, "erro");
-    }
-}
-
-
-async function editarProposta(id) {
-
-    try {
-
-        const dados = await requisicao(
-            `propostas?select=*&id=eq.${id}`,
-            "GET"
-        );
-
-        if (!dados.length) return;
-
-        document.getElementById("propostaTitulo").value =
-            dados[0].titulo;
-
-        document.getElementById("propostaTexto").value =
-            dados[0].texto;
-
-        propostaEditando = id;
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    } catch (erro) {
-
-        mostrarMensagem(erro.message, "erro");
-    }
-}
-
-
-async function excluirProposta(id) {
-
-    if (!confirm("Excluir esta proposta?")) return;
-
-    try {
-
-        await requisicao(
-            "propostas",
-            "DELETE",
-            null,
-            id
-        );
-
-        mostrarMensagem("Proposta excluída.");
-
-        carregarPropostas();
-
-    } catch (erro) {
-
-        mostrarMensagem(erro.message, "erro");
-    }
-}
-
-
-function limparFormularioProposta() {
-
-    document.getElementById("propostaTitulo").value = "";
-    document.getElementById("propostaTexto").value = "";
-
-    propostaEditando = null;
-}
-
-
-/* ================= CONSTRUÇÕES ================= */
-
 let construcaoEditando = null;
 
-async function carregarConstrucoes() {
 
-    const lista =
-        document.getElementById("listaConstrucoes");
+function mostrarMensagem(texto,tipo="sucesso"){
 
-    lista.innerHTML = "Carregando...";
+const el =
+document.getElementById("mensagemGlobal");
 
-    try {
+el.textContent = texto;
 
-        const dados = await requisicao(
-            "construcoes?select=*&order=id.desc",
-            "GET"
-        );
+el.className =
+"mensagem " + tipo;
 
-        if (!dados || dados.length === 0) {
+setTimeout(()=>{
+el.className="mensagem";
+},4000);
 
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma construção cadastrada.</div>';
-
-            return;
-        }
-
-        lista.innerHTML = dados.map(item => `
-
-            <div class="item">
-
-                <h3>${escapar(item.titulo)}</h3>
-
-                <p>${escapar(item.descricao).replace(/\n/g, "<br>")}</p>
-
-                <span class="status">
-                    ${escapar(item.status)}
-                </span>
-
-                <br>
-
-                <small>ID: ${item.id}</small>
-
-                <br><br>
-
-                <button class="btn-editar"
-                    onclick="editarConstrucao(${item.id})">
-                    ✏️ Editar
-                </button>
-
-                <button class="btn-excluir"
-                    onclick="excluirConstrucao(${item.id})">
-                    🗑️ Excluir
-                </button>
-
-            </div>
-
-        `).join("");
-
-    } catch (erro) {
-
-        lista.innerHTML =
-            `<div class="vazio">Erro: ${escapar(erro.message)}</div>`;
-    }
 }
 
 
-async function salvarConstrucao() {
+function escapar(valor){
 
-    const titulo =
-        document.getElementById("construcaoTitulo").value.trim();
+return String(valor ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
-    const descricao =
-        document.getElementById("construcaoDescricao").value.trim();
+}
 
-    const status =
-        document.getElementById("construcaoStatus").value;
 
-    if (!titulo || !descricao) {
+async function requisicao(
+tabela,
+metodo="GET",
+dados=null,
+query=""
+){
 
-        mostrarMensagem(
-            "Preencha o nome e a descrição.",
-            "erro"
-        );
+let url =
+SUPABASE_URL +
+"/rest/v1/" +
+tabela;
 
-        return;
-    }
+if(query){
 
-    try {
+url += "?" + query;
 
-        const dados = {
-            titulo,
-            descricao,
-            status
-        };
+}
 
-        if (construcaoEditando !== null) {
+const opcoes = {
 
-            await requisicao(
-                "construcoes",
-                "PATCH",
-                dados,
-                construcaoEditando
-            );
+method:metodo,
 
-            mostrarMensagem("Construção atualizada!");
+headers:{
 
-        } else {
+"Content-Type":
+"application/json",
 
-            await requisicao(
-                "construcoes",
-                "POST",
-                dados
-            );
+"apikey":
+SUPABASE_KEY,
 
-  
+"Authorization":
+"Bearer " + SUPABASE_KEY,
+
+"Prefer":
+"return=representation"
+
+}
+
+};
+
+if(dados !== null){
+
+opcoes.body =
+JSON.stringify(dados);
+
+}
+
+const resposta =
+await fetch(url,opcoes);
+
+const texto =
+await resposta.text();
+
+if(!resposta.ok){
+
+throw new Error(
+"Erro " +
+resposta.status +
+": " +
+texto
+);
+
+}
+
+if(!texto){
+
+return null;
+
+}
+
+try{
+
+return JSON.parse(texto);
+
+}catch{
+
+return texto;
+
+}
+
+}
+
+
+/* ABAS */
+
+function abrirAba(nome,botao){
+
+document
+.querySelectorAll(".secao")
+.forEach(secao =>
+secao.classList.remove("ativa")
+);
+
+document
+.querySelectorAll(".aba")
+.forEach(botao =>
+botao.classList.remove("ativa")
+);
+
+const secao =
+document.getElementById(nome);
+
+if(!secao){
+
+return;
+
+}
+
+secao.classList.add("ativa");
+
+if(botao){
+
+botao.classList.add("ativa");
+
+}
+
+if(nome==="avisos")
+carregarAvisos();
+
+if(nome==="propostas")
+carregarPropostas();
+
+if(nome==="construcoes")
+carregarConstrucoes();
+
+if(nome==="solicitacoes")
+carregarSolicitacoes();
+
+if(nome==="ideias")
+carregarIdeias();
+
+if(nome==="denuncias")
+carregarDenuncias();
+
+}
+
+
+/* AVISOS */
+
+async function carregarAvisos(){
+
+const lista =
+document.getElementById("listaAvisos");
+
+lista.innerHTML =
+"Carregando...";
+
+try{
+
+const dados =
+await requisicao(
+"avisos",
+"GET",
+null,
+"select=*&order=id.desc"
+);
+
+if(!dados?.length){
+
+lista.innerHTML =
+'<div class="vazio">Nenhum aviso publicado.</div>';
+
+return;
+
+}
+
+lista.innerHTML =
+dados.map(a=>`
+
+<div class="item">
+
+<h3>
+${escapar(a.titulo)}
+</h3>
+
+<p>
+${escapar(a.texto)
+.replace(/\n/g,"<br>")}
+</p>
+
+<small>
+ID: ${escapar(a.id)}
+</small>
+
+<br><br>
+
+<button
+class="btn-editar"
+onclick="editarAviso(${Number(a.id)})">
+
+✏️ Editar
+
+</button>
+
+<button
+class="btn-excluir"
+onclick="excluirAviso(${Number(a.id)})">
+
+🗑️ Excluir
+
+</button>
+
+</div>
+
+`).join("");
+
+}catch(e){
+
+lista.innerHTML =
+'<div class="vazio">Erro: ' +
+escapar(e.message) +
+'</div>';
+
+}
+
+}
+
+
+async function salvarAviso(){
+
+const titulo =
+document
+.getElementById("avisoTitulo")
+.value.trim();
+
+const texto =
+document
+.getElementById("avisoTexto")
+.value.trim();
+
+if(!titulo || !texto){
+
+mostrarMensagem(
+"Preencha o título e o texto do aviso.",
+"erro"
+);
+
+return;
+
+}
+
+try{
+
+if(avisoEditando !== null){
+
+await requisicao(
+"avisos",
+"PATCH",
+{titulo,texto},
+"id=eq." +
+encodeURIComponent(avisoEditando)
+);
+
+mostrarMensagem(
+"Aviso atualizado!"
+);
+
+}else{
+
+await requisicao(
+"avisos",
+"POST",
+{titulo,texto}
+);
+
+mostrarMensagem(
+"Aviso publicado!"
+);
+
+}
+
+limparFormularioAviso();
+
+carregarAvisos();
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+async function editarAviso(id){
+
+try{
+
+const dados =
+await requisicao(
+"avisos",
+"GET",
+null,
+"select=*&id=eq." +
+encodeURIComponent(id)
+);
+
+if(!dados?.length){
+
+return;
+
+}
+
+document
+.getElementById("avisoTitulo")
+.value =
+dados[0].titulo || "";
+
+document
+.getElementById("avisoTexto")
+.value =
+dados[0].texto || "";
+
+avisoEditando = id;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+async function excluirAviso(id){
+
+if(!confirm(
+"Excluir este aviso?"
+)){
+
+return;
+
+}
+
+try{
+
+await requisicao(
+"avisos",
+"DELETE",
+null,
+"id=eq." +
+encodeURIComponent(id)
+);
+
+mostrarMensagem(
+"Aviso excluído."
+);
+
+carregarAvisos();
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+function limparFormularioAviso(){
+
+document
+.getElementById("avisoTitulo")
+.value="";
+
+document
+.getElementById("avisoTexto")
+.value="";
+
+avisoEditando=null;
+
+}
+
+
+/* PROPOSTAS */
+
+async function carregarPropostas(){
+
+const lista =
+document.getElementById("listaPropostas");
+
+lista.innerHTML =
+"Carregando...";
+
+try{
+
+const dados =
+await requisicao(
+"propostas",
+"GET",
+null,
+"select=*&order=id.desc"
+);
+
+if(!dados?.length){
+
+lista.innerHTML =
+'<div class="vazio">Nenhuma proposta publicada.</div>';
+
+return;
+
+}
+
+lista.innerHTML =
+dados.map(p=>`
+
+<div class="item">
+
+<h3>
+${escapar(p.titulo)}
+</h3>
+
+<p>
+${escapar(p.texto)
+.replace(/\n/g,"<br>")}
+</p>
+
+<small>
+ID: ${escapar(p.id)}
+</small>
+
+<br><br>
+
+<button
+class="btn-editar"
+onclick="editarProposta(${Number(p.id)})">
+
+✏️ Editar
+
+</button>
+
+<button
+class="btn-excluir"
+onclick="excluirProposta(${Number(p.id)})">
+
+🗑️ Excluir
+
+</button>
+
+</div>
+
+`).join("");
+
+}catch(e){
+
+lista.innerHTML =
+'<div class="vazio">Erro: ' +
+escapar(e.message) +
+'</div>';
+
+}
+
+}
+
+
+async function salvarProposta(){
+
+const titulo =
+document
+.getElementById("propostaTitulo")
+.value.trim();
+
+const texto =
+document
+.getElementById("propostaTexto")
+.value.trim();
+
+if(!titulo || !texto){
+
+mostrarMensagem(
+"Preencha o título e o texto da proposta.",
+"erro"
+);
+
+return;
+
+}
+
+try{
+
+if(propostaEditando !== null){
+
+await requisicao(
+"propostas",
+"PATCH",
+{titulo,texto},
+"id=eq." +
+encodeURIComponent(propostaEditando)
+);
+
+mostrarMensagem(
+"Proposta atualizada!"
+);
+
+}else{
+
+await requisicao(
+"propostas",
+"POST",
+{titulo,texto}
+);
+
+mostrarMensagem(
+"Proposta publicada!"
+);
+
+}
+
+limparFormularioProposta();
+
+carregarPropostas();
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+async function editarProposta(id){
+
+try{
+
+const dados =
+await requisicao(
+"propostas",
+"GET",
+null,
+"select=*&id=eq." +
+encodeURIComponent(id)
+);
+
+if(!dados?.length){
+
+return;
+
+}
+
+document
+.getElementById("propostaTitulo")
+.value =
+dados[0].titulo || "";
+
+document
+.getElementById("propostaTexto")
+.value =
+dados[0].texto || "";
+
+propostaEditando=id;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+async function excluirProposta(id){
+
+if(!confirm(
+"Excluir esta proposta?"
+)){
+
+return;
+
+}
+
+try{
+
+await requisicao(
+"propostas",
+"DELETE",
+null,
+"id=eq." +
+encodeURIComponent(id)
+);
+
+mostrarMensagem(
+"Proposta excluída."
+);
+
+carregarPropostas();
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+function limparFormularioProposta(){
+
+document
+.getElementById("propostaTitulo")
+.value="";
+
+document
+.getElementById("propostaTexto")
+.value="";
+
+propostaEditando=null;
+
+}
+
+
+/* CONSTRUÇÕES */
+
+async function carregarConstrucoes(){
+
+const lista =
+document.getElementById(
+"listaConstrucoes"
+);
+
+lista.innerHTML =
+"Carregando...";
+
+try{
+
+const dados =
+await requisicao(
+"construcoes",
+"GET",
+null,
+"select=*&order=id.desc"
+);
+
+if(!dados?.length){
+
+lista.innerHTML =
+'<div class="vazio">Nenhuma construção cadastrada.</div>';
+
+return;
+
+}
+
+lista.innerHTML =
+dados.map(c=>`
+
+<div class="item">
+
+<h3>
+${escapar(c.titulo)}
+</h3>
+
+<p>
+${escapar(c.descricao)
+.replace(/\n/g,"<br>")}
+</p>
+
+<span class="status">
+
+${escapar(
+c.status || "Planejada"
+)}
+
+</span>
+
+<br>
+
+<small>
+ID: ${escapar(c.id)}
+</small>
+
+<br><br>
+
+<button
+class="btn-editar"
+onclick="editarConstrucao(${Number(c.id)})">
+
+✏️ Editar
+
+</button>
+
+<button
+class="btn-excluir"
+onclick="excluirConstrucao(${Number(c.id)})">
+
+🗑️ Excluir
+
+</button>
+
+</div>
+
+`).join("");
+
+}catch(e){
+
+lista.innerHTML =
+'<div class="vazio">Erro: ' +
+escapar(e.message) +
+'</div>';
+
+}
+
+}
+
+
+async function salvarConstrucao(){
+
+const titulo =
+document
+.getElementById("construcaoTitulo")
+.value.trim();
+
+const descricao =
+document
+.getElementById("construcaoDescricao")
+.value.trim();
+
+const status =
+document
+.getElementById("construcaoStatus")
+.value;
+
+if(!titulo || !descricao){
+
+mostrarMensagem(
+"Preencha o nome e a descrição.",
+"erro"
+);
+
+return;
+
+}
+
+try{
+
+const dados={
+titulo,
+descricao,
+status
+};
+
+if(construcaoEditando !== null){
+
+await requisicao(
+"construcoes",
+"PATCH",
+dados,
+"id=eq." +
+encodeURIComponent(
+construcaoEditando
+)
+);
+
+mostrarMensagem(
+"Construção atualizada!"
+);
+
+}else{
+
+await requisicao(
+"construcoes",
+"POST",
+dados
+);
+
+mostrarMensagem(
+"Construção salva!"
+);
+
+}
+
+limparFormularioConstrucao();
+
+carregarConstrucoes();
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+async function editarConstrucao(id){
+
+try{
+
+const dados =
+await requisicao(
+"construcoes",
+"GET",
+null,
+"select=*&id=eq." +
+encodeURIComponent(id)
+);
+
+if(!dados?.length){
+
+return;
+
+}
+
+document
+.getElementById("construcaoTitulo")
+.value =
+dados[0].titulo || "";
+
+document
+.getElementById("construcaoDescricao")
+.value =
+dados[0].descricao || "";
+
+document
+.getElementById("construcaoStatus")
+.value =
+dados[0].status ||
+"Planejada";
+
+construcaoEditando=id;
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+async function excluirConstrucao(id){
+
+if(!confirm(
+"Excluir esta construção?"
+)){
+
+return;
+
+}
+
+try{
+
+await requisicao(
+"construcoes",
+"DELETE",
+null,
+"id=eq." +
+encodeURIComponent(id)
+);
+
+mostrarMensagem(
+"Construção excluída."
+);
+
+carregarConstrucoes();
+
+}catch(e){
+
+mostrarMensagem(
+e.message,
+"erro"
+);
+
+}
+
+}
+
+
+function limparFormularioConstrucao(){
+
+document
+.getElementById("construcaoTitulo")
+.value="";
+
+document
+.getElementById("construcaoDescricao")
+.value="";
+
+document
+.getElementById("construcaoStatus")
+.value="Planejada";
+
+construcaoEditando=null;
+
+}
+
+
+/* LISTAS DOS MORADORES */
+
+function mostrarListaGenerica(
+lista,
+dados
+){
+
+if(!dados?.length){
+
+lista.innerHTML =
+'<div class="vazio">Nenhum registro encontrado.</div>';
+
+return;
+
+}
+
+lista.innerHTML =
+dados.map(item=>`
+
+<div class="item">
+
+<h3>
+${escapar(
+item.nome || "Sem nome"
+)}
+</h3>
+
+<p>
+${escapar(
+item.mensagem || ""
+)
+.replace(/\n/g,"<br>")}
+</p>
+
+<small>
+ID: ${escapar(item.id)}
+</small>
+
+<br>
+
+<small>
+Data:
+${escapar(
+item.data ||
+"Não informada"
+)}
+</small>
+
+</div>
+
+`).join("");
+
+}
+
+
+async function carregarSolicitacoes(){
+
+const lista =
+document.getElementById(
+"listaSolicitacoes"
+);
+
+lista.innerHTML =
+"Carregando...";
+
+try{
+
+const dados =
+await requisicao(
+"solicitacoes",
+"GET",
+null,
+"select=*&order=id.desc"
+);
+
+mostrarListaGenerica(
+lista,
+dados
+);
+
+}catch(e){
+
+lista.innerHTML =
+'<div class="vazio">Erro: ' +
+escapar(e.message) +
+'</div>';
+
+}
+
+}
+
+
+async function carregarIdeias(){
+
+const lista =
+document.getElementById(
+"listaIdeias"
+);
+
+lista.innerHTML =
+"Carregando...";
+
+try{
+
+const dados =
+await requisicao(
+"ideias",
+"GET",
+null,
+"select=*&order=id.desc"
+);
+
+mostrarListaGenerica(
+lista,
+dados
+);
+
+}catch(e){
+
+lista.innerHTML =
+'<div class="vazio">Erro: ' +
+escapar(e.message) +
+'</div>';
+
+}
+
+}
+
+
+async function carregarDenuncias(){
+
+const lista =
+document.getElementById(
+"listaDenuncias"
+);
+
+lista.innerHTML =
+"Carregando...";
+
+try{
+
+const dados =
+await requisicao(
+"denuncias",
+"GET",
+null,
+"select=*&order=id.desc"
+);
+
+mostrarListaGenerica(
+lista,
+dados
+);
+
+}catch(e){
+
+lista.innerHTML =
+'<div class="vazio">Erro: ' +
+escapar(e.message) +
+'</div>';
+
+}
+
+}
+
+
+/* INÍCIO */
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+carregarAvisos();
+}
+);
+
+</script>
+
+</body>
+</html>
