@@ -1,48 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" translate="no">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google" content="notranslate">
+
 <title>Painel da Prefeitura</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#1b1b1b;
-    color:#f5f5f5
+    color:#f5f5f5;
 }
 
 header{
     background:#4b2e18;
     border-bottom:4px solid #2d1b0f;
     padding:20px;
-    text-align:center
+    text-align:center;
 }
 
 header h1{
     margin:0 0 8px;
-    font-size:26px
+    font-size:26px;
 }
 
 header p{
     margin:0;
-    color:#ddd
+    color:#ddd;
 }
 
 .container{
     width:95%;
     max-width:1100px;
-    margin:20px auto
+    margin:20px auto;
 }
 
 .abas{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-bottom:20px
+    margin-bottom:20px;
 }
 
 .aba{
@@ -53,20 +60,23 @@ header p{
     border-radius:6px;
     cursor:pointer;
     font-weight:bold;
-    flex:1 1 30%
+    flex:1 1 30%;
 }
 
-.aba:hover,
+.aba:hover{
+    background:#555;
+}
+
 .aba.ativa{
-    background:#6b451f
+    background:#6b451f;
 }
 
 .secao{
-    display:none
+    display:none;
 }
 
 .secao.ativa{
-    display:block
+    display:block;
 }
 
 .card,
@@ -75,17 +85,17 @@ header p{
     border:2px solid #444;
     border-radius:8px;
     padding:18px;
-    margin-bottom:15px
+    margin-bottom:15px;
 }
 
 .formulario{
-    background:#252525
+    background:#252525;
 }
 
 .card h2,
 .formulario h2{
     margin-top:0;
-    color:#ffd27a
+    color:#ffd27a;
 }
 
 input,
@@ -98,12 +108,12 @@ select{
     border-radius:6px;
     background:#151515;
     color:#fff;
-    font-size:15px
+    font-size:15px;
 }
 
 textarea{
     min-height:120px;
-    resize:vertical
+    resize:vertical;
 }
 
 button{
@@ -112,51 +122,55 @@ button{
     padding:10px 14px;
     cursor:pointer;
     font-weight:bold;
-    margin:3px
+    margin:3px;
+}
+
+button:active{
+    transform:scale(.98);
 }
 
 .btn-principal{
     background:#4caf50;
-    color:#fff
+    color:#fff;
 }
 
 .btn-editar{
     background:#d69e2e;
-    color:#fff
+    color:#fff;
 }
 
 .btn-excluir{
     background:#c0392b;
-    color:#fff
+    color:#fff;
 }
 
 .btn-atualizar{
     background:#357edd;
-    color:#fff
+    color:#fff;
 }
 
 .btn-cancelar{
     background:#666;
-    color:#fff
+    color:#fff;
 }
 
 .mensagem{
     padding:12px;
     border-radius:6px;
     margin:10px 0;
-    display:none
+    display:none;
 }
 
-.sucesso{
+.mensagem.sucesso{
     display:block;
     background:#174d25;
-    border:1px solid #2e8b45
+    border:1px solid #2e8b45;
 }
 
-.erro{
+.mensagem.erro{
     display:block;
     background:#5c1f1f;
-    border:1px solid #a33
+    border:1px solid #a33;
 }
 
 .item{
@@ -164,16 +178,16 @@ button{
     border:1px solid #444;
     border-radius:7px;
     padding:15px;
-    margin-top:12px
+    margin-top:12px;
 }
 
 .item h3{
     margin-top:0;
-    color:#ffd27a
+    color:#ffd27a;
 }
 
 .item small{
-    color:#aaa
+    color:#aaa;
 }
 
 .status{
@@ -181,32 +195,41 @@ button{
     padding:6px 10px;
     border-radius:20px;
     font-weight:bold;
-    margin:8px 0
+    margin:8px 0;
+}
+
+.status-planejada{
+    background:#555;
 }
 
 .status-analise{
-    background:#8a6d1d
+    background:#8a6d1d;
 }
 
 .status-aprovada{
-    background:#245a91
+    background:#245a91;
 }
 
 .status-andamento{
-    background:#a05a18
+    background:#a05a18;
 }
 
 .status-concluida{
-    background:#27753b
+    background:#27753b;
 }
 
 .status-recusada{
-    background:#8c2929
+    background:#8c2929;
 }
 
 .vazio{
     color:#aaa;
-    padding:15px 0
+    padding:15px 0;
+}
+
+.carregando{
+    color:#aaa;
+    padding:15px 0;
 }
 
 .codigo{
@@ -215,1432 +238,921 @@ button{
     padding:8px 12px;
     display:inline-block;
     border-radius:5px;
-    font-weight:bold
+    font-weight:bold;
+}
+
+.erro-javascript{
+    background:#7b1e1e;
+    color:#fff;
+    padding:15px;
+    margin:15px;
+    border-radius:8px;
+    text-align:center;
+    font-weight:bold;
 }
 
 @media(max-width:600px){
 
     header h1{
-        font-size:22px
+        font-size:22px;
     }
 
     .aba{
-        flex:1 1 45%
+        flex:1 1 45%;
     }
 
     .container{
-        width:94%
+        width:94%;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🏛️ Painel da Prefeitura</h1>
-<p>Administração do site da prefeitura</p>
+    <h1>🏛️ Painel da Prefeitura</h1>
+    <p>Administração do site da prefeitura</p>
 </header>
 
 <div class="container">
 
-<div id="mensagemGlobal" class="mensagem"></div>
+    <div id="mensagemGlobal" class="mensagem"></div>
 
-<div class="abas">
+    <div class="abas">
 
-<button class="aba ativa" onclick="abrirAba('avisos',this)">
-📢 Avisos
-</button>
+        <button type="button" class="aba ativa" data-aba="avisos">
+            📢 Avisos
+        </button>
 
-<button class="aba" onclick="abrirAba('propostas',this)">
-📜 Propostas
-</button>
+        <button type="button" class="aba" data-aba="propostas">
+            📜 Propostas
+        </button>
 
-<button class="aba" onclick="abrirAba('construcoes',this)">
-🏗️ Construções
-</button>
+        <button type="button" class="aba" data-aba="construcoes">
+            🏗️ Construções
+        </button>
 
-<button class="aba" onclick="abrirAba('solicitacoes',this)">
-📬 Solicitações
-</button>
+        <button type="button" class="aba" data-aba="solicitacoes">
+            📬 Solicitações
+        </button>
 
-<button class="aba" onclick="abrirAba('ideias',this)">
-💡 Sugestões
-</button>
+        <button type="button" class="aba" data-aba="ideias">
+            💡 Sugestões
+        </button>
 
-<button class="aba" onclick="abrirAba('denuncias',this)">
-🚨 Denúncias
-</button>
+        <button type="button" class="aba" data-aba="denuncias">
+            🚨 Denúncias
+        </button>
 
-</div>
+    </div>
 
 
-<!-- AVISOS -->
+    <!-- AVISOS -->
 
-<section id="avisos" class="secao ativa">
+    <section id="avisos" class="secao ativa">
 
-<div class="formulario">
+        <div class="formulario">
 
-<h2>📢 Novo aviso</h2>
+            <h2>📢 Novo aviso</h2>
 
-<input
-id="avisoTitulo"
-placeholder="Título do aviso">
+            <input
+                id="avisoTitulo"
+                type="text"
+                placeholder="Título do aviso"
+            >
 
-<textarea
-id="avisoTexto"
-placeholder="Escreva o aviso..."></textarea>
+            <textarea
+                id="avisoTexto"
+                placeholder="Escreva o aviso..."
+            ></textarea>
 
-<button
-class="btn-principal"
-onclick="salvarAviso()">
+            <button
+                type="button"
+                id="btnSalvarAviso"
+                class="btn-principal"
+            >
+                Publicar aviso
+            </button>
 
-Publicar aviso
+            <button
+                type="button"
+                id="btnLimparAviso"
+                class="btn-cancelar"
+            >
+                Limpar
+            </button>
 
-</button>
+        </div>
 
-<button
-class="btn-cancelar"
-onclick="limparFormularioAviso()">
+        <div class="card">
 
-Limpar
+            <h2>Avisos publicados</h2>
 
-</button>
+            <div id="listaAvisos"></div>
 
-</div>
+        </div>
 
-<div class="card">
+    </section>
 
-<h2>Avisos publicados</h2>
 
-<div id="listaAvisos"></div>
+    <!-- PROPOSTAS -->
 
-</div>
+    <section id="propostas" class="secao">
 
-</section>
+        <div class="formulario">
 
+            <h2>📜 Nova proposta</h2>
 
-<!-- PROPOSTAS -->
+            <input
+                id="propostaTitulo"
+                type="text"
+                placeholder="Título da proposta"
+            >
 
-<section id="propostas" class="secao">
+            <textarea
+                id="propostaTexto"
+                placeholder="Descrição da proposta..."
+            ></textarea>
 
-<div class="formulario">
+            <button
+                type="button"
+                id="btnSalvarProposta"
+                class="btn-principal"
+            >
+                Publicar proposta
+            </button>
 
-<h2>📜 Nova proposta</h2>
+            <button
+                type="button"
+                id="btnLimparProposta"
+                class="btn-cancelar"
+            >
+                Limpar
+            </button>
 
-<input
-id="propostaTitulo"
-placeholder="Título da proposta">
+        </div>
 
-<textarea
-id="propostaTexto"
-placeholder="Descrição da proposta..."></textarea>
+        <div class="card">
 
-<button
-class="btn-principal"
-onclick="salvarProposta()">
+            <h2>Propostas publicadas</h2>
 
-Publicar proposta
+            <div id="listaPropostas"></div>
 
-</button>
+        </div>
 
-<button
-class="btn-cancelar"
-onclick="limparFormularioProposta()">
+    </section>
 
-Limpar
 
-</button>
+    <!-- CONSTRUÇÕES -->
 
-</div>
+    <section id="construcoes" class="secao">
 
-<div class="card">
+        <div class="formulario">
 
-<h2>Propostas publicadas</h2>
+            <h2>🏗️ Nova construção / projeto</h2>
 
-<div id="listaPropostas"></div>
+            <input
+                id="construcaoTitulo"
+                type="text"
+                placeholder="Nome da construção"
+            >
 
-</div>
+            <textarea
+                id="construcaoDescricao"
+                placeholder="Descrição do projeto..."
+            ></textarea>
 
-</section>
+            <select id="construcaoStatus">
 
+                <option value="Planejada">
+                    Planejada
+                </option>
 
-<!-- CONSTRUÇÕES -->
+                <option value="Em andamento">
+                    Em andamento
+                </option>
 
-<section id="construcoes" class="secao">
+                <option value="Concluída">
+                    Concluída
+                </option>
 
-<div class="formulario">
+            </select>
 
-<h2>🏗️ Nova construção / projeto</h2>
+            <button
+                type="button"
+                id="btnSalvarConstrucao"
+                class="btn-principal"
+            >
+                Salvar construção
+            </button>
 
-<input
-id="construcaoTitulo"
-placeholder="Nome da construção">
+            <button
+                type="button"
+                id="btnLimparConstrucao"
+                class="btn-cancelar"
+            >
+                Limpar
+            </button>
 
-<textarea
-id="construcaoDescricao"
-placeholder="Descrição do projeto..."></textarea>
+        </div>
 
-<select id="construcaoStatus">
+        <div class="card">
 
-<option value="Planejada">
-Planejada
-</option>
+            <h2>Construções / projetos</h2>
 
-<option value="Em andamento">
-Em andamento
-</option>
+            <div id="listaConstrucoes"></div>
 
-<option value="Concluída">
-Concluída
-</option>
+        </div>
 
-</select>
+    </section>
 
-<button
-class="btn-principal"
-onclick="salvarConstrucao()">
 
-Salvar construção
+    <!-- SOLICITAÇÕES -->
 
-</button>
+    <section id="solicitacoes" class="secao">
 
-<button
-class="btn-cancelar"
-onclick="limparFormularioConstrucao()">
+        <div class="card">
 
-Limpar
+            <h2>📬 Solicitações dos moradores</h2>
 
-</button>
+            <button
+                type="button"
+                id="btnAtualizarSolicitacoes"
+                class="btn-atualizar"
+            >
+                🔄 Atualizar
+            </button>
 
-</div>
+            <div id="listaSolicitacoes"></div>
 
-<div class="card">
+        </div>
 
-<h2>Construções / projetos</h2>
+    </section>
 
-<div id="listaConstrucoes"></div>
 
-</div>
+    <!-- SUGESTÕES -->
 
-</section>
+    <section id="ideias" class="secao">
 
+        <div class="card">
 
-<!-- SOLICITAÇÕES -->
+            <h2>💡 Sugestões dos moradores</h2>
 
-<section id="solicitacoes" class="secao">
+            <button
+                type="button"
+                id="btnAtualizarIdeias"
+                class="btn-atualizar"
+            >
+                🔄 Atualizar
+            </button>
 
-<div class="card">
+            <div id="listaIdeias"></div>
 
-<h2>📬 Solicitações dos moradores</h2>
+        </div>
 
-<button
-class="btn-atualizar"
-onclick="carregarSolicitacoes()">
+    </section>
 
-🔄 Atualizar
 
-</button>
+    <!-- DENÚNCIAS -->
 
-<div id="listaSolicitacoes"></div>
+    <section id="denuncias" class="secao">
 
-</div>
+        <div class="card">
 
-</section>
+            <h2>🚨 Denúncias dos moradores</h2>
 
+            <button
+                type="button"
+                id="btnAtualizarDenuncias"
+                class="btn-atualizar"
+            >
+                🔄 Atualizar
+            </button>
 
-<!-- SUGESTÕES -->
+            <div id="listaDenuncias"></div>
 
-<section id="ideias" class="secao">
+        </div>
 
-<div class="card">
-
-<h2>💡 Sugestões dos moradores</h2>
-
-<button
-class="btn-atualizar"
-onclick="carregarIdeias()">
-
-🔄 Atualizar
-
-</button>
-
-<div id="listaIdeias"></div>
-
-</div>
-
-</section>
-
-
-<!-- DENÚNCIAS -->
-
-<section id="denuncias" class="secao">
-
-<div class="card">
-
-<h2>🚨 Denúncias dos moradores</h2>
-
-<button
-class="btn-atualizar"
-onclick="carregarDenuncias()">
-
-🔄 Atualizar
-
-</button>
-
-<div id="listaDenuncias"></div>
-
-</div>
-
-</section>
+    </section>
 
 </div>
 
 
 <script>
 
+/*
+    ==========================================
+    CONFIGURAÇÃO DO SUPABASE
+    ==========================================
+*/
+
 const SUPABASE_URL =
-"https://oamvfvyuaqolsswklljp.supabase.co";
+    "https://oamvfvyuaqolsswklljp.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
+    "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
 
+
+/*
+    ==========================================
+    VARIÁVEIS
+    ==========================================
+*/
 
 let avisoEditando = null;
 let propostaEditando = null;
 let construcaoEditando = null;
 
 
-function mostrarMensagem(texto,tipo="sucesso"){
+/*
+    ==========================================
+    MENSAGENS
+    ==========================================
+*/
 
-const el =
-document.getElementById("mensagemGlobal");
+function mostrarMensagem(texto, tipo) {
 
-el.textContent = texto;
+    const elemento =
+        document.getElementById("mensagemGlobal");
 
-el.className =
-"mensagem " + tipo;
+    elemento.textContent = texto;
 
-setTimeout(()=>{
-el.className="mensagem";
-},4000);
+    elemento.className =
+        "mensagem " + (tipo || "sucesso");
 
+    setTimeout(function() {
+
+        elemento.className = "mensagem";
+
+    }, 4000);
 }
 
 
-function escapar(valor){
+/*
+    ==========================================
+    ESCAPAR TEXTO
+    ==========================================
+*/
 
-return String(valor ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+function escapar(valor) {
 
+    if (valor === null || valor === undefined) {
+        return "";
+    }
+
+    return String(valor)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
+
+/*
+    ==========================================
+    REQUISIÇÃO AO SUPABASE
+    ==========================================
+*/
 
 async function requisicao(
-tabela,
-metodo="GET",
-dados=null,
-query=""
-){
+    tabela,
+    metodo,
+    dados,
+    query
+) {
 
-let url =
-SUPABASE_URL +
-"/rest/v1/" +
-tabela;
+    let url =
+        SUPABASE_URL +
+        "/rest/v1/" +
+        tabela;
 
-if(query){
+    if (query) {
+        url += "?" + query;
+    }
 
-url += "?" + query;
+    const opcoes = {
 
-}
+        method: metodo || "GET",
 
-const opcoes = {
+        headers: {
 
-method:metodo,
+            "Content-Type":
+                "application/json",
 
-headers:{
+            "apikey":
+                SUPABASE_KEY,
 
-"Content-Type":
-"application/json",
+            "Authorization":
+                "Bearer " + SUPABASE_KEY,
 
-"apikey":
-SUPABASE_KEY,
+            "Prefer":
+                "return=representation"
 
-"Authorization":
-"Bearer " + SUPABASE_KEY,
+        }
 
-"Prefer":
-"return=representation"
+    };
 
-}
+    if (dados !== null && dados !== undefined) {
 
-};
+        opcoes.body =
+            JSON.stringify(dados);
 
-if(dados !== null){
+    }
 
-opcoes.body =
-JSON.stringify(dados);
+    const resposta =
+        await fetch(url, opcoes);
 
-}
+    const texto =
+        await resposta.text();
 
-const resposta =
-await fetch(url,opcoes);
+    if (!resposta.ok) {
 
-const texto =
-await resposta.text();
+        throw new Error(
+            "Erro " +
+            resposta.status +
+            ": " +
+            texto
+        );
 
-if(!resposta.ok){
+    }
 
-throw new Error(
-"Erro " +
-resposta.status +
-": " +
-texto
-);
+    if (!texto) {
+        return null;
+    }
 
-}
+    try {
 
-if(!texto){
+        return JSON.parse(texto);
 
-return null;
+    } catch (erro) {
 
-}
+        return texto;
 
-try{
-
-return JSON.parse(texto);
-
-}catch{
-
-return texto;
-
-}
+    }
 
 }
 
 
-/* ABAS */
+/*
+    ==========================================
+    ABRIR ABAS
+    ==========================================
+*/
 
-function abrirAba(nome,botao){
+function abrirAba(nome) {
 
-document
-.querySelectorAll(".secao")
-.forEach(secao =>
-secao.classList.remove("ativa")
-);
+    const secoes =
+        document.querySelectorAll(".secao");
 
-document
-.querySelectorAll(".aba")
-.forEach(botao =>
-botao.classList.remove("ativa")
-);
+    secoes.forEach(function(secao) {
 
-const secao =
-document.getElementById(nome);
+        secao.classList.remove("ativa");
 
-if(!secao){
-
-return;
-
-}
-
-secao.classList.add("ativa");
-
-if(botao){
-
-botao.classList.add("ativa");
-
-}
-
-if(nome==="avisos")
-carregarAvisos();
-
-if(nome==="propostas")
-carregarPropostas();
-
-if(nome==="construcoes")
-carregarConstrucoes();
-
-if(nome==="solicitacoes")
-carregarSolicitacoes();
-
-if(nome==="ideias")
-carregarIdeias();
-
-if(nome==="denuncias")
-carregarDenuncias();
-
-}
+    });
 
 
-/* AVISOS */
+    const botoes =
+        document.querySelectorAll(".aba");
 
-async function carregarAvisos(){
+    botoes.forEach(function(botao) {
 
-const lista =
-document.getElementById("listaAvisos");
+        botao.classList.remove("ativa");
 
-lista.innerHTML =
-"Carregando...";
+    });
 
-try{
 
-const dados =
-await requisicao(
-"avisos",
-"GET",
-null,
-"select=*&order=id.desc"
-);
+    const secao =
+        document.getElementById(nome);
 
-if(!dados?.length){
+    const botao =
+        document.querySelector(
+            '.aba[data-aba="' +
+            nome +
+            '"]'
+        );
 
-lista.innerHTML =
-'<div class="vazio">Nenhum aviso publicado.</div>';
 
-return;
+    if (!secao) {
+        return;
+    }
 
-}
 
-lista.innerHTML =
-dados.map(a=>`
+    secao.classList.add("ativa");
 
-<div class="item">
 
-<h3>
-${escapar(a.titulo)}
-</h3>
+    if (botao) {
+        botao.classList.add("ativa");
+    }
 
-<p>
-${escapar(a.texto)
-.replace(/\n/g,"<br>")}
-</p>
 
-<small>
-ID: ${escapar(a.id)}
-</small>
+    if (nome === "avisos") {
+        carregarAvisos();
+    }
 
-<br><br>
+    if (nome === "propostas") {
+        carregarPropostas();
+    }
 
-<button
-class="btn-editar"
-onclick="editarAviso(${Number(a.id)})">
+    if (nome === "construcoes") {
+        carregarConstrucoes();
+    }
 
-✏️ Editar
+    if (nome === "solicitacoes") {
+        carregarSolicitacoes();
+    }
 
-</button>
+    if (nome === "ideias") {
+        carregarIdeias();
+    }
 
-<button
-class="btn-excluir"
-onclick="excluirAviso(${Number(a.id)})">
-
-🗑️ Excluir
-
-</button>
-
-</div>
-
-`).join("");
-
-}catch(e){
-
-lista.innerHTML =
-'<div class="vazio">Erro: ' +
-escapar(e.message) +
-'</div>';
-
-}
+    if (nome === "denuncias") {
+        carregarDenuncias();
+    }
 
 }
 
 
-async function salvarAviso(){
+/*
+    ==========================================
+    AVISOS
+    ==========================================
+*/
 
-const titulo =
-document
-.getElementById("avisoTitulo")
-.value.trim();
+async function carregarAvisos() {
 
-const texto =
-document
-.getElementById("avisoTexto")
-.value.trim();
+    const lista =
+        document.getElementById("listaAvisos");
 
-if(!titulo || !texto){
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
 
-mostrarMensagem(
-"Preencha o título e o texto do aviso.",
-"erro"
-);
+    try {
 
-return;
-
-}
-
-try{
-
-if(avisoEditando !== null){
-
-await requisicao(
-"avisos",
-"PATCH",
-{titulo,texto},
-"id=eq." +
-encodeURIComponent(avisoEditando)
-);
-
-mostrarMensagem(
-"Aviso atualizado!"
-);
-
-}else{
-
-await requisicao(
-"avisos",
-"POST",
-{titulo,texto}
-);
-
-mostrarMensagem(
-"Aviso publicado!"
-);
-
-}
-
-limparFormularioAviso();
-
-carregarAvisos();
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
-
-}
+        const dados =
+            await requisicao(
+                "avisos",
+                "GET",
+                null,
+                "select=*&order=id.desc"
+            );
 
 
-async function editarAviso(id){
+        if (!dados || dados.length === 0) {
 
-try{
+            lista.innerHTML =
+                '<div class="vazio">' +
+                'Nenhum aviso publicado.' +
+                '</div>';
 
-const dados =
-await requisicao(
-"avisos",
-"GET",
-null,
-"select=*&id=eq." +
-encodeURIComponent(id)
-);
-
-if(!dados?.length){
-
-return;
-
-}
-
-document
-.getElementById("avisoTitulo")
-.value =
-dados[0].titulo || "";
-
-document
-.getElementById("avisoTexto")
-.value =
-dados[0].texto || "";
-
-avisoEditando = id;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
-
-}
+            return;
+        }
 
 
-async function excluirAviso(id){
+        lista.innerHTML =
+            dados.map(function(aviso) {
 
-if(!confirm(
-"Excluir este aviso?"
-)){
+                return `
+                    <div class="item">
 
-return;
+                        <h3>
+                            ${escapar(aviso.titulo)}
+                        </h3>
 
-}
+                        <p>
+                            ${escapar(aviso.texto)
+                                .replace(/\n/g, "<br>")}
+                        </p>
 
-try{
+                        <small>
+                            ID: ${escapar(aviso.id)}
+                        </small>
 
-await requisicao(
-"avisos",
-"DELETE",
-null,
-"id=eq." +
-encodeURIComponent(id)
-);
+                        <br><br>
 
-mostrarMensagem(
-"Aviso excluído."
-);
+                        <button
+                            type="button"
+                            class="btn-editar btn-editar-aviso"
+                            data-id="${Number(aviso.id)}"
+                        >
+                            ✏️ Editar
+                        </button>
 
-carregarAvisos();
+                        <button
+                            type="button"
+                            class="btn-excluir btn-excluir-aviso"
+                            data-id="${Number(aviso.id)}"
+                        >
+                            🗑️ Excluir
+                        </button>
 
-}catch(e){
+                    </div>
+                `;
 
-mostrarMensagem(
-e.message,
-"erro"
-);
+            }).join("");
 
-}
+
+        document
+            .querySelectorAll(".btn-editar-aviso")
+            .forEach(function(botao) {
+
+                botao.addEventListener(
+                    "click",
+                    function() {
+
+                        editarAviso(
+                            Number(botao.dataset.id)
+                        );
+
+                    }
+                );
+
+            });
+
+
+        document
+            .querySelectorAll(".btn-excluir-aviso")
+            .forEach(function(botao) {
+
+                botao.addEventListener(
+                    "click",
+                    function() {
+
+                        excluirAviso(
+                            Number(botao.dataset.id)
+                        );
+
+                    }
+                );
+
+            });
+
+
+    } catch (erro) {
+
+        lista.innerHTML =
+            '<div class="vazio">' +
+            'Erro: ' +
+            escapar(erro.message) +
+            '</div>';
+
+    }
 
 }
 
 
-function limparFormularioAviso(){
+async function salvarAviso() {
 
-document
-.getElementById("avisoTitulo")
-.value="";
+    const titulo =
+        document
+            .getElementById("avisoTitulo")
+            .value
+            .trim();
 
-document
-.getElementById("avisoTexto")
-.value="";
-
-avisoEditando=null;
-
-}
+    const texto =
+        document
+            .getElementById("avisoTexto")
+            .value
+            .trim();
 
 
-/* PROPOSTAS */
+    if (!titulo || !texto) {
 
-async function carregarPropostas(){
+        mostrarMensagem(
+            "Preencha o título e o texto do aviso.",
+            "erro"
+        );
 
-const lista =
-document.getElementById("listaPropostas");
+        return;
+    }
 
-lista.innerHTML =
-"Carregando...";
 
-try{
+    try {
 
-const dados =
-await requisicao(
-"propostas",
-"GET",
-null,
-"select=*&order=id.desc"
-);
+        if (avisoEditando !== null) {
 
-if(!dados?.length){
+            await requisicao(
+                "avisos",
+                "PATCH",
+                {
+                    titulo: titulo,
+                    texto: texto
+                },
+                "id=eq." +
+                encodeURIComponent(avisoEditando)
+            );
 
-lista.innerHTML =
-'<div class="vazio">Nenhuma proposta publicada.</div>';
+            mostrarMensagem(
+                "Aviso atualizado!"
+            );
 
-return;
+        } else {
 
-}
+            await requisicao(
+                "avisos",
+                "POST",
+                {
+                    titulo: titulo,
+                    texto: texto
+                }
+            );
 
-lista.innerHTML =
-dados.map(p=>`
+            mostrarMensagem(
+                "Aviso publicado!"
+            );
 
-<div class="item">
+        }
 
-<h3>
-${escapar(p.titulo)}
-</h3>
 
-<p>
-${escapar(p.texto)
-.replace(/\n/g,"<br>")}
-</p>
+        limparFormularioAviso();
 
-<small>
-ID: ${escapar(p.id)}
-</small>
+        await carregarAvisos();
 
-<br><br>
 
-<button
-class="btn-editar"
-onclick="editarProposta(${Number(p.id)})">
+    } catch (erro) {
 
-✏️ Editar
+        mostrarMensagem(
+            erro.message,
+            "erro"
+        );
 
-</button>
-
-<button
-class="btn-excluir"
-onclick="excluirProposta(${Number(p.id)})">
-
-🗑️ Excluir
-
-</button>
-
-</div>
-
-`).join("");
-
-}catch(e){
-
-lista.innerHTML =
-'<div class="vazio">Erro: ' +
-escapar(e.message) +
-'</div>';
-
-}
+    }
 
 }
 
 
-async function salvarProposta(){
+async function editarAviso(id) {
 
-const titulo =
-document
-.getElementById("propostaTitulo")
-.value.trim();
+    try {
 
-const texto =
-document
-.getElementById("propostaTexto")
-.value.trim();
+        const dados =
+            await requisicao(
+                "avisos",
+                "GET",
+                null,
+                "select=*&id=eq." +
+                encodeURIComponent(id)
+            );
 
-if(!titulo || !texto){
 
-mostrarMensagem(
-"Preencha o título e o texto da proposta.",
-"erro"
-);
+        if (!dados || dados.length === 0) {
+            return;
+        }
 
-return;
 
-}
+        document
+            .getElementById("avisoTitulo")
+            .value =
+            dados[0].titulo || "";
 
-try{
 
-if(propostaEditando !== null){
+        document
+            .getElementById("avisoTexto")
+            .value =
+            dados[0].texto || "";
 
-await requisicao(
-"propostas",
-"PATCH",
-{titulo,texto},
-"id=eq." +
-encodeURIComponent(propostaEditando)
-);
 
-mostrarMensagem(
-"Proposta atualizada!"
-);
+        avisoEditando = id;
 
-}else{
 
-await requisicao(
-"propostas",
-"POST",
-{titulo,texto}
-);
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-mostrarMensagem(
-"Proposta publicada!"
-);
 
-}
+    } catch (erro) {
 
-limparFormularioProposta();
+        mostrarMensagem(
+            erro.message,
+            "erro"
+        );
 
-carregarPropostas();
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
+    }
 
 }
 
 
-async function editarProposta(id){
+async function excluirAviso(id) {
 
-try{
+    if (!confirm("Excluir este aviso?")) {
+        return;
+    }
 
-const dados =
-await requisicao(
-"propostas",
-"GET",
-null,
-"select=*&id=eq." +
-encodeURIComponent(id)
-);
 
-if(!dados?.length){
+    try {
 
-return;
+        await requisicao(
+            "avisos",
+            "DELETE",
+            null,
+            "id=eq." +
+            encodeURIComponent(id)
+        );
 
-}
 
-document
-.getElementById("propostaTitulo")
-.value =
-dados[0].titulo || "";
+        mostrarMensagem(
+            "Aviso excluído."
+        );
 
-document
-.getElementById("propostaTexto")
-.value =
-dados[0].texto || "";
 
-propostaEditando=id;
+        await carregarAvisos();
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
 
-}catch(e){
+    } catch (erro) {
 
-mostrarMensagem(
-e.message,
-"erro"
-);
+        mostrarMensagem(
+            erro.message,
+            "erro"
+        );
 
-}
+    }
 
 }
 
 
-async function excluirProposta(id){
+function limparFormularioAviso() {
 
-if(!confirm(
-"Excluir esta proposta?"
-)){
+    document
+        .getElementById("avisoTitulo")
+        .value = "";
 
-return;
+    document
+        .getElementById("avisoTexto")
+        .value = "";
 
-}
-
-try{
-
-await requisicao(
-"propostas",
-"DELETE",
-null,
-"id=eq." +
-encodeURIComponent(id)
-);
-
-mostrarMensagem(
-"Proposta excluída."
-);
-
-carregarPropostas();
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
+    avisoEditando = null;
 
 }
 
 
-function limparFormularioProposta(){
+/*
+    ==========================================
+    PROPOSTAS
+    ==========================================
+*/
 
-document
-.getElementById("propostaTitulo")
-.value="";
+async function carregarPropostas() {
 
-document
-.getElementById("propostaTexto")
-.value="";
+    const lista =
+        document.getElementById("listaPropostas");
 
-propostaEditando=null;
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
 
-}
 
+    try {
 
-/* CONSTRUÇÕES */
+        const dados =
+            await requisicao(
+                "propostas",
+                "GET",
+                null,
+                "select=*&order=id.desc"
+            );
 
-async function carregarConstrucoes(){
 
-const lista =
-document.getElementById(
-"listaConstrucoes"
-);
+        if (!dados || dados.length === 0) {
 
-lista.innerHTML =
-"Carregando...";
+            lista.innerHTML =
+                '<div class="vazio">' +
+                'Nenhuma proposta publicada.' +
+                '</div>';
 
-try{
+            return;
+        }
 
-const dados =
-await requisicao(
-"construcoes",
-"GET",
-null,
-"select=*&order=id.desc"
-);
 
-if(!dados?.length){
+        lista.innerHTML =
+            dados.map(function(proposta) {
 
-lista.innerHTML =
-'<div class="vazio">Nenhuma construção cadastrada.</div>';
+                return `
+                    <div class="item">
 
-return;
+                        <h3>
+                            ${escapar(proposta.titulo)}
+                        </h3>
 
-}
+                        <p>
+                            ${escapar(proposta.texto)
+                                .replace(/\n/g, "<br>")}
+                        </p>
 
-lista.innerHTML =
-dados.map(c=>`
+                        <small>
+                            ID: ${escapar(proposta.id)}
+                        </small>
 
-<div class="item">
+                        <br><br>
 
-<h3>
-${escapar(c.titulo)}
-</h3>
+                        <button
+                            type="button"
+                            class="btn-editar btn-editar-proposta"
+                            data-id="${Number(proposta.id)}"
+                        >
+                            ✏️ Editar
+                        </button>
 
-<p>
-${escapar(c.descricao)
-.replace(/\n/g,"<br>")}
-</p>
-
-<span class="status">
-
-${escapar(
-c.status || "Planejada"
-)}
-
-</span>
-
-<br>
-
-<small>
-ID: ${escapar(c.id)}
-</small>
-
-<br><br>
-
-<button
-class="btn-editar"
-onclick="editarConstrucao(${Number(c.id)})">
-
-✏️ Editar
-
-</button>
-
-<button
-class="btn-excluir"
-onclick="excluirConstrucao(${Number(c.id)})">
-
-🗑️ Excluir
-
-</button>
-
-</div>
-
-`).join("");
-
-}catch(e){
-
-lista.innerHTML =
-'<div class="vazio">Erro: ' +
-escapar(e.message) +
-'</div>';
-
-}
-
-}
-
-
-async function salvarConstrucao(){
-
-const titulo =
-document
-.getElementById("construcaoTitulo")
-.value.trim();
-
-const descricao =
-document
-.getElementById("construcaoDescricao")
-.value.trim();
-
-const status =
-document
-.getElementById("construcaoStatus")
-.value;
-
-if(!titulo || !descricao){
-
-mostrarMensagem(
-"Preencha o nome e a descrição.",
-"erro"
-);
-
-return;
-
-}
-
-try{
-
-const dados={
-titulo,
-descricao,
-status
-};
-
-if(construcaoEditando !== null){
-
-await requisicao(
-"construcoes",
-"PATCH",
-dados,
-"id=eq." +
-encodeURIComponent(
-construcaoEditando
-)
-);
-
-mostrarMensagem(
-"Construção atualizada!"
-);
-
-}else{
-
-await requisicao(
-"construcoes",
-"POST",
-dados
-);
-
-mostrarMensagem(
-"Construção salva!"
-);
-
-}
-
-limparFormularioConstrucao();
-
-carregarConstrucoes();
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
-
-}
-
-
-async function editarConstrucao(id){
-
-try{
-
-const dados =
-await requisicao(
-"construcoes",
-"GET",
-null,
-"select=*&id=eq." +
-encodeURIComponent(id)
-);
-
-if(!dados?.length){
-
-return;
-
-}
-
-document
-.getElementById("construcaoTitulo")
-.value =
-dados[0].titulo || "";
-
-document
-.getElementById("construcaoDescricao")
-.value =
-dados[0].descricao || "";
-
-document
-.getElementById("construcaoStatus")
-.value =
-dados[0].status ||
-"Planejada";
-
-construcaoEditando=id;
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
-
-}
-
-
-async function excluirConstrucao(id){
-
-if(!confirm(
-"Excluir esta construção?"
-)){
-
-return;
-
-}
-
-try{
-
-await requisicao(
-"construcoes",
-"DELETE",
-null,
-"id=eq." +
-encodeURIComponent(id)
-);
-
-mostrarMensagem(
-"Construção excluída."
-);
-
-carregarConstrucoes();
-
-}catch(e){
-
-mostrarMensagem(
-e.message,
-"erro"
-);
-
-}
-
-}
-
-
-function limparFormularioConstrucao(){
-
-document
-.getElementById("construcaoTitulo")
-.value="";
-
-document
-.getElementById("construcaoDescricao")
-.value="";
-
-document
-.getElementById("construcaoStatus")
-.value="Planejada";
-
-construcaoEditando=null;
-
-}
-
-
-/* LISTAS DOS MORADORES */
-
-function mostrarListaGenerica(
-lista,
-dados
-){
-
-if(!dados?.length){
-
-lista.innerHTML =
-'<div class="vazio">Nenhum registro encontrado.</div>';
-
-return;
-
-}
-
-lista.innerHTML =
-dados.map(item=>`
-
-<div class="item">
-
-<h3>
-${escapar(
-item.nome || "Sem nome"
-)}
-</h3>
-
-<p>
-${escapar(
-item.mensagem || ""
-)
-.replace(/\n/g,"<br>")}
-</p>
-
-<small>
-ID: ${escapar(item.id)}
-</small>
-
-<br>
-
-<small>
-Data:
-${escapar(
-item.data ||
-"Não informada"
-)}
-</small>
-
-</div>
-
-`).join("");
-
-}
-
-
-async function carregarSolicitacoes(){
-
-const lista =
-document.getElementById(
-"listaSolicitacoes"
-);
-
-lista.innerHTML =
-"Carregando...";
-
-try{
-
-const dados =
-await requisicao(
-"solicitacoes",
-"GET",
-null,
-"select=*&order=id.desc"
-);
-
-mostrarListaGenerica(
-lista,
-dados
-);
-
-}catch(e){
-
-lista.innerHTML =
-'<div class="vazio">Erro: ' +
-escapar(e.message) +
-'</div>';
-
-}
-
-}
-
-
-async function carregarIdeias(){
-
-const lista =
-document.getElementById(
-"listaIdeias"
-);
-
-lista.innerHTML =
-"Carregando...";
-
-try{
-
-const dados =
-await requisicao(
-"ideias",
-"GET",
-null,
-"select=*&order=id.desc"
-);
-
-mostrarListaGenerica(
-lista,
-dados
-);
-
-}catch(e){
-
-lista.innerHTML =
-'<div class="vazio">Erro: ' +
-escapar(e.message) +
-'</div>';
-
-}
-
-}
-
-
-async function carregarDenuncias(){
-
-const lista =
-document.getElementById(
-"listaDenuncias"
-);
-
-lista.innerHTML =
-"Carregando...";
-
-try{
-
-const dados =
-await requisicao(
-"denuncias",
-"GET",
-null,
-"select=*&order=id.desc"
-);
-
-mostrarListaGenerica(
-lista,
-dados
-);
-
-}catch(e){
-
-lista.innerHTML =
-'<div class="vazio">Erro: ' +
-escapar(e.message) +
-'</div>';
-
-}
-
-}
-
-
-/* INÍCIO */
-
-document.addEventListener(
-"DOMContentLoaded",
-()=>{
-carregarAvisos();
-}
-);
-
-</script>
-
-</body>
-</html>
+          
