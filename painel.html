@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Painel da Prefeitura</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
     margin:0;
@@ -203,11 +200,7 @@ button:active{
     background:#27753b;
 }
 
-.vazio{
-    color:#aaa;
-    padding:15px 0;
-}
-
+.vazio,
 .carregando{
     color:#aaa;
     padding:15px 0;
@@ -222,13 +215,12 @@ button:active{
     word-break:break-word;
 }
 
-.codigo{
-    background:#111;
-    border:1px solid #555;
-    padding:8px 12px;
-    display:inline-block;
-    border-radius:5px;
-    font-weight:bold;
+.campo{
+    margin:6px 0;
+}
+
+.campo strong{
+    color:#ffd27a;
 }
 
 @media(max-width:600px){
@@ -257,270 +249,258 @@ button:active{
 
 <div class="container">
 
-    <div id="mensagemGlobal" class="mensagem"></div>
+<div id="mensagemGlobal" class="mensagem"></div>
 
-    <div class="abas">
+<div class="abas">
 
-        <button type="button"
-                class="aba ativa"
-                onclick="abrirAba('avisos',this)">
-            📢 Avisos
-        </button>
+<button type="button"
+        class="aba ativa"
+        onclick="abrirAba('avisos',this)">
+    📢 Avisos
+</button>
 
-        <button type="button"
-                class="aba"
-                onclick="abrirAba('propostas',this)">
-            📜 Propostas
-        </button>
+<button type="button"
+        class="aba"
+        onclick="abrirAba('propostas',this)">
+    📜 Propostas
+</button>
 
-        <button type="button"
-                class="aba"
-                onclick="abrirAba('construcoes',this)">
-            🏗️ Construções
-        </button>
+<button type="button"
+        class="aba"
+        onclick="abrirAba('construcoes',this)">
+    🏗️ Construções
+</button>
 
-        <button type="button"
-                class="aba"
-                onclick="abrirAba('solicitacoes',this)">
-            📬 Solicitações
-        </button>
+<button type="button"
+        class="aba"
+        onclick="abrirAba('solicitacoes',this)">
+    📬 Solicitações
+</button>
 
-        <button type="button"
-                class="aba"
-                onclick="abrirAba('ideias',this)">
-            💡 Sugestões
-        </button>
+<button type="button"
+        class="aba"
+        onclick="abrirAba('ideias',this)">
+    💡 Sugestões
+</button>
 
-        <button type="button"
-                class="aba"
-                onclick="abrirAba('denuncias',this)">
-            🚨 Denúncias
-        </button>
+<button type="button"
+        class="aba"
+        onclick="abrirAba('denuncias',this)">
+    🚨 Denúncias
+</button>
 
-    </div>
+</div>
 
 
-    <!-- ================= AVISOS ================= -->
+<section id="avisos" class="secao ativa">
 
-    <section id="avisos" class="secao ativa">
+<div class="formulario">
 
-        <div class="formulario">
+<h2>📢 Novo aviso</h2>
 
-            <h2>📢 Novo aviso</h2>
+<input
+    id="avisoTitulo"
+    type="text"
+    placeholder="Título do aviso">
 
-            <input
-                id="avisoTitulo"
-                type="text"
-                placeholder="Título do aviso">
+<textarea
+    id="avisoTexto"
+    placeholder="Escreva o aviso..."></textarea>
 
-            <textarea
-                id="avisoTexto"
-                placeholder="Escreva o aviso..."></textarea>
+<button
+    type="button"
+    class="btn-principal"
+    onclick="salvarAviso()">
+    Publicar aviso
+</button>
 
-            <button
-                type="button"
-                class="btn-principal"
-                onclick="salvarAviso()">
-                Publicar aviso
-            </button>
+<button
+    type="button"
+    class="btn-cancelar"
+    onclick="limparFormularioAviso()">
+    Limpar
+</button>
 
-            <button
-                type="button"
-                class="btn-cancelar"
-                onclick="limparFormularioAviso()">
-                Limpar
-            </button>
+</div>
 
-        </div>
+<div class="card">
 
-        <div class="card">
+<h2>Avisos publicados</h2>
 
-            <h2>Avisos publicados</h2>
+<div id="listaAvisos"></div>
 
-            <div id="listaAvisos"></div>
+</div>
 
-        </div>
+</section>
 
-    </section>
 
+<section id="propostas" class="secao">
 
-    <!-- ================= PROPOSTAS ================= -->
+<div class="formulario">
 
-    <section id="propostas" class="secao">
+<h2>📜 Nova proposta</h2>
 
-        <div class="formulario">
+<input
+    id="propostaTitulo"
+    type="text"
+    placeholder="Título da proposta">
 
-            <h2>📜 Nova proposta</h2>
+<textarea
+    id="propostaTexto"
+    placeholder="Descrição da proposta..."></textarea>
 
-            <input
-                id="propostaTitulo"
-                type="text"
-                placeholder="Título da proposta">
+<button
+    type="button"
+    class="btn-principal"
+    onclick="salvarProposta()">
+    Publicar proposta
+</button>
 
-            <textarea
-                id="propostaTexto"
-                placeholder="Descrição da proposta..."></textarea>
+<button
+    type="button"
+    class="btn-cancelar"
+    onclick="limparFormularioProposta()">
+    Limpar
+</button>
 
-            <button
-                type="button"
-                class="btn-principal"
-                onclick="salvarProposta()">
-                Publicar proposta
-            </button>
+</div>
 
-            <button
-                type="button"
-                class="btn-cancelar"
-                onclick="limparFormularioProposta()">
-                Limpar
-            </button>
+<div class="card">
 
-        </div>
+<h2>Propostas publicadas</h2>
 
-        <div class="card">
+<div id="listaPropostas"></div>
 
-            <h2>Propostas publicadas</h2>
+</div>
 
-            <div id="listaPropostas"></div>
+</section>
 
-        </div>
 
-    </section>
+<section id="construcoes" class="secao">
 
+<div class="formulario">
 
-    <!-- ================= CONSTRUÇÕES ================= -->
+<h2>🏗️ Nova construção / projeto</h2>
 
-    <section id="construcoes" class="secao">
+<input
+    id="construcaoTitulo"
+    type="text"
+    placeholder="Nome da construção">
 
-        <div class="formulario">
+<textarea
+    id="construcaoDescricao"
+    placeholder="Descrição do projeto..."></textarea>
 
-            <h2>🏗️ Nova construção / projeto</h2>
+<select id="construcaoStatus">
 
-            <input
-                id="construcaoTitulo"
-                type="text"
-                placeholder="Nome da construção">
+<option value="Planejada">
+    Planejada
+</option>
 
-            <textarea
-                id="construcaoDescricao"
-                placeholder="Descrição do projeto..."></textarea>
+<option value="Em andamento">
+    Em andamento
+</option>
 
-            <select id="construcaoStatus">
+<option value="Concluída">
+    Concluída
+</option>
 
-                <option value="Planejada">
-                    Planejada
-                </option>
+</select>
 
-                <option value="Em andamento">
-                    Em andamento
-                </option>
+<button
+    type="button"
+    class="btn-principal"
+    onclick="salvarConstrucao()">
+    Salvar construção
+</button>
 
-                <option value="Concluída">
-                    Concluída
-                </option>
+<button
+    type="button"
+    class="btn-cancelar"
+    onclick="limparFormularioConstrucao()">
+    Limpar
+</button>
 
-            </select>
+</div>
 
-            <button
-                type="button"
-                class="btn-principal"
-                onclick="salvarConstrucao()">
-                Salvar construção
-            </button>
+<div class="card">
 
-            <button
-                type="button"
-                class="btn-cancelar"
-                onclick="limparFormularioConstrucao()">
-                Limpar
-            </button>
+<h2>Construções / projetos</h2>
 
-        </div>
+<div id="listaConstrucoes"></div>
 
-        <div class="card">
+</div>
 
-            <h2>Construções / projetos</h2>
+</section>
 
-            <div id="listaConstrucoes"></div>
 
-        </div>
+<section id="solicitacoes" class="secao">
 
-    </section>
+<div class="card">
 
+<h2>📬 Solicitações dos moradores</h2>
 
-    <!-- ================= SOLICITAÇÕES ================= -->
+<button
+    type="button"
+    class="btn-atualizar"
+    onclick="carregarSolicitacoes()">
+    🔄 Atualizar
+</button>
 
-    <section id="solicitacoes" class="secao">
+<div id="listaSolicitacoes"></div>
 
-        <div class="card">
+</div>
 
-            <h2>📬 Solicitações dos moradores</h2>
+</section>
 
-            <button
-                type="button"
-                class="btn-atualizar"
-                onclick="carregarSolicitacoes()">
-                🔄 Atualizar
-            </button>
 
-            <div id="listaSolicitacoes"></div>
+<section id="ideias" class="secao">
 
-        </div>
+<div class="card">
 
-    </section>
+<h2>💡 Sugestões dos moradores</h2>
 
+<button
+    type="button"
+    class="btn-atualizar"
+    onclick="carregarIdeias()">
+    🔄 Atualizar
+</button>
 
-    <!-- ================= SUGESTÕES ================= -->
+<div id="listaIdeias"></div>
 
-    <section id="ideias" class="secao">
+</div>
 
-        <div class="card">
+</section>
 
-            <h2>💡 Sugestões dos moradores</h2>
 
-            <button
-                type="button"
-                class="btn-atualizar"
-                onclick="carregarIdeias()">
-                🔄 Atualizar
-            </button>
+<section id="denuncias" class="secao">
 
-            <div id="listaIdeias"></div>
+<div class="card">
 
-        </div>
+<h2>🚨 Denúncias dos moradores</h2>
 
-    </section>
+<button
+    type="button"
+    class="btn-atualizar"
+    onclick="carregarDenuncias()">
+    🔄 Atualizar
+</button>
 
+<div id="listaDenuncias"></div>
 
-    <!-- ================= DENÚNCIAS ================= -->
+</div>
 
-    <section id="denuncias" class="secao">
-
-        <div class="card">
-
-            <h2>🚨 Denúncias dos moradores</h2>
-
-            <button
-                type="button"
-                class="btn-atualizar"
-                onclick="carregarDenuncias()">
-                🔄 Atualizar
-            </button>
-
-            <div id="listaDenuncias"></div>
-
-        </div>
-
-    </section>
+</section>
 
 </div>
 
 
 <script>
 
-/* =========================================================
-   CONFIGURAÇÃO DO SUPABASE
-   ========================================================= */
+/* ================================
+   SUPABASE
+================================ */
 
 const SUPABASE_URL =
     "https://oamvfvyuaqolsswklljp.supabase.co";
@@ -529,65 +509,69 @@ const SUPABASE_KEY =
     "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
 
 
-/* =========================================================
+/* ================================
    VARIÁVEIS
-   ========================================================= */
+================================ */
 
 let avisoEditando = null;
 let propostaEditando = null;
 let construcaoEditando = null;
 
 
-/* =========================================================
+/* ================================
    MENSAGEM
-   ========================================================= */
+================================ */
 
 function mostrarMensagem(texto, tipo = "sucesso") {
 
-    const el = document.getElementById("mensagemGlobal");
+    const el =
+        document.getElementById("mensagemGlobal");
 
     el.textContent = texto;
 
-    el.className = "mensagem " + tipo;
+    el.className =
+        "mensagem " + tipo;
 
-    setTimeout(function() {
+    setTimeout(function(){
+
         el.className = "mensagem";
-    }, 4000);
+
+    },4000);
 }
 
 
-/* =========================================================
+/* ================================
    ESCAPAR HTML
-   ========================================================= */
+================================ */
 
-function escapar(valor) {
+function escapar(valor){
 
     return String(valor ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
 
-/* =========================================================
-   REQUISIÇÃO AO SUPABASE
-   ========================================================= */
+/* ================================
+   REQUISIÇÃO SUPABASE
+================================ */
 
 async function requisicao(
     tabela,
     metodo = "GET",
     dados = null,
     query = ""
-) {
+){
 
     let url =
         SUPABASE_URL +
         "/rest/v1/" +
         tabela;
 
-    if (query) {
+    if(query){
         url += "?" + query;
     }
 
@@ -611,18 +595,20 @@ async function requisicao(
         }
     };
 
-    if (dados !== null) {
+    if(dados !== null){
+
         opcoes.body =
             JSON.stringify(dados);
+
     }
 
     const resposta =
-        await fetch(url, opcoes);
+        await fetch(url,opcoes);
 
     const texto =
         await resposta.text();
 
-    if (!resposta.ok) {
+    if(!resposta.ok){
 
         throw new Error(
             "Erro " +
@@ -630,93 +616,119 @@ async function requisicao(
             ": " +
             texto
         );
+
     }
 
-    if (!texto) {
+    if(!texto){
+
         return null;
+
     }
 
-    try {
+    try{
 
         return JSON.parse(texto);
 
-    } catch {
+    }catch{
 
         return texto;
+
     }
 }
 
 
-/* =========================================================
+/* ================================
    ABAS
-   ========================================================= */
+================================ */
 
-function abrirAba(nome, botao) {
+function abrirAba(nome,botao){
 
     document
         .querySelectorAll(".secao")
-        .forEach(function(secao) {
+        .forEach(function(secao){
+
             secao.classList.remove("ativa");
+
         });
 
     document
         .querySelectorAll(".aba")
-        .forEach(function(item) {
+        .forEach(function(item){
+
             item.classList.remove("ativa");
+
         });
 
     const secao =
         document.getElementById(nome);
 
-    if (!secao) {
+    if(!secao){
+
         return;
+
     }
 
     secao.classList.add("ativa");
 
-    if (botao) {
+    if(botao){
+
         botao.classList.add("ativa");
+
     }
 
-    if (nome === "avisos") {
+    if(nome === "avisos"){
+
         carregarAvisos();
+
     }
 
-    if (nome === "propostas") {
+    if(nome === "propostas"){
+
         carregarPropostas();
+
     }
 
-    if (nome === "construcoes") {
+    if(nome === "construcoes"){
+
         carregarConstrucoes();
+
     }
 
-    if (nome === "solicitacoes") {
+    if(nome === "solicitacoes"){
+
         carregarSolicitacoes();
+
     }
 
-    if (nome === "ideias") {
+    if(nome === "ideias"){
+
         carregarIdeias();
+
     }
 
-    if (nome === "denuncias") {
+    if(nome === "denuncias"){
+
         carregarDenuncias();
+
     }
 }
 
 
-/* =========================================================
+/* ================================
    AVISOS
-   ========================================================= */
+================================ */
 
-async function carregarAvisos() {
+async function carregarAvisos(){
 
     const lista =
-        document.getElementById("listaAvisos");
+        document.getElementById(
+            "listaAvisos"
+        );
 
     lista.innerHTML =
         '<div class="carregando">Carregando...</div>';
 
-    try {
+    try{
 
         const dados =
             await requisicao(
@@ -726,65 +738,69 @@ async function carregarAvisos() {
                 "select=*&order=id.desc"
             );
 
-        if (!dados || !dados.length) {
+        if(!dados || !dados.length){
 
             lista.innerHTML =
                 '<div class="vazio">Nenhum aviso publicado.</div>';
 
             return;
+
         }
 
         lista.innerHTML =
-            dados.map(function(a) {
+            dados.map(function(a){
 
                 return `
-                    <div class="item">
 
-                        <h3>
-                            ${escapar(a.titulo)}
-                        </h3>
+                <div class="item">
 
-                        <p>
-                            ${escapar(a.texto)
-                                .replace(/\n/g, "<br>")}
-                        </p>
+                    <h3>
+                        ${escapar(a.titulo)}
+                    </h3>
 
-                        <small>
-                            ID: ${escapar(a.id)}
-                        </small>
+                    <p>
+                        ${escapar(a.texto)
+                            .replace(/\n/g,"<br>")}
+                    </p>
 
-                        <br><br>
+                    <small>
+                        ID: ${escapar(a.id)}
+                    </small>
 
-                        <button
-                            type="button"
-                            class="btn-editar"
-                            onclick="editarAviso(${Number(a.id)})">
-                            ✏️ Editar
-                        </button>
+                    <br><br>
 
-                        <button
-                            type="button"
-                            class="btn-excluir"
-                            onclick="excluirAviso(${Number(a.id)})">
-                            🗑️ Excluir
-                        </button>
+                    <button
+                        type="button"
+                        class="btn-editar"
+                        onclick="editarAviso(${Number(a.id)})">
+                        ✏️ Editar
+                    </button>
 
-                    </div>
+                    <button
+                        type="button"
+                        class="btn-excluir"
+                        onclick="excluirAviso(${Number(a.id)})">
+                        🗑️ Excluir
+                    </button>
+
+                </div>
+
                 `;
 
             }).join("");
 
-    } catch (e) {
+    }catch(e){
 
         lista.innerHTML =
             '<div class="erroLista">Erro: ' +
             escapar(e.message) +
             '</div>';
+
     }
 }
 
 
-async function salvarAviso() {
+async function salvarAviso(){
 
     const titulo =
         document
@@ -798,7 +814,7 @@ async function salvarAviso() {
             .value
             .trim();
 
-    if (!titulo || !texto) {
+    if(!titulo || !texto){
 
         mostrarMensagem(
             "Preencha o título e o texto do aviso.",
@@ -806,18 +822,19 @@ async function salvarAviso() {
         );
 
         return;
+
     }
 
-    try {
+    try{
 
-        if (avisoEditando !== null) {
+        if(avisoEditando !== null){
 
             await requisicao(
                 "avisos",
                 "PATCH",
                 {
-                    titulo: titulo,
-                    texto: texto
+                    titulo:titulo,
+                    texto:texto
                 },
                 "id=eq." +
                 encodeURIComponent(avisoEditando)
@@ -827,39 +844,41 @@ async function salvarAviso() {
                 "Aviso atualizado!"
             );
 
-        } else {
+        }else{
 
             await requisicao(
                 "avisos",
                 "POST",
                 {
-                    titulo: titulo,
-                    texto: texto
+                    titulo:titulo,
+                    texto:texto
                 }
             );
 
             mostrarMensagem(
                 "Aviso publicado!"
             );
+
         }
 
         limparFormularioAviso();
 
         await carregarAvisos();
 
-    } catch (e) {
+    }catch(e){
 
         mostrarMensagem(
             e.message,
             "erro"
         );
+
     }
 }
 
 
-async function editarAviso(id) {
+async function editarAviso(id){
 
-    try {
+    try{
 
         const dados =
             await requisicao(
@@ -870,8 +889,10 @@ async function editarAviso(id) {
                 encodeURIComponent(id)
             );
 
-        if (!dados || !dados.length) {
+        if(!dados || !dados.length){
+
             return;
+
         }
 
         document
@@ -887,27 +908,34 @@ async function editarAviso(id) {
         avisoEditando = id;
 
         window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+            top:0,
+            behavior:"smooth"
         });
 
-    } catch (e) {
+        mostrarMensagem(
+            "Aviso carregado para edição."
+        );
+
+    }catch(e){
 
         mostrarMensagem(
             e.message,
             "erro"
         );
+
     }
 }
 
 
-async function excluirAviso(id) {
+async function excluirAviso(id){
 
-    if (!confirm("Excluir este aviso?")) {
+    if(!confirm("Excluir este aviso?")){
+
         return;
+
     }
 
-    try {
+    try{
 
         await requisicao(
             "avisos",
@@ -923,17 +951,18 @@ async function excluirAviso(id) {
 
         await carregarAvisos();
 
-    } catch (e) {
+    }catch(e){
 
         mostrarMensagem(
             e.message,
             "erro"
         );
+
     }
 }
 
 
-function limparFormularioAviso() {
+function limparFormularioAviso(){
 
     document
         .getElementById("avisoTitulo")
@@ -947,19 +976,21 @@ function limparFormularioAviso() {
 }
 
 
-/* =========================================================
+/* ================================
    PROPOSTAS
-   ========================================================= */
+================================ */
 
-async function carregarPropostas() {
+async function carregarPropostas(){
 
     const lista =
-        document.getElementById("listaPropostas");
+        document.getElementById(
+            "listaPropostas"
+        );
 
     lista.innerHTML =
         '<div class="carregando">Carregando...</div>';
 
-    try {
+    try{
 
         const dados =
             await requisicao(
@@ -969,65 +1000,69 @@ async function carregarPropostas() {
                 "select=*&order=id.desc"
             );
 
-        if (!dados || !dados.length) {
+        if(!dados || !dados.length){
 
             lista.innerHTML =
                 '<div class="vazio">Nenhuma proposta publicada.</div>';
 
             return;
+
         }
 
         lista.innerHTML =
-            dados.map(function(p) {
+            dados.map(function(p){
 
                 return `
-                    <div class="item">
 
-                        <h3>
-                            ${escapar(p.titulo)}
-                        </h3>
+                <div class="item">
 
-                        <p>
-                            ${escapar(p.texto)
-                                .replace(/\n/g, "<br>")}
-                        </p>
+                    <h3>
+                        ${escapar(p.titulo)}
+                    </h3>
 
-                        <small>
-                            ID: ${escapar(p.id)}
-                        </small>
+                    <p>
+                        ${escapar(p.texto)
+                            .replace(/\n/g,"<br>")}
+                    </p>
 
-                        <br><br>
+                    <small>
+                        ID: ${escapar(p.id)}
+                    </small>
 
-                        <button
-                            type="button"
-                            class="btn-editar"
-                            onclick="editarProposta(${Number(p.id)})">
-                            ✏️ Editar
-                        </button>
+                    <br><br>
 
-                        <button
-                            type="button"
-                            class="btn-excluir"
-                            onclick="excluirProposta(${Number(p.id)})">
-                            🗑️ Excluir
-                        </button>
+                    <button
+                        type="button"
+                        class="btn-editar"
+                        onclick="editarProposta(${Number(p.id)})">
+                        ✏️ Editar
+                    </button>
 
-                    </div>
+                    <button
+                        type="button"
+                        class="btn-excluir"
+                        onclick="excluirProposta(${Number(p.id)})">
+                        🗑️ Excluir
+                    </button>
+
+                </div>
+
                 `;
 
             }).join("");
 
-    } catch (e) {
+    }catch(e){
 
         lista.innerHTML =
             '<div class="erroLista">Erro: ' +
             escapar(e.message) +
             '</div>';
+
     }
 }
 
 
-async function salvarProposta() {
+async function salvarProposta(){
 
     const titulo =
         document
@@ -1041,7 +1076,7 @@ async function salvarProposta() {
             .value
             .trim();
 
-    if (!titulo || !texto) {
+    if(!titulo || !texto){
 
         mostrarMensagem(
             "Preencha o título e o texto da proposta.",
@@ -1049,13 +1084,684 @@ async function salvarProposta() {
         );
 
         return;
+
     }
 
-    try {
+    try{
 
-        if (propostaEditando !== null) {
+        if(propostaEditando !== null){
 
             await requisicao(
                 "propostas",
                 "PATCH",
-        
+                {
+                    titulo:titulo,
+                    texto:texto
+                },
+                "id=eq." +
+                encodeURIComponent(propostaEditando)
+            );
+
+            mostrarMensagem(
+                "Proposta atualizada!"
+            );
+
+        }else{
+
+            await requisicao(
+                "propostas",
+                "POST",
+                {
+                    titulo:titulo,
+                    texto:texto
+                }
+            );
+
+            mostrarMensagem(
+                "Proposta publicada!"
+            );
+
+        }
+
+        limparFormularioProposta();
+
+        await carregarPropostas();
+
+    }catch(e){
+
+        mostrarMensagem(
+            e.message,
+            "erro"
+        );
+
+    }
+}
+
+
+async function editarProposta(id){
+
+    try{
+
+        const dados =
+            await requisicao(
+                "propostas",
+                "GET",
+                null,
+                "select=*&id=eq." +
+                encodeURIComponent(id)
+            );
+
+        if(!dados || !dados.length){
+
+            return;
+
+        }
+
+        document
+            .getElementById("propostaTitulo")
+            .value =
+            dados[0].titulo || "";
+
+        document
+            .getElementById("propostaTexto")
+            .value =
+            dados[0].texto || "";
+
+        propostaEditando = id;
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+        mostrarMensagem(
+            "Proposta carregada para edição."
+        );
+
+    }catch(e){
+
+        mostrarMensagem(
+            e.message,
+            "erro"
+        );
+
+    }
+}
+
+
+async function excluirProposta(id){
+
+    if(!confirm("Excluir esta proposta?")){
+
+        return;
+
+    }
+
+    try{
+
+        await requisicao(
+            "propostas",
+            "DELETE",
+            null,
+            "id=eq." +
+            encodeURIComponent(id)
+        );
+
+        mostrarMensagem(
+            "Proposta excluída!"
+        );
+
+        await carregarPropostas();
+
+    }catch(e){
+
+        mostrarMensagem(
+            e.message,
+            "erro"
+        );
+
+    }
+}
+
+
+function limparFormularioProposta(){
+
+    document
+        .getElementById("propostaTitulo")
+        .value = "";
+
+    document
+        .getElementById("propostaTexto")
+        .value = "";
+
+    propostaEditando = null;
+}
+
+
+/* ================================
+   CONSTRUÇÕES
+================================ */
+
+async function carregarConstrucoes(){
+
+    const lista =
+        document.getElementById("listaConstrucoes");
+
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
+
+    try{
+
+        const dados =
+            await requisicao(
+                "construcoes",
+                "GET",
+                null,
+                "select=*&order=id.desc"
+            );
+
+        if(!dados || !dados.length){
+
+            lista.innerHTML =
+                '<div class="vazio">Nenhuma construção cadastrada.</div>';
+
+            return;
+        }
+
+        lista.innerHTML =
+            dados.map(function(c){
+
+                let classeStatus = "";
+
+                if(c.status === "Planejada"){
+                    classeStatus = "status-planejada";
+                }
+
+                if(c.status === "Em andamento"){
+                    classeStatus = "status-andamento";
+                }
+
+                if(c.status === "Concluída"){
+                    classeStatus = "status-concluida";
+                }
+
+                return `
+
+                <div class="item">
+
+                    <h3>
+                        ${escapar(c.titulo || "Sem título")}
+                    </h3>
+
+                    <div class="campo">
+                        <strong>Descrição:</strong><br>
+                        ${escapar(c.descricao || "")
+                            .replace(/\n/g,"<br>")}
+                    </div>
+
+                    <div>
+                        <span class="status ${classeStatus}">
+                            ${escapar(c.status || "Sem status")}
+                        </span>
+                    </div>
+
+                    <small>
+                        ID: ${escapar(c.id)}
+                    </small>
+
+                    <br><br>
+
+                    <button
+                        type="button"
+                        class="btn-editar"
+                        onclick="editarConstrucao(${Number(c.id)})">
+                        ✏️ Editar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-excluir"
+                        onclick="excluirConstrucao(${Number(c.id)})">
+                        🗑️ Excluir
+                    </button>
+
+                </div>
+
+                `;
+
+            }).join("");
+
+    }catch(e){
+
+        lista.innerHTML =
+            '<div class="erroLista">Erro: ' +
+            escapar(e.message) +
+            '</div>';
+
+    }
+}
+
+
+async function salvarConstrucao(){
+
+    const titulo =
+        document
+            .getElementById("construcaoTitulo")
+            .value
+            .trim();
+
+    const descricao =
+        document
+            .getElementById("construcaoDescricao")
+            .value
+            .trim();
+
+    const status =
+        document
+            .getElementById("construcaoStatus")
+            .value;
+
+    if(!titulo || !descricao){
+
+        mostrarMensagem(
+            "Preencha o nome e a descrição da construção.",
+            "erro"
+        );
+
+        return;
+    }
+
+    try{
+
+        if(construcaoEditando !== null){
+
+            await requisicao(
+                "construcoes",
+                "PATCH",
+                {
+                    titulo: titulo,
+                    descricao: descricao,
+                    status: status
+                },
+                "id=eq." +
+                encodeURIComponent(construcaoEditando)
+            );
+
+            mostrarMensagem(
+                "Construção atualizada!"
+            );
+
+        }else{
+
+            await requisicao(
+                "construcoes",
+                "POST",
+                {
+                    titulo: titulo,
+                    descricao: descricao,
+                    status: status
+                }
+            );
+
+            mostrarMensagem(
+                "Construção cadastrada!"
+            );
+        }
+
+        limparFormularioConstrucao();
+
+        await carregarConstrucoes();
+
+    }catch(e){
+
+        mostrarMensagem(
+            e.message,
+            "erro"
+        );
+
+    }
+}
+
+
+async function editarConstrucao(id){
+
+    try{
+
+        const dados =
+            await requisicao(
+                "construcoes",
+                "GET",
+                null,
+                "select=*&id=eq." +
+                encodeURIComponent(id)
+            );
+
+        if(!dados || !dados.length){
+
+            mostrarMensagem(
+                "Construção não encontrada.",
+                "erro"
+            );
+
+            return;
+        }
+
+        document
+            .getElementById("construcaoTitulo")
+            .value =
+            dados[0].titulo || "";
+
+        document
+            .getElementById("construcaoDescricao")
+            .value =
+            dados[0].descricao || "";
+
+        document
+            .getElementById("construcaoStatus")
+            .value =
+            dados[0].status || "Planejada";
+
+        construcaoEditando = id;
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        mostrarMensagem(
+            "Construção carregada para edição."
+        );
+
+    }catch(e){
+
+        mostrarMensagem(
+            e.message,
+            "erro"
+        );
+
+    }
+}
+
+
+async function excluirConstrucao(id){
+
+    if(!confirm("Excluir esta construção?")){
+
+        return;
+    }
+
+    try{
+
+        await requisicao(
+            "construcoes",
+            "DELETE",
+            null,
+            "id=eq." +
+            encodeURIComponent(id)
+        );
+
+        mostrarMensagem(
+            "Construção excluída!"
+        );
+
+        await carregarConstrucoes();
+
+    }catch(e){
+
+        mostrarMensagem(
+            e.message,
+            "erro"
+        );
+
+    }
+}
+
+
+function limparFormularioConstrucao(){
+
+    document
+        .getElementById("construcaoTitulo")
+        .value = "";
+
+    document
+        .getElementById("construcaoDescricao")
+        .value = "";
+
+    document
+        .getElementById("construcaoStatus")
+        .value = "Planejada";
+
+    construcaoEditando = null;
+}
+
+
+/* ================================
+   SOLICITAÇÕES
+================================ */
+
+async function carregarSolicitacoes(){
+
+    const lista =
+        document.getElementById("listaSolicitacoes");
+
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
+
+    try{
+
+        const dados =
+            await requisicao(
+                "solicitacoes",
+                "GET",
+                null,
+                "select=*&order=id.desc"
+            );
+
+        if(!dados || !dados.length){
+
+            lista.innerHTML =
+                '<div class="vazio">Nenhuma solicitação encontrada.</div>';
+
+            return;
+        }
+
+        lista.innerHTML =
+            dados.map(function(item){
+
+                return `
+                    <div class="item">
+
+                        <h3>
+                            Solicitação #${escapar(item.id)}
+                        </h3>
+
+                        ${Object.entries(item)
+                            .filter(function([chave]){
+                                return chave !== "id";
+                            })
+                            .map(function([chave,valor]){
+                                return `
+                                    <div class="campo">
+                                        <strong>
+                                            ${escapar(chave)}:
+                                        </strong><br>
+                                        ${escapar(valor)}
+                                    </div>
+                                `;
+                            }).join("")}
+
+                    </div>
+                `;
+
+            }).join("");
+
+    }catch(e){
+
+        lista.innerHTML =
+            '<div class="erroLista">Erro: ' +
+            escapar(e.message) +
+            '</div>';
+
+    }
+}
+
+
+/* ================================
+   SUGESTÕES
+================================ */
+
+async function carregarIdeias(){
+
+    const lista =
+        document.getElementById("listaIdeias");
+
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
+
+    try{
+
+        const dados =
+            await requisicao(
+                "ideias",
+                "GET",
+                null,
+                "select=*&order=id.desc"
+            );
+
+        if(!dados || !dados.length){
+
+            lista.innerHTML =
+                '<div class="vazio">Nenhuma sugestão encontrada.</div>';
+
+            return;
+        }
+
+        lista.innerHTML =
+            dados.map(function(item){
+
+                return `
+                    <div class="item">
+
+                        <h3>
+                            Sugestão #${escapar(item.id)}
+                        </h3>
+
+                        ${Object.entries(item)
+                            .filter(function([chave]){
+                                return chave !== "id";
+                            })
+                            .map(function([chave,valor]){
+                                return `
+                                    <div class="campo">
+                                        <strong>
+                                            ${escapar(chave)}:
+                                        </strong><br>
+                                        ${escapar(valor)}
+                                    </div>
+                                `;
+                            }).join("")}
+
+                    </div>
+                `;
+
+            }).join("");
+
+    }catch(e){
+
+        lista.innerHTML =
+            '<div class="erroLista">Erro: ' +
+            escapar(e.message) +
+            '</div>';
+
+    }
+}
+
+
+/* ================================
+   DENÚNCIAS
+================================ */
+
+async function carregarDenuncias(){
+
+    const lista =
+        document.getElementById("listaDenuncias");
+
+    lista.innerHTML =
+        '<div class="carregando">Carregando...</div>';
+
+    try{
+
+        const dados =
+            await requisicao(
+                "denuncias",
+                "GET",
+                null,
+                "select=*&order=id.desc"
+            );
+
+        if(!dados || !dados.length){
+
+            lista.innerHTML =
+                '<div class="vazio">Nenhuma denúncia encontrada.</div>';
+
+            return;
+        }
+
+        lista.innerHTML =
+            dados.map(function(item){
+
+                return `
+                    <div class="item">
+
+                        <h3>
+                            Denúncia #${escapar(item.id)}
+                        </h3>
+
+                        ${Object.entries(item)
+                            .filter(function([chave]){
+                                return chave !== "id";
+                            })
+                            .map(function([chave,valor]){
+                                return `
+                                    <div class="campo">
+                                        <strong>
+                                            ${escapar(chave)}:
+                                        </strong><br>
+                                        ${escapar(valor)}
+                                    </div>
+                                `;
+                            }).join("")}
+
+                    </div>
+                `;
+
+            }).join("");
+
+    }catch(e){
+
+        lista.innerHTML =
+            '<div class="erroLista">Erro: ' +
+            escapar(e.message) +
+            '</div>';
+
+    }
+}
+
+
+/* ================================
+   INICIALIZAÇÃO
+================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        carregarAvisos();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
