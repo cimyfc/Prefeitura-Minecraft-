@@ -875,10 +875,11 @@ async function salvarAviso(){
     await requisicao(
       "avisos",
       "POST",
-      {
-        titulo: "Aviso",
-        texto: texto
-      }
+{
+  titulo: "Aviso",
+  descricao: texto,
+  texto: texto
+}
     );
 
 
