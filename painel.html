@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Painel da Prefeitura</title>
-  
+
 <style>
 *{
   box-sizing:border-box;
@@ -233,7 +233,9 @@ button{
 <div id="mensagemGlobal" class="mensagem"></div>
 
 
+<!-- ========================= -->
 <!-- ABAS -->
+<!-- ========================= -->
 
 <div class="abas">
 
@@ -560,6 +562,7 @@ function mostrarMensagem(texto,tipo="sucesso"){
     el.className = "mensagem";
 
   },4000);
+
 }
 
 
@@ -575,6 +578,7 @@ function escapar(valor){
   .replace(/>/g,"&gt;")
   .replace(/"/g,"&quot;")
   .replace(/'/g,"&#039;");
+
 }
 
 
@@ -762,18 +766,12 @@ function abrirAba(nome,botao){
 
 /* ==========================================
    AVISOS
-   TABELA:
-   id
-   data
-   texto
 ========================================== */
 
 async function carregarAvisos(){
 
   const lista =
-  document.getElementById(
-    "listaAvisos"
-  );
+  document.getElementById("listaAvisos");
 
   lista.innerHTML =
   "Carregando...";
@@ -805,10 +803,12 @@ async function carregarAvisos(){
 
       <div class="item">
 
-        <h3>📢 Aviso</h3>
+        <h3>
+          📢 ${escapar(aviso.titulo || "Aviso")}
+        </h3>
 
         <p>
-          ${escapar(aviso.texto)
+          ${escapar(aviso.texto || "")
           .replace(/\n/g,"<br>")}
         </p>
 
@@ -819,7 +819,11 @@ async function carregarAvisos(){
         <br>
 
         <small>
-          Data: ${escapar(aviso.data || "Não informada")}
+          Data: ${escapar(
+            aviso.data ||
+            aviso.created_at ||
+            "Não informada"
+          )}
         </small>
 
       </div>
@@ -838,6 +842,12 @@ async function carregarAvisos(){
 
 }
 
+
+/* ==========================================
+   SALVAR AVISO
+   CORREÇÃO:
+   A TABELA AVISOS EXIGE "titulo"
+========================================== */
 
 async function salvarAviso(){
 
@@ -866,6 +876,7 @@ async function salvarAviso(){
       "avisos",
       "POST",
       {
+        titulo: "Aviso",
         texto: texto
       }
     );
@@ -904,19 +915,12 @@ function limparFormularioAviso(){
 
 /* ==========================================
    PROPOSTAS
-   TABELA:
-   id
-   titulo
-   descricao
-   eleicao
 ========================================== */
 
 async function carregarPropostas(){
 
   const lista =
-  document.getElementById(
-    "listaPropostas"
-  );
+  document.getElementById("listaPropostas");
 
   lista.innerHTML =
   "Carregando...";
@@ -959,7 +963,10 @@ async function carregarPropostas(){
 
         <p>
           <strong>Eleição:</strong>
-          ${escapar(proposta.eleicao || "Não informada")}
+          ${escapar(
+            proposta.eleicao ||
+            "Não informada"
+          )}
         </p>
 
         <small>
@@ -1231,9 +1238,7 @@ function limparFormularioProposta(){
 async function carregarConstrucoes(){
 
   const lista =
-  document.getElementById(
-    "listaConstrucoes"
-  );
+  document.getElementById("listaConstrucoes");
 
   lista.innerHTML =
   "Carregando...";
@@ -1276,7 +1281,8 @@ async function carregarConstrucoes(){
 
         <span class="status">
           ${escapar(
-            c.status || "Planejada"
+            c.status ||
+            "Planejada"
           )}
         </span>
 
@@ -1450,7 +1456,8 @@ async function editarConstrucao(id){
     document
     .getElementById("construcaoStatus")
     .value =
-    dados[0].status || "Planejada";
+    dados[0].status ||
+    "Planejada";
 
 
     construcaoEditando = id;
@@ -1460,6 +1467,11 @@ async function editarConstrucao(id){
       top:0,
       behavior:"smooth"
     });
+
+
+    mostrarMensagem(
+      "Construção carregada para edição."
+    );
 
 
   }catch(e){
@@ -1541,8 +1553,6 @@ function limparFormularioConstrucao(){
 
 /* ==========================================
    LEITURA GENÉRICA
-   PARA SOLICITAÇÕES,
-   IDEIAS E DENÚNCIAS
 ========================================== */
 
 function formatarRegistro(item){
@@ -1558,44 +1568,37 @@ function formatarRegistro(item){
     if(valor === null ||
        valor === undefined ||
        valor === ""){
-
-      return;
-
+            return;
     }
-
 
     if(typeof valor === "object"){
-
-      valor =
-      JSON.stringify(valor);
-
+      valor = JSON.stringify(valor);
     }
 
-
     html += `
-
       <div class="campo-generico">
-
         <strong>
           ${escapar(chave)}:
         </strong>
 
-        ${escapar(valor)
-        .replace(/\n/g,"<br>")}
-
+        ${escapar(valor).replace(/\n/g,"<br>")}
       </div>
-
     `;
-
   });
 
-
   return html;
-
 }
 
 
-    async function carregarTabelaGenerica(tabela, elementoId, nomeVazio){
+/* ==========================================
+   LEITURA DE TABELAS GENÉRICAS
+========================================== */
+
+async function carregarTabelaGenerica(
+  tabela,
+  elementoId,
+  mensagemVazia
+){
 
   const lista =
     document.getElementById(elementoId);
@@ -1604,59 +1607,36 @@ function formatarRegistro(item){
     return;
   }
 
-  lista.innerHTML = "Carregando...";
+  lista.innerHTML =
+    "Carregando...";
 
   try{
 
-    let dados;
-
-    try{
-
-      dados = await requisicao(
+    const dados =
+      await requisicao(
         tabela,
         "GET",
         null,
         "select=*&order=id.desc"
       );
 
-    }catch(erroOrdenacao){
-
-      // Caso a tabela não possua coluna "id",
-      // tenta carregar normalmente sem ordenar.
-      dados = await requisicao(
-        tabela,
-        "GET",
-        null,
-        "select=*"
-      );
-
-    }
-
-
-    if(!dados || !Array.isArray(dados) || !dados.length){
+    if(!dados || !dados.length){
 
       lista.innerHTML =
         '<div class="vazio">' +
-        escapar(nomeVazio) +
+        escapar(mensagemVazia) +
         '</div>';
 
       return;
     }
 
-
     lista.innerHTML =
-      dados.map((item, indice)=>`
+      dados.map(item => `
 
         <div class="item">
 
           <h3>
-            ${escapar(
-              item.titulo ||
-              item.nome ||
-              item.assunto ||
-              item.tipo ||
-              ("Registro #" + (indice + 1))
-            )}
+            Registro #${escapar(item.id)}
           </h3>
 
           ${formatarRegistro(item)}
@@ -1665,11 +1645,10 @@ function formatarRegistro(item){
 
       `).join("");
 
-
   }catch(e){
 
     lista.innerHTML =
-      '<div class="vazio">Erro ao carregar dados: ' +
+      '<div class="vazio">Erro: ' +
       escapar(e.message) +
       '</div>';
 
@@ -1761,7 +1740,8 @@ async function testarConexao(){
   }catch(e){
 
     mostrarMensagem(
-      "Erro de conexão: " + e.message,
+      "Erro de conexão: " +
+      e.message,
       "erro"
     );
 
@@ -1770,6 +1750,12 @@ async function testarConexao(){
   }
 
 }
+
+
+/* ==========================================
+   FIM DO JAVASCRIPT
+========================================== */
+
 </script>
 
 </body>
