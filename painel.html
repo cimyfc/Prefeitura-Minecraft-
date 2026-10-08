@@ -3,239 +3,217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Painel da Prefeitura</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#1b1b1b;
-    color:#f5f5f5;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#1b1b1b;
+  color:#f5f5f5;
 }
 
 header{
-    background:#4b2e18;
-    border-bottom:4px solid #2d1b0f;
-    padding:20px;
-    text-align:center;
+  background:#4b2e18;
+  border-bottom:4px solid #2d1b0f;
+  padding:20px;
+  text-align:center;
 }
 
 header h1{
-    margin:0 0 8px;
-    font-size:26px;
+  margin:0 0 8px;
+  font-size:26px;
 }
 
 header p{
-    margin:0;
-    color:#ddd;
+  margin:0;
+  color:#ddd;
 }
 
 .container{
-    width:95%;
-    max-width:1100px;
-    margin:20px auto;
+  width:95%;
+  max-width:1100px;
+  margin:20px auto;
 }
 
 .abas{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-bottom:20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
 }
 
 .aba{
-    border:none;
-    background:#333;
-    color:#fff;
-    padding:12px 15px;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:bold;
-    flex:1 1 30%;
+  border:none;
+  background:#333;
+  color:#fff;
+  padding:12px 15px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+  flex:1 1 30%;
 }
 
 .aba:hover,
 .aba.ativa{
-    background:#6b451f;
+  background:#6b451f;
 }
 
 .secao{
-    display:none;
+  display:none;
 }
 
 .secao.ativa{
-    display:block;
+  display:block;
 }
 
 .card,
 .formulario{
-    background:#292929;
-    border:2px solid #444;
-    border-radius:8px;
-    padding:18px;
-    margin-bottom:15px;
+  background:#292929;
+  border:2px solid #444;
+  border-radius:8px;
+  padding:18px;
+  margin-bottom:15px;
 }
 
 .formulario{
-    background:#252525;
+  background:#252525;
 }
 
 .card h2,
 .formulario h2{
-    margin-top:0;
-    color:#ffd27a;
+  margin-top:0;
+  color:#ffd27a;
 }
 
 input,
 textarea,
 select{
-    width:100%;
-    padding:12px;
-    margin:7px 0 14px;
-    border:2px solid #555;
-    border-radius:6px;
-    background:#151515;
-    color:#fff;
-    font-size:15px;
+  width:100%;
+  padding:12px;
+  margin:7px 0 14px;
+  border:2px solid #555;
+  border-radius:6px;
+  background:#151515;
+  color:#fff;
+  font-size:15px;
 }
 
 textarea{
-    min-height:120px;
-    resize:vertical;
+  min-height:120px;
+  resize:vertical;
 }
 
 button{
-    border:none;
-    border-radius:6px;
-    padding:10px 14px;
-    cursor:pointer;
-    font-weight:bold;
-    margin:3px;
-}
-
-button:active{
-    transform:scale(.98);
+  border:none;
+  border-radius:6px;
+  padding:10px 14px;
+  cursor:pointer;
+  font-weight:bold;
+  margin:3px;
 }
 
 .btn-principal{
-    background:#4caf50;
-    color:#fff;
+  background:#4caf50;
+  color:#fff;
 }
 
 .btn-editar{
-    background:#d69e2e;
-    color:#fff;
+  background:#d69e2e;
+  color:#fff;
 }
 
 .btn-excluir{
-    background:#c0392b;
-    color:#fff;
+  background:#c0392b;
+  color:#fff;
 }
 
 .btn-atualizar{
-    background:#357edd;
-    color:#fff;
+  background:#357edd;
+  color:#fff;
 }
 
 .btn-cancelar{
-    background:#666;
-    color:#fff;
+  background:#666;
+  color:#fff;
 }
 
 .mensagem{
-    padding:12px;
-    border-radius:6px;
-    margin:10px 0;
-    display:none;
+  padding:12px;
+  border-radius:6px;
+  margin:10px 0;
+  display:none;
 }
 
 .sucesso{
-    display:block;
-    background:#174d25;
-    border:1px solid #2e8b45;
+  display:block;
+  background:#174d25;
+  border:1px solid #2e8b45;
 }
 
 .erro{
-    display:block;
-    background:#5c1f1f;
-    border:1px solid #a33;
+  display:block;
+  background:#5c1f1f;
+  border:1px solid #a33;
 }
 
 .item{
-    background:#202020;
-    border:1px solid #444;
-    border-radius:7px;
-    padding:15px;
-    margin-top:12px;
+  background:#202020;
+  border:1px solid #444;
+  border-radius:7px;
+  padding:15px;
+  margin-top:12px;
 }
 
 .item h3{
-    margin-top:0;
-    color:#ffd27a;
+  margin-top:0;
+  color:#ffd27a;
 }
 
 .item small{
-    color:#aaa;
+  color:#aaa;
 }
 
 .status{
-    display:inline-block;
-    padding:6px 10px;
-    border-radius:20px;
-    font-weight:bold;
-    margin:8px 0;
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:20px;
+  font-weight:bold;
+  margin:8px 0;
+  background:#555;
 }
 
-.status-planejada{
-    background:#6d5a20;
+.vazio{
+  color:#aaa;
+  padding:15px 0;
 }
 
-.status-andamento{
-    background:#a05a18;
+.campo-generico{
+  margin:8px 0;
 }
 
-.status-concluida{
-    background:#27753b;
-}
-
-.vazio,
-.carregando{
-    color:#aaa;
-    padding:15px 0;
-}
-
-.erroLista{
-    background:#5c1f1f;
-    border:1px solid #a33;
-    padding:12px;
-    border-radius:6px;
-    margin-top:10px;
-    word-break:break-word;
-}
-
-.campo{
-    margin:6px 0;
-}
-
-.campo strong{
-    color:#ffd27a;
+.campo-generico strong{
+  color:#ffd27a;
 }
 
 @media(max-width:600px){
 
-    header h1{
-        font-size:22px;
-    }
+  header h1{
+    font-size:22px;
+  }
 
-    .aba{
-        flex:1 1 45%;
-    }
+  .aba{
+    flex:1 1 45%;
+  }
 
-    .container{
-        width:94%;
-    }
+  .container{
+    width:94%;
+  }
 }
 </style>
 </head>
@@ -243,54 +221,64 @@ button:active{
 <body>
 
 <header>
-    <h1>🏛️ Painel da Prefeitura</h1>
-    <p>Administração do site da prefeitura</p>
+
+<h1>🏛️ Painel da Prefeitura</h1>
+
+<p>Administração do site da prefeitura</p>
+
 </header>
 
 <div class="container">
 
 <div id="mensagemGlobal" class="mensagem"></div>
 
+
+<!-- ABAS -->
+
 <div class="abas">
 
-<button type="button"
-        class="aba ativa"
-        onclick="abrirAba('avisos',this)">
-    📢 Avisos
+<button
+class="aba ativa"
+onclick="abrirAba('avisos',this)">
+📢 Avisos
 </button>
 
-<button type="button"
-        class="aba"
-        onclick="abrirAba('propostas',this)">
-    📜 Propostas
+<button
+class="aba"
+onclick="abrirAba('propostas',this)">
+📜 Propostas
 </button>
 
-<button type="button"
-        class="aba"
-        onclick="abrirAba('construcoes',this)">
-    🏗️ Construções
+<button
+class="aba"
+onclick="abrirAba('construcoes',this)">
+🏗️ Construções
 </button>
 
-<button type="button"
-        class="aba"
-        onclick="abrirAba('solicitacoes',this)">
-    📬 Solicitações
+<button
+class="aba"
+onclick="abrirAba('solicitacoes',this)">
+📬 Solicitações
 </button>
 
-<button type="button"
-        class="aba"
-        onclick="abrirAba('ideias',this)">
-    💡 Sugestões
+<button
+class="aba"
+onclick="abrirAba('ideias',this)">
+💡 Ideias
 </button>
 
-<button type="button"
-        class="aba"
-        onclick="abrirAba('denuncias',this)">
-    🚨 Denúncias
+<button
+class="aba"
+onclick="abrirAba('denuncias',this)">
+🚨 Denúncias
 </button>
 
 </div>
 
+
+<!-- ========================= -->
+<!-- AVISOS -->
+<!-- ========================= -->
 
 <section id="avisos" class="secao ativa">
 
@@ -298,34 +286,35 @@ button:active{
 
 <h2>📢 Novo aviso</h2>
 
-<input
-    id="avisoTitulo"
-    type="text"
-    placeholder="Título do aviso">
-
 <textarea
-    id="avisoTexto"
-    placeholder="Escreva o aviso..."></textarea>
+id="avisoTexto"
+placeholder="Escreva o aviso..."
+></textarea>
 
 <button
-    type="button"
-    class="btn-principal"
-    onclick="salvarAviso()">
-    Publicar aviso
+class="btn-principal"
+onclick="salvarAviso()">
+Publicar aviso
 </button>
 
 <button
-    type="button"
-    class="btn-cancelar"
-    onclick="limparFormularioAviso()">
-    Limpar
+class="btn-cancelar"
+onclick="limparFormularioAviso()">
+Limpar
 </button>
 
 </div>
 
+
 <div class="card">
 
 <h2>Avisos publicados</h2>
+
+<button
+class="btn-atualizar"
+onclick="carregarAvisos()">
+🔄 Atualizar
+</button>
 
 <div id="listaAvisos"></div>
 
@@ -334,6 +323,10 @@ button:active{
 </section>
 
 
+<!-- ========================= -->
+<!-- PROPOSTAS -->
+<!-- ========================= -->
+
 <section id="propostas" class="secao">
 
 <div class="formulario">
@@ -341,33 +334,44 @@ button:active{
 <h2>📜 Nova proposta</h2>
 
 <input
-    id="propostaTitulo"
-    type="text"
-    placeholder="Título da proposta">
+id="propostaTitulo"
+placeholder="Título da proposta"
+>
 
 <textarea
-    id="propostaTexto"
-    placeholder="Descrição da proposta..."></textarea>
+id="propostaDescricao"
+placeholder="Descrição da proposta..."
+></textarea>
+
+<input
+id="propostaEleicao"
+placeholder="Eleição / opção (se necessário)"
+>
 
 <button
-    type="button"
-    class="btn-principal"
-    onclick="salvarProposta()">
-    Publicar proposta
+class="btn-principal"
+onclick="salvarProposta()">
+Publicar proposta
 </button>
 
 <button
-    type="button"
-    class="btn-cancelar"
-    onclick="limparFormularioProposta()">
-    Limpar
+class="btn-cancelar"
+onclick="limparFormularioProposta()">
+Limpar
 </button>
 
 </div>
 
+
 <div class="card">
 
 <h2>Propostas publicadas</h2>
+
+<button
+class="btn-atualizar"
+onclick="carregarPropostas()">
+🔄 Atualizar
+</button>
 
 <div id="listaPropostas"></div>
 
@@ -376,6 +380,10 @@ button:active{
 </section>
 
 
+<!-- ========================= -->
+<!-- CONSTRUÇÕES -->
+<!-- ========================= -->
+
 <section id="construcoes" class="secao">
 
 <div class="formulario">
@@ -383,49 +391,55 @@ button:active{
 <h2>🏗️ Nova construção / projeto</h2>
 
 <input
-    id="construcaoTitulo"
-    type="text"
-    placeholder="Nome da construção">
+id="construcaoTitulo"
+placeholder="Nome da construção"
+>
 
 <textarea
-    id="construcaoDescricao"
-    placeholder="Descrição do projeto..."></textarea>
+id="construcaoDescricao"
+placeholder="Descrição do projeto..."
+></textarea>
 
 <select id="construcaoStatus">
 
 <option value="Planejada">
-    Planejada
+Planejada
 </option>
 
 <option value="Em andamento">
-    Em andamento
+Em andamento
 </option>
 
 <option value="Concluída">
-    Concluída
+Concluída
 </option>
 
 </select>
 
 <button
-    type="button"
-    class="btn-principal"
-    onclick="salvarConstrucao()">
-    Salvar construção
+class="btn-principal"
+onclick="salvarConstrucao()">
+Salvar construção
 </button>
 
 <button
-    type="button"
-    class="btn-cancelar"
-    onclick="limparFormularioConstrucao()">
-    Limpar
+class="btn-cancelar"
+onclick="limparFormularioConstrucao()">
+Limpar
 </button>
 
 </div>
 
+
 <div class="card">
 
 <h2>Construções / projetos</h2>
+
+<button
+class="btn-atualizar"
+onclick="carregarConstrucoes()">
+🔄 Atualizar
+</button>
 
 <div id="listaConstrucoes"></div>
 
@@ -434,6 +448,10 @@ button:active{
 </section>
 
 
+<!-- ========================= -->
+<!-- SOLICITAÇÕES -->
+<!-- ========================= -->
+
 <section id="solicitacoes" class="secao">
 
 <div class="card">
@@ -441,10 +459,9 @@ button:active{
 <h2>📬 Solicitações dos moradores</h2>
 
 <button
-    type="button"
-    class="btn-atualizar"
-    onclick="carregarSolicitacoes()">
-    🔄 Atualizar
+class="btn-atualizar"
+onclick="carregarSolicitacoes()">
+🔄 Atualizar
 </button>
 
 <div id="listaSolicitacoes"></div>
@@ -454,17 +471,20 @@ button:active{
 </section>
 
 
+<!-- ========================= -->
+<!-- IDEIAS -->
+<!-- ========================= -->
+
 <section id="ideias" class="secao">
 
 <div class="card">
 
-<h2>💡 Sugestões dos moradores</h2>
+<h2>💡 Ideias dos moradores</h2>
 
 <button
-    type="button"
-    class="btn-atualizar"
-    onclick="carregarIdeias()">
-    🔄 Atualizar
+class="btn-atualizar"
+onclick="carregarIdeias()">
+🔄 Atualizar
 </button>
 
 <div id="listaIdeias"></div>
@@ -474,6 +494,10 @@ button:active{
 </section>
 
 
+<!-- ========================= -->
+<!-- DENÚNCIAS -->
+<!-- ========================= -->
+
 <section id="denuncias" class="secao">
 
 <div class="card">
@@ -481,10 +505,9 @@ button:active{
 <h2>🚨 Denúncias dos moradores</h2>
 
 <button
-    type="button"
-    class="btn-atualizar"
-    onclick="carregarDenuncias()">
-    🔄 Atualizar
+class="btn-atualizar"
+onclick="carregarDenuncias()">
+🔄 Atualizar
 </button>
 
 <div id="listaDenuncias"></div>
@@ -498,1269 +521,1255 @@ button:active{
 
 <script>
 
-/* ================================
-   SUPABASE
-================================ */
+/* ==========================================
+   CONFIGURAÇÃO SUPABASE
+========================================== */
 
 const SUPABASE_URL =
-    "https://oamvfvyuaqolsswklljp.supabase.co";
+"https://oamvfvyuaqolsswklljp.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
+"sb_publishable_5ebh8AehOkTaa3XEpcTw2Q_prA9FIFl";
 
 
-/* ================================
-   VARIÁVEIS
-================================ */
+/* ==========================================
+   CONTROLE DE EDIÇÃO
+========================================== */
 
-let avisoEditando = null;
 let propostaEditando = null;
+
 let construcaoEditando = null;
 
 
-/* ================================
-   MENSAGEM
-================================ */
+/* ==========================================
+   MENSAGENS
+========================================== */
 
-function mostrarMensagem(texto, tipo = "sucesso") {
+function mostrarMensagem(texto,tipo="sucesso"){
 
-    const el =
-        document.getElementById("mensagemGlobal");
+  const el =
+  document.getElementById("mensagemGlobal");
 
-    el.textContent = texto;
+  el.textContent = texto;
 
-    el.className =
-        "mensagem " + tipo;
+  el.className =
+  "mensagem " + tipo;
 
-    setTimeout(function(){
+  setTimeout(()=>{
 
-        el.className = "mensagem";
+    el.className = "mensagem";
 
-    },4000);
+  },4000);
 }
 
 
-/* ================================
-   ESCAPAR HTML
-================================ */
+/* ==========================================
+   SEGURANÇA DO TEXTO
+========================================== */
 
 function escapar(valor){
 
-    return String(valor ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+  return String(valor ?? "")
+  .replace(/&/g,"&amp;")
+  .replace(/</g,"&lt;")
+  .replace(/>/g,"&gt;")
+  .replace(/"/g,"&quot;")
+  .replace(/'/g,"&#039;");
 }
 
 
-/* ================================
+/* ==========================================
    REQUISIÇÃO SUPABASE
-================================ */
+========================================== */
 
 async function requisicao(
-    tabela,
-    metodo = "GET",
-    dados = null,
-    query = ""
+  tabela,
+  metodo="GET",
+  dados=null,
+  query=""
 ){
 
-    let url =
-        SUPABASE_URL +
-        "/rest/v1/" +
-        tabela;
+  let url =
+  SUPABASE_URL +
+  "/rest/v1/" +
+  tabela;
 
-    if(query){
-        url += "?" + query;
-    }
+  if(query){
 
-    const opcoes = {
+    url += "?" + query;
 
-        method: metodo,
+  }
 
-        headers: {
+  const opcoes = {
 
-            "Content-Type":
-                "application/json",
+    method:metodo,
 
-            "apikey":
-                SUPABASE_KEY,
+    headers:{
 
-            "Authorization":
-                "Bearer " + SUPABASE_KEY,
+      "Content-Type":
+      "application/json",
 
-            "Prefer":
-                "return=representation"
-        }
-    };
+      "apikey":
+      SUPABASE_KEY,
 
-    if(dados !== null){
+      "Authorization":
+      "Bearer " + SUPABASE_KEY,
 
-        opcoes.body =
-            JSON.stringify(dados);
+      "Prefer":
+      "return=representation"
 
     }
 
-    const resposta =
-        await fetch(url,opcoes);
+  };
 
-    const texto =
-        await resposta.text();
 
-    if(!resposta.ok){
+  if(dados !== null){
 
-        throw new Error(
-            "Erro " +
-            resposta.status +
-            ": " +
-            texto
-        );
+    opcoes.body =
+    JSON.stringify(dados);
 
-    }
+  }
 
-    if(!texto){
 
-        return null;
+  const resposta =
+  await fetch(url,opcoes);
 
-    }
 
-    try{
+  const texto =
+  await resposta.text();
 
-        return JSON.parse(texto);
 
-    }catch{
+  if(!resposta.ok){
 
-        return texto;
+    throw new Error(
+      "Erro " +
+      resposta.status +
+      ": " +
+      texto
+    );
 
-    }
+  }
+
+
+  if(!texto){
+
+    return null;
+
+  }
+
+
+  try{
+
+    return JSON.parse(texto);
+
+  }catch{
+
+    return texto;
+
+  }
+
 }
 
 
-/* ================================
-   ABAS
-================================ */
+/* ==========================================
+   ABRIR ABA
+========================================== */
 
 function abrirAba(nome,botao){
 
-    document
-        .querySelectorAll(".secao")
-        .forEach(function(secao){
+  document
+  .querySelectorAll(".secao")
+  .forEach(secao=>{
 
-            secao.classList.remove("ativa");
+    secao.classList.remove("ativa");
 
-        });
+  });
 
-    document
-        .querySelectorAll(".aba")
-        .forEach(function(item){
 
-            item.classList.remove("ativa");
+  document
+  .querySelectorAll(".aba")
+  .forEach(aba=>{
 
-        });
+    aba.classList.remove("ativa");
 
-    const secao =
-        document.getElementById(nome);
+  });
 
-    if(!secao){
 
-        return;
+  const secao =
+  document.getElementById(nome);
 
-    }
 
-    secao.classList.add("ativa");
+  if(!secao){
 
-    if(botao){
+    return;
 
-        botao.classList.add("ativa");
+  }
 
-    }
 
-    if(nome === "avisos"){
+  secao.classList.add("ativa");
 
-        carregarAvisos();
 
-    }
+  if(botao){
 
-    if(nome === "propostas"){
+    botao.classList.add("ativa");
 
-        carregarPropostas();
+  }
 
-    }
 
-    if(nome === "construcoes"){
+  if(nome === "avisos"){
 
-        carregarConstrucoes();
+    carregarAvisos();
 
-    }
+  }
 
-    if(nome === "solicitacoes"){
 
-        carregarSolicitacoes();
+  if(nome === "propostas"){
 
-    }
+    carregarPropostas();
 
-    if(nome === "ideias"){
+  }
 
-        carregarIdeias();
 
-    }
+  if(nome === "construcoes"){
 
-    if(nome === "denuncias"){
+    carregarConstrucoes();
 
-        carregarDenuncias();
+  }
 
-    }
+
+  if(nome === "solicitacoes"){
+
+    carregarSolicitacoes();
+
+  }
+
+
+  if(nome === "ideias"){
+
+    carregarIdeias();
+
+  }
+
+
+  if(nome === "denuncias"){
+
+    carregarDenuncias();
+
+  }
+
 }
 
 
-/* ================================
+/* ==========================================
    AVISOS
-================================ */
+   TABELA:
+   id
+   data
+   texto
+========================================== */
 
 async function carregarAvisos(){
 
-    const lista =
-        document.getElementById(
-            "listaAvisos"
-        );
+  const lista =
+  document.getElementById(
+    "listaAvisos"
+  );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
+  lista.innerHTML =
+  "Carregando...";
 
-    try{
 
-        const dados =
-            await requisicao(
-                "avisos",
-                "GET",
-                null,
-                "select=*&order=id.desc"
-            );
+  try{
 
-        if(!dados || !dados.length){
+    const dados =
+    await requisicao(
+      "avisos",
+      "GET",
+      null,
+      "select=*&order=id.desc"
+    );
 
-            lista.innerHTML =
-                '<div class="vazio">Nenhum aviso publicado.</div>';
 
-            return;
+    if(!dados || !dados.length){
 
-        }
+      lista.innerHTML =
+      '<div class="vazio">Nenhum aviso publicado.</div>';
 
-        lista.innerHTML =
-            dados.map(function(a){
-
-                return `
-
-                <div class="item">
-
-                    <h3>
-                        ${escapar(a.titulo)}
-                    </h3>
-
-                    <p>
-                        ${escapar(a.texto)
-                            .replace(/\n/g,"<br>")}
-                    </p>
-
-                    <small>
-                        ID: ${escapar(a.id)}
-                    </small>
-
-                    <br><br>
-
-                    <button
-                        type="button"
-                        class="btn-editar"
-                        onclick="editarAviso(${Number(a.id)})">
-                        ✏️ Editar
-                    </button>
-
-                    <button
-                        type="button"
-                        class="btn-excluir"
-                        onclick="excluirAviso(${Number(a.id)})">
-                        🗑️ Excluir
-                    </button>
-
-                </div>
-
-                `;
-
-            }).join("");
-
-    }catch(e){
-
-        lista.innerHTML =
-            '<div class="erroLista">Erro: ' +
-            escapar(e.message) +
-            '</div>';
+      return;
 
     }
+
+
+    lista.innerHTML =
+    dados.map(aviso=>`
+
+      <div class="item">
+
+        <h3>📢 Aviso</h3>
+
+        <p>
+          ${escapar(aviso.texto)
+          .replace(/\n/g,"<br>")}
+        </p>
+
+        <small>
+          ID: ${escapar(aviso.id)}
+        </small>
+
+        <br>
+
+        <small>
+          Data: ${escapar(aviso.data || "Não informada")}
+        </small>
+
+      </div>
+
+    `).join("");
+
+
+  }catch(e){
+
+    lista.innerHTML =
+    '<div class="vazio">Erro: ' +
+    escapar(e.message) +
+    '</div>';
+
+  }
+
 }
 
 
 async function salvarAviso(){
 
-    const titulo =
-        document
-            .getElementById("avisoTitulo")
-            .value
-            .trim();
-
-    const texto =
-        document
-            .getElementById("avisoTexto")
-            .value
-            .trim();
-
-    if(!titulo || !texto){
-
-        mostrarMensagem(
-            "Preencha o título e o texto do aviso.",
-            "erro"
-        );
-
-        return;
-
-    }
-
-    try{
-
-        if(avisoEditando !== null){
-
-            await requisicao(
-                "avisos",
-                "PATCH",
-                {
-                    titulo:titulo,
-                    texto:texto
-                },
-                "id=eq." +
-                encodeURIComponent(avisoEditando)
-            );
-
-            mostrarMensagem(
-                "Aviso atualizado!"
-            );
-
-        }else{
-
-            await requisicao(
-                "avisos",
-                "POST",
-                {
-                    titulo:titulo,
-                    texto:texto
-                }
-            );
-
-            mostrarMensagem(
-                "Aviso publicado!"
-            );
-
-        }
-
-        limparFormularioAviso();
-
-        await carregarAvisos();
-
-    }catch(e){
-
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
-
-    }
-}
+  const texto =
+  document
+  .getElementById("avisoTexto")
+  .value
+  .trim();
 
 
-async function editarAviso(id){
+  if(!texto){
 
-    try{
+    mostrarMensagem(
+      "Escreva o texto do aviso.",
+      "erro"
+    );
 
-        const dados =
-            await requisicao(
-                "avisos",
-                "GET",
-                null,
-                "select=*&id=eq." +
-                encodeURIComponent(id)
-            );
+    return;
 
-        if(!dados || !dados.length){
-
-            return;
-
-        }
-
-        document
-            .getElementById("avisoTitulo")
-            .value =
-            dados[0].titulo || "";
-
-        document
-            .getElementById("avisoTexto")
-            .value =
-            dados[0].texto || "";
-
-        avisoEditando = id;
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-        mostrarMensagem(
-            "Aviso carregado para edição."
-        );
-
-    }catch(e){
-
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
-
-    }
-}
+  }
 
 
-async function excluirAviso(id){
+  try{
 
-    if(!confirm("Excluir este aviso?")){
+    await requisicao(
+      "avisos",
+      "POST",
+      {
+        texto: texto
+      }
+    );
 
-        return;
 
-    }
+    mostrarMensagem(
+      "Aviso publicado com sucesso!"
+    );
 
-    try{
 
-        await requisicao(
-            "avisos",
-            "DELETE",
-            null,
-            "id=eq." +
-            encodeURIComponent(id)
-        );
+    limparFormularioAviso();
 
-        mostrarMensagem(
-            "Aviso excluído."
-        );
+    carregarAvisos();
 
-        await carregarAvisos();
 
-    }catch(e){
+  }catch(e){
 
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
 
-    }
+  }
+
 }
 
 
 function limparFormularioAviso(){
 
-    document
-        .getElementById("avisoTitulo")
-        .value = "";
+  document
+  .getElementById("avisoTexto")
+  .value = "";
 
-    document
-        .getElementById("avisoTexto")
-        .value = "";
-
-    avisoEditando = null;
 }
 
 
-/* ================================
+/* ==========================================
    PROPOSTAS
-================================ */
+   TABELA:
+   id
+   titulo
+   descricao
+   eleicao
+========================================== */
 
 async function carregarPropostas(){
 
-    const lista =
-        document.getElementById(
-            "listaPropostas"
-        );
+  const lista =
+  document.getElementById(
+    "listaPropostas"
+  );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
+  lista.innerHTML =
+  "Carregando...";
 
-    try{
 
-        const dados =
-            await requisicao(
-                "propostas",
-                "GET",
-                null,
-                "select=*&order=id.desc"
-            );
+  try{
 
-        if(!dados || !dados.length){
+    const dados =
+    await requisicao(
+      "propostas",
+      "GET",
+      null,
+      "select=*&order=id.desc"
+    );
 
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma proposta publicada.</div>';
 
-            return;
+    if(!dados || !dados.length){
 
-        }
+      lista.innerHTML =
+      '<div class="vazio">Nenhuma proposta publicada.</div>';
 
-        lista.innerHTML =
-            dados.map(function(p){
-
-                return `
-
-                <div class="item">
-
-                    <h3>
-                        ${escapar(p.titulo)}
-                    </h3>
-
-                    <p>
-                        ${escapar(p.texto)
-                            .replace(/\n/g,"<br>")}
-                    </p>
-
-                    <small>
-                        ID: ${escapar(p.id)}
-                    </small>
-
-                    <br><br>
-
-                    <button
-                        type="button"
-                        class="btn-editar"
-                        onclick="editarProposta(${Number(p.id)})">
-                        ✏️ Editar
-                    </button>
-
-                    <button
-                        type="button"
-                        class="btn-excluir"
-                        onclick="excluirProposta(${Number(p.id)})">
-                        🗑️ Excluir
-                    </button>
-
-                </div>
-
-                `;
-
-            }).join("");
-
-    }catch(e){
-
-        lista.innerHTML =
-            '<div class="erroLista">Erro: ' +
-            escapar(e.message) +
-            '</div>';
+      return;
 
     }
+
+
+    lista.innerHTML =
+    dados.map(proposta=>`
+
+      <div class="item">
+
+        <h3>
+          ${escapar(proposta.titulo)}
+        </h3>
+
+        <p>
+          ${escapar(proposta.descricao)
+          .replace(/\n/g,"<br>")}
+        </p>
+
+        <p>
+          <strong>Eleição:</strong>
+          ${escapar(proposta.eleicao || "Não informada")}
+        </p>
+
+        <small>
+          ID: ${escapar(proposta.id)}
+        </small>
+
+        <br><br>
+
+        <button
+        class="btn-editar"
+        onclick="editarProposta(${Number(proposta.id)})">
+          ✏️ Editar
+        </button>
+
+        <button
+        class="btn-excluir"
+        onclick="excluirProposta(${Number(proposta.id)})">
+          🗑️ Excluir
+        </button>
+
+      </div>
+
+    `).join("");
+
+
+  }catch(e){
+
+    lista.innerHTML =
+    '<div class="vazio">Erro: ' +
+    escapar(e.message) +
+    '</div>';
+
+  }
+
 }
 
 
 async function salvarProposta(){
 
-    const titulo =
-        document
-            .getElementById("propostaTitulo")
-            .value
-            .trim();
+  const titulo =
+  document
+  .getElementById("propostaTitulo")
+  .value
+  .trim();
 
-    const texto =
-        document
-            .getElementById("propostaTexto")
-            .value
-            .trim();
 
-    if(!titulo || !texto){
+  const descricao =
+  document
+  .getElementById("propostaDescricao")
+  .value
+  .trim();
 
-        mostrarMensagem(
-            "Preencha o título e o texto da proposta.",
-            "erro"
-        );
 
-        return;
+  const eleicao =
+  document
+  .getElementById("propostaEleicao")
+  .value
+  .trim();
+
+
+  if(!titulo || !descricao){
+
+    mostrarMensagem(
+      "Preencha o título e a descrição da proposta.",
+      "erro"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const dados = {
+
+      titulo: titulo,
+
+      descricao: descricao,
+
+      eleicao: eleicao || null
+
+    };
+
+
+    if(propostaEditando !== null){
+
+      await requisicao(
+        "propostas",
+        "PATCH",
+        dados,
+        "id=eq." +
+        encodeURIComponent(
+          propostaEditando
+        )
+      );
+
+
+      mostrarMensagem(
+        "Proposta atualizada!"
+      );
+
+    }else{
+
+      await requisicao(
+        "propostas",
+        "POST",
+        dados
+      );
+
+
+      mostrarMensagem(
+        "Proposta publicada!"
+      );
 
     }
 
-    try{
 
-        if(propostaEditando !== null){
+    limparFormularioProposta();
 
-            await requisicao(
-                "propostas",
-                "PATCH",
-                {
-                    titulo:titulo,
-                    texto:texto
-                },
-                "id=eq." +
-                encodeURIComponent(propostaEditando)
-            );
+    carregarPropostas();
 
-            mostrarMensagem(
-                "Proposta atualizada!"
-            );
 
-        }else{
+  }catch(e){
 
-            await requisicao(
-                "propostas",
-                "POST",
-                {
-                    titulo:titulo,
-                    texto:texto
-                }
-            );
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
 
-            mostrarMensagem(
-                "Proposta publicada!"
-            );
+  }
 
-        }
-
-        limparFormularioProposta();
-
-        await carregarPropostas();
-
-    }catch(e){
-
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
-
-    }
 }
 
 
 async function editarProposta(id){
 
-    try{
+  try{
 
-        const dados =
-            await requisicao(
-                "propostas",
-                "GET",
-                null,
-                "select=*&id=eq." +
-                encodeURIComponent(id)
-            );
+    const dados =
+    await requisicao(
+      "propostas",
+      "GET",
+      null,
+      "select=*&id=eq." +
+      encodeURIComponent(id)
+    );
 
-        if(!dados || !dados.length){
 
-            return;
+    if(!dados || !dados.length){
 
-        }
-
-        document
-            .getElementById("propostaTitulo")
-            .value =
-            dados[0].titulo || "";
-
-        document
-            .getElementById("propostaTexto")
-            .value =
-            dados[0].texto || "";
-
-        propostaEditando = id;
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-        mostrarMensagem(
-            "Proposta carregada para edição."
-        );
-
-    }catch(e){
-
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
+      return;
 
     }
+
+
+    document
+    .getElementById("propostaTitulo")
+    .value =
+    dados[0].titulo || "";
+
+
+    document
+    .getElementById("propostaDescricao")
+    .value =
+    dados[0].descricao || "";
+
+
+    document
+    .getElementById("propostaEleicao")
+    .value =
+    dados[0].eleicao || "";
+
+
+    propostaEditando = id;
+
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+
+    mostrarMensagem(
+      "Proposta carregada para edição."
+    );
+
+
+  }catch(e){
+
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
+
+  }
+
 }
 
 
 async function excluirProposta(id){
 
-    if(!confirm("Excluir esta proposta?")){
+  if(!confirm(
+    "Excluir esta proposta?"
+  )){
 
-        return;
+    return;
 
-    }
+  }
 
-    try{
 
-        await requisicao(
-            "propostas",
-            "DELETE",
-            null,
-            "id=eq." +
-            encodeURIComponent(id)
-        );
+  try{
 
-        mostrarMensagem(
-            "Proposta excluída!"
-        );
+    await requisicao(
+      "propostas",
+      "DELETE",
+      null,
+      "id=eq." +
+      encodeURIComponent(id)
+    );
 
-        await carregarPropostas();
 
-    }catch(e){
+    mostrarMensagem(
+      "Proposta excluída."
+    );
 
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
 
-    }
+    carregarPropostas();
+
+
+  }catch(e){
+
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
+
+  }
+
 }
 
 
 function limparFormularioProposta(){
 
-    document
-        .getElementById("propostaTitulo")
-        .value = "";
+  document
+  .getElementById("propostaTitulo")
+  .value = "";
 
-    document
-        .getElementById("propostaTexto")
-        .value = "";
 
-    propostaEditando = null;
+  document
+  .getElementById("propostaDescricao")
+  .value = "";
+
+
+  document
+  .getElementById("propostaEleicao")
+  .value = "";
+
+
+  propostaEditando = null;
+
 }
 
 
-/* ================================
+/* ==========================================
    CONSTRUÇÕES
-================================ */
+========================================== */
 
 async function carregarConstrucoes(){
 
-    const lista =
-        document.getElementById("listaConstrucoes");
+  const lista =
+  document.getElementById(
+    "listaConstrucoes"
+  );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
+  lista.innerHTML =
+  "Carregando...";
 
-    try{
 
-        const dados =
-            await requisicao(
-                "construcoes",
-                "GET",
-                null,
-                "select=*&order=id.desc"
-            );
+  try{
 
-        if(!dados || !dados.length){
+    const dados =
+    await requisicao(
+      "construcoes",
+      "GET",
+      null,
+      "select=*&order=id.desc"
+    );
 
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma construção cadastrada.</div>';
 
-            return;
-        }
+    if(!dados || !dados.length){
 
-        lista.innerHTML =
-            dados.map(function(c){
+      lista.innerHTML =
+      '<div class="vazio">Nenhuma construção cadastrada.</div>';
 
-                let classeStatus = "";
-
-                if(c.status === "Planejada"){
-                    classeStatus = "status-planejada";
-                }
-
-                if(c.status === "Em andamento"){
-                    classeStatus = "status-andamento";
-                }
-
-                if(c.status === "Concluída"){
-                    classeStatus = "status-concluida";
-                }
-
-                return `
-
-                <div class="item">
-
-                    <h3>
-                        ${escapar(c.titulo || "Sem título")}
-                    </h3>
-
-                    <div class="campo">
-                        <strong>Descrição:</strong><br>
-                        ${escapar(c.descricao || "")
-                            .replace(/\n/g,"<br>")}
-                    </div>
-
-                    <div>
-                        <span class="status ${classeStatus}">
-                            ${escapar(c.status || "Sem status")}
-                        </span>
-                    </div>
-
-                    <small>
-                        ID: ${escapar(c.id)}
-                    </small>
-
-                    <br><br>
-
-                    <button
-                        type="button"
-                        class="btn-editar"
-                        onclick="editarConstrucao(${Number(c.id)})">
-                        ✏️ Editar
-                    </button>
-
-                    <button
-                        type="button"
-                        class="btn-excluir"
-                        onclick="excluirConstrucao(${Number(c.id)})">
-                        🗑️ Excluir
-                    </button>
-
-                </div>
-
-                `;
-
-            }).join("");
-
-    }catch(e){
-
-        lista.innerHTML =
-            '<div class="erroLista">Erro: ' +
-            escapar(e.message) +
-            '</div>';
+      return;
 
     }
+
+
+    lista.innerHTML =
+    dados.map(c=>`
+
+      <div class="item">
+
+        <h3>
+          🏗️ ${escapar(c.titulo)}
+        </h3>
+
+        <p>
+          ${escapar(c.descricao)
+          .replace(/\n/g,"<br>")}
+        </p>
+
+        <span class="status">
+          ${escapar(
+            c.status || "Planejada"
+          )}
+        </span>
+
+        <br>
+
+        <small>
+          ID: ${escapar(c.id)}
+        </small>
+
+        <br><br>
+
+        <button
+        class="btn-editar"
+        onclick="editarConstrucao(${Number(c.id)})">
+          ✏️ Editar
+        </button>
+
+        <button
+        class="btn-excluir"
+        onclick="excluirConstrucao(${Number(c.id)})">
+          🗑️ Excluir
+        </button>
+
+      </div>
+
+    `).join("");
+
+
+  }catch(e){
+
+    lista.innerHTML =
+    '<div class="vazio">Erro: ' +
+    escapar(e.message) +
+    '</div>';
+
+  }
+
 }
 
 
 async function salvarConstrucao(){
 
-    const titulo =
-        document
-            .getElementById("construcaoTitulo")
-            .value
-            .trim();
+  const titulo =
+  document
+  .getElementById("construcaoTitulo")
+  .value
+  .trim();
 
-    const descricao =
-        document
-            .getElementById("construcaoDescricao")
-            .value
-            .trim();
 
-    const status =
-        document
-            .getElementById("construcaoStatus")
-            .value;
+  const descricao =
+  document
+  .getElementById("construcaoDescricao")
+  .value
+  .trim();
 
-    if(!titulo || !descricao){
 
-        mostrarMensagem(
-            "Preencha o nome e a descrição da construção.",
-            "erro"
-        );
+  const status =
+  document
+  .getElementById("construcaoStatus")
+  .value;
 
-        return;
+
+  if(!titulo || !descricao){
+
+    mostrarMensagem(
+      "Preencha o nome e a descrição.",
+      "erro"
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+    const dados = {
+
+      titulo: titulo,
+
+      descricao: descricao,
+
+      status: status
+
+    };
+
+
+    if(construcaoEditando !== null){
+
+      await requisicao(
+        "construcoes",
+        "PATCH",
+        dados,
+        "id=eq." +
+        encodeURIComponent(
+          construcaoEditando
+        )
+      );
+
+
+      mostrarMensagem(
+        "Construção atualizada!"
+      );
+
+    }else{
+
+      await requisicao(
+        "construcoes",
+        "POST",
+        dados
+      );
+
+
+      mostrarMensagem(
+        "Construção salva!"
+      );
+
     }
 
-    try{
 
-        if(construcaoEditando !== null){
+    limparFormularioConstrucao();
 
-            await requisicao(
-                "construcoes",
-                "PATCH",
-                {
-                    titulo: titulo,
-                    descricao: descricao,
-                    status: status
-                },
-                "id=eq." +
-                encodeURIComponent(construcaoEditando)
-            );
+    carregarConstrucoes();
 
-            mostrarMensagem(
-                "Construção atualizada!"
-            );
 
-        }else{
+  }catch(e){
 
-            await requisicao(
-                "construcoes",
-                "POST",
-                {
-                    titulo: titulo,
-                    descricao: descricao,
-                    status: status
-                }
-            );
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
 
-            mostrarMensagem(
-                "Construção cadastrada!"
-            );
-        }
+  }
 
-        limparFormularioConstrucao();
-
-        await carregarConstrucoes();
-
-    }catch(e){
-
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
-
-    }
 }
 
 
 async function editarConstrucao(id){
 
-    try{
+  try{
 
-        const dados =
-            await requisicao(
-                "construcoes",
-                "GET",
-                null,
-                "select=*&id=eq." +
-                encodeURIComponent(id)
-            );
+    const dados =
+    await requisicao(
+      "construcoes",
+      "GET",
+      null,
+      "select=*&id=eq." +
+      encodeURIComponent(id)
+    );
 
-        if(!dados || !dados.length){
 
-            mostrarMensagem(
-                "Construção não encontrada.",
-                "erro"
-            );
+    if(!dados || !dados.length){
 
-            return;
-        }
-
-        document
-            .getElementById("construcaoTitulo")
-            .value =
-            dados[0].titulo || "";
-
-        document
-            .getElementById("construcaoDescricao")
-            .value =
-            dados[0].descricao || "";
-
-        document
-            .getElementById("construcaoStatus")
-            .value =
-            dados[0].status || "Planejada";
-
-        construcaoEditando = id;
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-        mostrarMensagem(
-            "Construção carregada para edição."
-        );
-
-    }catch(e){
-
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
+      return;
 
     }
+
+
+    document
+    .getElementById("construcaoTitulo")
+    .value =
+    dados[0].titulo || "";
+
+
+    document
+    .getElementById("construcaoDescricao")
+    .value =
+    dados[0].descricao || "";
+
+
+    document
+    .getElementById("construcaoStatus")
+    .value =
+    dados[0].status || "Planejada";
+
+
+    construcaoEditando = id;
+
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+
+  }catch(e){
+
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
+
+  }
+
 }
 
 
 async function excluirConstrucao(id){
 
-    if(!confirm("Excluir esta construção?")){
+  if(!confirm(
+    "Excluir esta construção?"
+  )){
 
-        return;
-    }
+    return;
 
-    try{
+  }
 
-        await requisicao(
-            "construcoes",
-            "DELETE",
-            null,
-            "id=eq." +
-            encodeURIComponent(id)
-        );
 
-        mostrarMensagem(
-            "Construção excluída!"
-        );
+  try{
 
-        await carregarConstrucoes();
+    await requisicao(
+      "construcoes",
+      "DELETE",
+      null,
+      "id=eq." +
+      encodeURIComponent(id)
+    );
 
-    }catch(e){
 
-        mostrarMensagem(
-            e.message,
-            "erro"
-        );
+    mostrarMensagem(
+      "Construção excluída."
+    );
 
-    }
+
+    carregarConstrucoes();
+
+
+  }catch(e){
+
+    mostrarMensagem(
+      e.message,
+      "erro"
+    );
+
+  }
+
 }
 
 
 function limparFormularioConstrucao(){
 
-    document
-        .getElementById("construcaoTitulo")
-        .value = "";
+  document
+  .getElementById("construcaoTitulo")
+  .value = "";
 
-    document
-        .getElementById("construcaoDescricao")
-        .value = "";
 
-    document
-        .getElementById("construcaoStatus")
-        .value = "Planejada";
+  document
+  .getElementById("construcaoDescricao")
+  .value = "";
 
-    construcaoEditando = null;
+
+  document
+  .getElementById("construcaoStatus")
+  .value =
+  "Planejada";
+
+
+  construcaoEditando = null;
+
 }
 
 
-/* ================================
+/* ==========================================
+   LEITURA GENÉRICA
+   PARA SOLICITAÇÕES,
+   IDEIAS E DENÚNCIAS
+========================================== */
+
+function formatarRegistro(item){
+
+  let html = "";
+
+
+  Object.keys(item).forEach(chave=>{
+
+    let valor = item[chave];
+
+
+    if(valor === null ||
+       valor === undefined ||
+       valor === ""){
+
+      return;
+
+    }
+
+
+    if(typeof valor === "object"){
+
+      valor =
+      JSON.stringify(valor);
+
+    }
+
+
+    html += `
+
+      <div class="campo-generico">
+
+        <strong>
+          ${escapar(chave)}:
+        </strong>
+
+        ${escapar(valor)
+        .replace(/\n/g,"<br>")}
+
+      </div>
+
+    `;
+
+  });
+
+
+  return html;
+
+}
+
+
+    async function carregarTabelaGenerica(tabela, elementoId, nomeVazio){
+
+  const lista =
+    document.getElementById(elementoId);
+
+  if(!lista){
+    return;
+  }
+
+  lista.innerHTML = "Carregando...";
+
+  try{
+
+    let dados;
+
+    try{
+
+      dados = await requisicao(
+        tabela,
+        "GET",
+        null,
+        "select=*&order=id.desc"
+      );
+
+    }catch(erroOrdenacao){
+
+      // Caso a tabela não possua coluna "id",
+      // tenta carregar normalmente sem ordenar.
+      dados = await requisicao(
+        tabela,
+        "GET",
+        null,
+        "select=*"
+      );
+
+    }
+
+
+    if(!dados || !Array.isArray(dados) || !dados.length){
+
+      lista.innerHTML =
+        '<div class="vazio">' +
+        escapar(nomeVazio) +
+        '</div>';
+
+      return;
+    }
+
+
+    lista.innerHTML =
+      dados.map((item, indice)=>`
+
+        <div class="item">
+
+          <h3>
+            ${escapar(
+              item.titulo ||
+              item.nome ||
+              item.assunto ||
+              item.tipo ||
+              ("Registro #" + (indice + 1))
+            )}
+          </h3>
+
+          ${formatarRegistro(item)}
+
+        </div>
+
+      `).join("");
+
+
+  }catch(e){
+
+    lista.innerHTML =
+      '<div class="vazio">Erro ao carregar dados: ' +
+      escapar(e.message) +
+      '</div>';
+
+  }
+
+}
+
+
+/* ==========================================
    SOLICITAÇÕES
-================================ */
+========================================== */
 
 async function carregarSolicitacoes(){
 
-    const lista =
-        document.getElementById("listaSolicitacoes");
+  await carregarTabelaGenerica(
+    "solicitacoes",
+    "listaSolicitacoes",
+    "Nenhuma solicitação encontrada."
+  );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
-
-    try{
-
-        const dados =
-            await requisicao(
-                "solicitacoes",
-                "GET",
-                null,
-                "select=*&order=id.desc"
-            );
-
-        if(!dados || !dados.length){
-
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma solicitação encontrada.</div>';
-
-            return;
-        }
-
-        lista.innerHTML =
-            dados.map(function(item){
-
-                return `
-                    <div class="item">
-
-                        <h3>
-                            Solicitação #${escapar(item.id)}
-                        </h3>
-
-                        ${Object.entries(item)
-                            .filter(function([chave]){
-                                return chave !== "id";
-                            })
-                            .map(function([chave,valor]){
-                                return `
-                                    <div class="campo">
-                                        <strong>
-                                            ${escapar(chave)}:
-                                        </strong><br>
-                                        ${escapar(valor)}
-                                    </div>
-                                `;
-                            }).join("")}
-
-                    </div>
-                `;
-
-            }).join("");
-
-    }catch(e){
-
-        lista.innerHTML =
-            '<div class="erroLista">Erro: ' +
-            escapar(e.message) +
-            '</div>';
-
-    }
 }
 
 
-/* ================================
-   SUGESTÕES
-================================ */
+/* ==========================================
+   IDEIAS
+========================================== */
 
 async function carregarIdeias(){
 
-    const lista =
-        document.getElementById("listaIdeias");
+  await carregarTabelaGenerica(
+    "ideias",
+    "listaIdeias",
+    "Nenhuma ideia encontrada."
+  );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
-
-    try{
-
-        const dados =
-            await requisicao(
-                "ideias",
-                "GET",
-                null,
-                "select=*&order=id.desc"
-            );
-
-        if(!dados || !dados.length){
-
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma sugestão encontrada.</div>';
-
-            return;
-        }
-
-        lista.innerHTML =
-            dados.map(function(item){
-
-                return `
-                    <div class="item">
-
-                        <h3>
-                            Sugestão #${escapar(item.id)}
-                        </h3>
-
-                        ${Object.entries(item)
-                            .filter(function([chave]){
-                                return chave !== "id";
-                            })
-                            .map(function([chave,valor]){
-                                return `
-                                    <div class="campo">
-                                        <strong>
-                                            ${escapar(chave)}:
-                                        </strong><br>
-                                        ${escapar(valor)}
-                                    </div>
-                                `;
-                            }).join("")}
-
-                    </div>
-                `;
-
-            }).join("");
-
-    }catch(e){
-
-        lista.innerHTML =
-            '<div class="erroLista">Erro: ' +
-            escapar(e.message) +
-            '</div>';
-
-    }
 }
 
 
-/* ================================
+/* ==========================================
    DENÚNCIAS
-================================ */
+========================================== */
 
 async function carregarDenuncias(){
 
-    const lista =
-        document.getElementById("listaDenuncias");
+  await carregarTabelaGenerica(
+    "denuncias",
+    "listaDenuncias",
+    "Nenhuma denúncia encontrada."
+  );
 
-    lista.innerHTML =
-        '<div class="carregando">Carregando...</div>';
-
-    try{
-
-        const dados =
-            await requisicao(
-                "denuncias",
-                "GET",
-                null,
-                "select=*&order=id.desc"
-            );
-
-        if(!dados || !dados.length){
-
-            lista.innerHTML =
-                '<div class="vazio">Nenhuma denúncia encontrada.</div>';
-
-            return;
-        }
-
-        lista.innerHTML =
-            dados.map(function(item){
-
-                return `
-                    <div class="item">
-
-                        <h3>
-                            Denúncia #${escapar(item.id)}
-                        </h3>
-
-                        ${Object.entries(item)
-                            .filter(function([chave]){
-                                return chave !== "id";
-                            })
-                            .map(function([chave,valor]){
-                                return `
-                                    <div class="campo">
-                                        <strong>
-                                            ${escapar(chave)}:
-                                        </strong><br>
-                                        ${escapar(valor)}
-                                    </div>
-                                `;
-                            }).join("")}
-
-                    </div>
-                `;
-
-            }).join("");
-
-    }catch(e){
-
-        lista.innerHTML =
-            '<div class="erroLista">Erro: ' +
-            escapar(e.message) +
-            '</div>';
-
-    }
 }
 
 
-/* ================================
-   INICIALIZAÇÃO
-================================ */
+/* ==========================================
+   INICIALIZAÇÃO DO PAINEL
+========================================== */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    function(){
+  "DOMContentLoaded",
+  function(){
 
-        carregarAvisos();
+    carregarAvisos();
 
-    }
+  }
 );
 
+
+/* ==========================================
+   TESTE DE CONEXÃO
+========================================== */
+
+async function testarConexao(){
+
+  try{
+
+    await requisicao(
+      "avisos",
+      "GET",
+      null,
+      "select=id&limit=1"
+    );
+
+    mostrarMensagem(
+      "Conexão com o banco funcionando!"
+    );
+
+    return true;
+
+  }catch(e){
+
+    mostrarMensagem(
+      "Erro de conexão: " + e.message,
+      "erro"
+    );
+
+    return false;
+
+  }
+
+}
 </script>
 
 </body>
